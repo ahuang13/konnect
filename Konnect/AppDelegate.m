@@ -7,12 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "LogInViewController.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, strong) LogInViewController *logInViewController;
+
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // TODO: Check for access token to decide which ViewController to show
+    self.window.rootViewController = self.logInViewController;
+
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -44,6 +55,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+- (LogInViewController *)logInViewController {
+    
+    if (!_logInViewController) {
+        _logInViewController = [[LogInViewController alloc] init];
+    }
+    
+    return _logInViewController;
 }
 
 @end
