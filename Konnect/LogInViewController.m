@@ -7,6 +7,8 @@
 //
 
 #import "LogInViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface LogInViewController ()
 
@@ -42,6 +44,23 @@
 - (IBAction)onLoginButtonClicked:(UIButton *)sender
 {
     NSLog(@"onLoginButtonClicked");
+    [self.view endEditing:YES];
+    
+    // Parse does not support unique constraints on column
+    // We have to query the table to make sure an entry doesn't
+    // already exist before writing it.
+    PFQuery *query = [PFQuery queryWithClassName:@"Users"];
+    [query whereKey:@"email" equalTo:self.emailTextField.text];
+    NSArray *array = [query findObjects];
+    if(array.count == 0)
+    {
+        PFObject *testObject = [PFObject objectWithClassName:@"Users"];
+        testObject[@"email"] = self.emailTextField.text;
+        [testObject saveInBackground];
+    }
+    
+    UIViewController *viewController = [[UIViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
