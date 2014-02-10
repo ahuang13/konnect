@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LogInViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface AppDelegate ()
 
@@ -27,6 +29,12 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [Parse setApplicationId:@"FaZR0g3o0QVnqpoezw7skDDwoRiB24Ui8yRGczo5"
+                  clientKey:@"hp0j9THk3PJthNhXl3bVDLxATL5cMzP8kXVTGBbQ"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
 }
 
