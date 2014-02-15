@@ -33,6 +33,15 @@
 		A640206818A7277800A90BE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206718A7277800A90BE3 /* StoreKit.framework */; };
 		A640206A18A7278000A90BE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206918A7278000A90BE3 /* SystemConfiguration.framework */; };
 		A640206E18A72AC200A90BE3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206D18A72AC200A90BE3 /* Parse.framework */; };
+		A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */; };
+		A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */; };
+		A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27ED18AE83C6004551DF /* LIALinkedInHttpClient.m */; };
+		A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EF18AE83C6004551DF /* NSString+LIAEncode.m */; };
+		A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = A67A27F118AE83C6004551DF /* 01-refresh.png */; };
+		A67A27F818AE83C6004551DF /* 01-refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A67A27F218AE83C6004551DF /* 01-refresh@2x.png */; };
+		A67A27FB18AF0B26004551DF /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27FA18AF0B26004551DF /* Profile.m */; };
+		A67A27FE18AF0BED004551DF /* RestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27FD18AF0BED004551DF /* RestObject.m */; };
+		A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A280218AF0CCD004551DF /* NSDictionary+CPAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +86,22 @@
 		A640206718A7277800A90BE3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A640206918A7278000A90BE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A640206D18A72AC200A90BE3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
+		A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInApplication.m; sourceTree = "<group>"; };
+		A67A27EA18AE83C6004551DF /* LIALinkedInAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInAuthorizationViewController.h; sourceTree = "<group>"; };
+		A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInAuthorizationViewController.m; sourceTree = "<group>"; };
+		A67A27EC18AE83C6004551DF /* LIALinkedInHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInHttpClient.h; sourceTree = "<group>"; };
+		A67A27ED18AE83C6004551DF /* LIALinkedInHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInHttpClient.m; sourceTree = "<group>"; };
+		A67A27EE18AE83C6004551DF /* NSString+LIAEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LIAEncode.h"; sourceTree = "<group>"; };
+		A67A27EF18AE83C6004551DF /* NSString+LIAEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LIAEncode.m"; sourceTree = "<group>"; };
+		A67A27F118AE83C6004551DF /* 01-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh.png"; sourceTree = "<group>"; };
+		A67A27F218AE83C6004551DF /* 01-refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-refresh@2x.png"; sourceTree = "<group>"; };
+		A67A27F918AF0B26004551DF /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		A67A27FA18AF0B26004551DF /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		A67A27FC18AF0BED004551DF /* RestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestObject.h; sourceTree = "<group>"; };
+		A67A27FD18AF0BED004551DF /* RestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestObject.m; sourceTree = "<group>"; };
+		A67A280118AF0CCD004551DF /* NSDictionary+CPAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CPAdditions.h"; sourceTree = "<group>"; };
+		A67A280218AF0CCD004551DF /* NSDictionary+CPAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CPAdditions.m"; sourceTree = "<group>"; };
 		B42B954BAD2B447DA8987B0F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF82C452EAD42309A94E339 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +144,7 @@
 		9252EB63189E1A8A00DB6798 = {
 			isa = PBXGroup;
 			children = (
+				A67A27E718AE83C6004551DF /* IOSLinkedInAPI */,
 				A640206D18A72AC200A90BE3 /* Parse.framework */,
 				9252EB75189E1A8A00DB6798 /* Konnect */,
 				9252EB8E189E1A8A00DB6798 /* KonnectTests */,
@@ -167,6 +193,7 @@
 				9252EB7F189E1A8A00DB6798 /* AppDelegate.m */,
 				9252EB81189E1A8A00DB6798 /* Images.xcassets */,
 				9252EB76189E1A8A00DB6798 /* Supporting Files */,
+				A67A27FF18AF0BF8004551DF /* Models */,
 			);
 			path = Konnect;
 			sourceTree = "<group>";
@@ -217,6 +244,44 @@
 				9252EBA5189EC5E700DB6798 /* LogInViewController.xib */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A67A27E718AE83C6004551DF /* IOSLinkedInAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */,
+				A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */,
+				A67A27EA18AE83C6004551DF /* LIALinkedInAuthorizationViewController.h */,
+				A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */,
+				A67A27EC18AE83C6004551DF /* LIALinkedInHttpClient.h */,
+				A67A27ED18AE83C6004551DF /* LIALinkedInHttpClient.m */,
+				A67A27EE18AE83C6004551DF /* NSString+LIAEncode.h */,
+				A67A27EF18AE83C6004551DF /* NSString+LIAEncode.m */,
+				A67A27F018AE83C6004551DF /* Resources */,
+			);
+			path = IOSLinkedInAPI;
+			sourceTree = "<group>";
+		};
+		A67A27F018AE83C6004551DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A67A27F118AE83C6004551DF /* 01-refresh.png */,
+				A67A27F218AE83C6004551DF /* 01-refresh@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A67A27FF18AF0BF8004551DF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A67A280118AF0CCD004551DF /* NSDictionary+CPAdditions.h */,
+				A67A280218AF0CCD004551DF /* NSDictionary+CPAdditions.m */,
+				A67A27F918AF0B26004551DF /* Profile.h */,
+				A67A27FA18AF0B26004551DF /* Profile.m */,
+				A67A27FC18AF0BED004551DF /* RestObject.h */,
+				A67A27FD18AF0BED004551DF /* RestObject.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +363,9 @@
 			files = (
 				9252EB7A189E1A8A00DB6798 /* InfoPlist.strings in Resources */,
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
+				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
 				9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */,
+				A67A27F818AE83C6004551DF /* 01-refresh@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,10 +417,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */,
 				9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */,
 				9252EB80189E1A8A00DB6798 /* AppDelegate.m in Sources */,
+				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
+				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
+				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
+				A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */,
+				A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */,
+				A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

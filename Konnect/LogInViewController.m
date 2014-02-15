@@ -11,6 +11,7 @@
 #import "LIALinkedInHttpClient.h"
 #import "LIALinkedInApplication.h"
 #import "NSString+LIAEncode.h"
+#import "Profile.h"
 
 
 @interface LogInViewController ()
@@ -64,8 +65,14 @@
 }
 
 - (void)requestMeWithToken:(NSString *)accessToken {
-    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+        Profile *profile = [[Profile alloc] init];
+        profile.data = result;
         NSLog(@"current user %@", result);
+        NSLog(@"first name: %@", profile.firstName);
+        NSLog(@"last name: %@", profile.lastName);
+        NSLog(@"location: %@", profile.location);
+
     }        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"failed to fetch current user %@", error);
     }];
