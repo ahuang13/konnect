@@ -22,6 +22,7 @@
 		9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252EBA0189EC37900DB6798 /* LinkedInClient.m */; };
 		9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252EBA4189EC5E700DB6798 /* LogInViewController.m */; };
 		9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9252EBA5189EC5E700DB6798 /* LogInViewController.xib */; };
+		92EFA7F418B014E4005640B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EFA7F318B014E4005640B0 /* Parse.framework */; };
 		9CE8E8BA8BF24643A9BB185B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B42B954BAD2B447DA8987B0F /* libPods.a */; };
 		A640205A18A7272700A90BE3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205918A7272700A90BE3 /* AudioToolbox.framework */; };
 		A640205C18A7273000A90BE3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205B18A7273000A90BE3 /* CFNetwork.framework */; };
@@ -32,7 +33,6 @@
 		A640206618A7277100A90BE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206518A7277100A90BE3 /* Security.framework */; };
 		A640206818A7277800A90BE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206718A7277800A90BE3 /* StoreKit.framework */; };
 		A640206A18A7278000A90BE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206918A7278000A90BE3 /* SystemConfiguration.framework */; };
-		A640206E18A72AC200A90BE3 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206D18A72AC200A90BE3 /* Parse.framework */; };
 		A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */; };
 		A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */; };
 		A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27ED18AE83C6004551DF /* LIALinkedInHttpClient.m */; };
@@ -76,6 +76,7 @@
 		9252EBA3189EC5E700DB6798 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		9252EBA4189EC5E700DB6798 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		9252EBA5189EC5E700DB6798 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		92EFA7F318B014E4005640B0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A640205918A7272700A90BE3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A640205B18A7273000A90BE3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A640205D18A7274000A90BE3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -85,7 +86,6 @@
 		A640206518A7277100A90BE3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A640206718A7277800A90BE3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A640206918A7278000A90BE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A640206D18A72AC200A90BE3 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
 		A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInApplication.m; sourceTree = "<group>"; };
 		A67A27EA18AE83C6004551DF /* LIALinkedInAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 				9252EB72189E1A8A00DB6798 /* CoreGraphics.framework in Frameworks */,
 				A640205C18A7273000A90BE3 /* CFNetwork.framework in Frameworks */,
 				A640205A18A7272700A90BE3 /* AudioToolbox.framework in Frameworks */,
-				A640206E18A72AC200A90BE3 /* Parse.framework in Frameworks */,
+				92EFA7F418B014E4005640B0 /* Parse.framework in Frameworks */,
 				9252EB74189E1A8A00DB6798 /* UIKit.framework in Frameworks */,
 				9252EB70189E1A8A00DB6798 /* Foundation.framework in Frameworks */,
 				9CE8E8BA8BF24643A9BB185B /* libPods.a in Frameworks */,
@@ -144,8 +144,8 @@
 		9252EB63189E1A8A00DB6798 = {
 			isa = PBXGroup;
 			children = (
+				92EFA7F318B014E4005640B0 /* Parse.framework */,
 				A67A27E718AE83C6004551DF /* IOSLinkedInAPI */,
-				A640206D18A72AC200A90BE3 /* Parse.framework */,
 				9252EB75189E1A8A00DB6798 /* Konnect */,
 				9252EB8E189E1A8A00DB6798 /* KonnectTests */,
 				9252EB6E189E1A8A00DB6798 /* Frameworks */,
@@ -550,6 +550,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/feixie/Documents/konnect,
+					/Users/angus/CodePath/Konnect,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Konnect/Konnect-Prefix.pch";
@@ -578,6 +579,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/feixie/Documents/konnect,
+					/Users/angus/CodePath/Konnect,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Konnect/Konnect-Prefix.pch";
