@@ -8,6 +8,10 @@
 
 #import "LogInViewController.h"
 #import <Parse/Parse.h>
+#import "LIALinkedInHttpClient.h"
+#import "LIALinkedInApplication.h"
+#import "NSString+LIAEncode.h"
+#import "Profile.h"
 
 
 @interface LogInViewController ()
@@ -16,7 +20,9 @@
 
 @end
 
-@implementation LogInViewController
+@implementation LogInViewController {
+    LIALinkedInHttpClient *_client;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _client = [self client];
     
     NSLog(@"viewDidLoad");
 }
@@ -44,23 +50,41 @@
 - (IBAction)onLoginButtonClicked:(UIButton *)sender
 {
     NSLog(@"onLoginButtonClicked");
-    [self.view endEditing:YES];
-    
-    // Parse does not support unique constraints on column
-    // We have to query the table to make sure an entry doesn't
-    // already exist before writing it.
-    PFQuery *query = [PFQuery queryWithClassName:@"Users"];
-    [query whereKey:@"email" equalTo:self.emailTextField.text];
-    NSArray *array = [query findObjects];
-    if(array.count == 0)
-    {
-        PFObject *testObject = [PFObject objectWithClassName:@"Users"];
-        testObject[@"email"] = self.emailTextField.text;
-        [testObject saveInBackground];
-    }
-    
-    UIViewController *viewController = [[UIViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self.client getAuthorizationCode:^(NSString *code) {
+        [self.client getAccessToken:code success:^(NSDictionary *accessTokenData) {
+            NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
+            [self requestMeWithToken:accessToken];
+        }                   failure:^(NSError *error) {
+            NSLog(@"Quering accessToken failed %@", error);
+        }];
+    }                      cancel:^{
+        NSLog(@"Authorization was cancelled by user");
+    }                     failure:^(NSError *error) {
+        NSLog(@"Authorization failed %@", error);
+    }];
+}
+
+- (void)requestMeWithToken:(NSString *)accessToken {
+    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+        Profile *profile = [[Profile alloc] init];
+        profile.data = result;
+        NSLog(@"current user %@", result);
+        NSLog(@"first name: %@", profile.firstName);
+        NSLog(@"last name: %@", profile.lastName);
+        NSLog(@"location: %@", profile.location);
+
+    }        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"failed to fetch current user %@", error);
+    }];
+}
+
+- (LIALinkedInHttpClient *)client {
+    LIALinkedInApplication *application = [LIALinkedInApplication applicationWithRedirectURL:@"http://www.ancientprogramming.com/liaexample"
+                                                                                    clientId:@"772cu46bnok4kw"
+                                                                                clientSecret:@"WpVAXnuGWK1Jsdp3"
+                                                                                       state:@"DCEEFWF45453sdffef424"
+                                                                               grantedAccess:@[@"r_fullprofile", @"r_network"]];
+    return [LIALinkedInHttpClient clientForApplication:application presentingViewController:nil];
 }
 
 @end

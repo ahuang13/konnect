@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFHTTPRequestOperationManager.h>
 
-@interface LinkedInClient : NSObject
+@interface LinkedInClient : AFHTTPRequestOperationManager
+
 
 @end
