@@ -187,13 +187,14 @@
 		9252EB75189E1A8A00DB6798 /* Konnect */ = {
 			isa = PBXGroup;
 			children = (
-				9252EBA2189EC5B500DB6798 /* View Controllers */,
+				92EFA7F518B017C6005640B0 /* Utilities */,
+				A67A27FF18AF0BF8004551DF /* Models */,
 				9252EB9E189EC2F100DB6798 /* API */,
+				9252EBA2189EC5B500DB6798 /* View Controllers */,
 				9252EB7E189E1A8A00DB6798 /* AppDelegate.h */,
 				9252EB7F189E1A8A00DB6798 /* AppDelegate.m */,
 				9252EB81189E1A8A00DB6798 /* Images.xcassets */,
 				9252EB76189E1A8A00DB6798 /* Supporting Files */,
-				A67A27FF18AF0BF8004551DF /* Models */,
 			);
 			path = Konnect;
 			sourceTree = "<group>";
@@ -246,6 +247,23 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		92EFA7F518B017C6005640B0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				92EFA7F618B017DB005640B0 /* Categories */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		92EFA7F618B017DB005640B0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A67A280118AF0CCD004551DF /* NSDictionary+CPAdditions.h */,
+				A67A280218AF0CCD004551DF /* NSDictionary+CPAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		A67A27E718AE83C6004551DF /* IOSLinkedInAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,8 +292,6 @@
 		A67A27FF18AF0BF8004551DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A67A280118AF0CCD004551DF /* NSDictionary+CPAdditions.h */,
-				A67A280218AF0CCD004551DF /* NSDictionary+CPAdditions.m */,
 				A67A27F918AF0B26004551DF /* Profile.h */,
 				A67A27FA18AF0B26004551DF /* Profile.m */,
 				A67A27FC18AF0BED004551DF /* RestObject.h */,
