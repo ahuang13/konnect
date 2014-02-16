@@ -25,6 +25,9 @@
 		92EFA7F418B014E4005640B0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EFA7F318B014E4005640B0 /* Parse.framework */; };
 		92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */; };
 		92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FB18B05D2E005640B0 /* NSString+URLString.m */; };
+		92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FE18B06DFE005640B0 /* Notifications.m */; };
+		92EFA80318B17DD5005640B0 /* SeekerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80118B17DD5005640B0 /* SeekerViewController.m */; };
+		92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFA80218B17DD5005640B0 /* SeekerViewController.xib */; };
 		9CE8E8BA8BF24643A9BB185B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B42B954BAD2B447DA8987B0F /* libPods.a */; };
 		A640205A18A7272700A90BE3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205918A7272700A90BE3 /* AudioToolbox.framework */; };
 		A640205C18A7273000A90BE3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205B18A7273000A90BE3 /* CFNetwork.framework */; };
@@ -83,6 +86,11 @@
 		92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LIALinkedInHttpClient+Helpers.m"; sourceTree = "<group>"; };
 		92EFA7FA18B05D2E005640B0 /* NSString+URLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLString.h"; sourceTree = "<group>"; };
 		92EFA7FB18B05D2E005640B0 /* NSString+URLString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLString.m"; sourceTree = "<group>"; };
+		92EFA7FD18B06DFE005640B0 /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
+		92EFA7FE18B06DFE005640B0 /* Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notifications.m; sourceTree = "<group>"; };
+		92EFA80018B17DD5005640B0 /* SeekerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerViewController.h; sourceTree = "<group>"; };
+		92EFA80118B17DD5005640B0 /* SeekerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerViewController.m; sourceTree = "<group>"; };
+		92EFA80218B17DD5005640B0 /* SeekerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerViewController.xib; sourceTree = "<group>"; };
 		A640205918A7272700A90BE3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A640205B18A7273000A90BE3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A640205D18A7274000A90BE3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -249,6 +257,9 @@
 				9252EBA3189EC5E700DB6798 /* LogInViewController.h */,
 				9252EBA4189EC5E700DB6798 /* LogInViewController.m */,
 				9252EBA5189EC5E700DB6798 /* LogInViewController.xib */,
+				92EFA80018B17DD5005640B0 /* SeekerViewController.h */,
+				92EFA80118B17DD5005640B0 /* SeekerViewController.m */,
+				92EFA80218B17DD5005640B0 /* SeekerViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -257,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				92EFA7F618B017DB005640B0 /* Categories */,
+				92EFA7FD18B06DFE005640B0 /* Notifications.h */,
+				92EFA7FE18B06DFE005640B0 /* Notifications.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -390,6 +403,7 @@
 				9252EB7A189E1A8A00DB6798 /* InfoPlist.strings in Resources */,
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
 				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
+				92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */,
 				9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */,
 				A67A27F818AE83C6004551DF /* 01-refresh@2x.png in Resources */,
 			);
@@ -451,8 +465,10 @@
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
 				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
+				92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
 				A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */,
+				92EFA80318B17DD5005640B0 /* SeekerViewController.m in Sources */,
 				A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */,
 				A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */,
 				92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */,

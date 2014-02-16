@@ -79,8 +79,10 @@ static NSString *const BASE_URL_STRING = @"https://api.linkedin.com/v1/";
     [self GET:END_POINT
    parameters:nil
       success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-          Profile *profile = [[Profile alloc] init];
-          profile.data = result;
+          Profile *profile = [[Profile alloc] initWithDictionary:result];
+
+          [Profile setCurrentUser:profile];
+          
           NSLog(@"current user %@", result);
           NSLog(@"first name: %@", profile.firstName);
           NSLog(@"last name: %@", profile.lastName);

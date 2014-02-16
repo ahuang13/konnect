@@ -9,31 +9,38 @@
 #import "AppDelegate.h"
 #import "LogInViewController.h"
 #import <Parse/Parse.h>
-
+#import "Notifications.h"
+#import "Profile.h"
+#import "SeekerViewController.h"
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
+@property (nonatomic, strong) SeekerViewController *seekerViewController;
 
 @end
 
 @implementation AppDelegate
 
+//------------------------------------------------------------------------------
+#pragma mark - UIApplicationDelegate Methods
+//------------------------------------------------------------------------------
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // TODO: Check for access token to decide which ViewController to show
-    self.window.rootViewController = self.logInViewController;
-
+    // Set the rootViewController depending on the logged in status.
+    self.window.rootViewController = self.rootViewController;
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [Parse setApplicationId:@"FaZR0g3o0QVnqpoezw7skDDwoRiB24Ui8yRGczo5"
-                  clientKey:@"hp0j9THk3PJthNhXl3bVDLxATL5cMzP8kXVTGBbQ"];
+    [self initParse:launchOptions];
     
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [self registerForLoginLogoutNotifications];
     
     return YES;
 }
@@ -46,7 +53,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -65,6 +72,18 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+//------------------------------------------------------------------------------
+#pragma mark - Getters
+//------------------------------------------------------------------------------
+
+- (UIViewController *)rootViewController {
+    
+    if ([Profile currentUser]) {
+        return self.seekerViewController;
+    } else {
+        return self.logInViewController;
+    }
+}
 
 - (LogInViewController *)logInViewController {
     
@@ -73,6 +92,50 @@
     }
     
     return _logInViewController;
+}
+
+- (SeekerViewController *)seekerViewController {
+    
+    if (!_seekerViewController) {
+        _seekerViewController = [[SeekerViewController alloc] init];
+    }
+    
+    return _seekerViewController;
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)initParse:(NSDictionary *)launchOptions {
+    
+    [Parse setApplicationId:@"FaZR0g3o0QVnqpoezw7skDDwoRiB24Ui8yRGczo5"
+                  clientKey:@"hp0j9THk3PJthNhXl3bVDLxATL5cMzP8kXVTGBbQ"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+}
+
+- (void)registerForLoginLogoutNotifications {
+    
+    NSNotificationCenter *defaultNotificationCenter = [NSNotificationCenter defaultCenter];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onSeekerLogin)
+                                      name:SEEKER_LOGIN_NOTIFICATION
+                                    object:nil];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onSeekerLogout)
+                                      name:SEEKER_LOGOUT_NOTIFICATION
+                                    object:nil];
+}
+
+- (void)onSeekerLogin {
+    self.window.rootViewController = self.seekerViewController;
+}
+
+- (void)onSeekerLogout {
+    self.window.rootViewController = self.logInViewController;
 }
 
 @end
