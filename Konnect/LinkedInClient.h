@@ -16,6 +16,7 @@
 
 + (LinkedInClient *)instance;
 
-- (void) getCurrentUserProfile:(NSString *)accessToken;
-
-@end
+- (void)currentUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+    
+    @end

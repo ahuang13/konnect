@@ -59,8 +59,7 @@
                                 NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
                                 [LinkedInClient instance].accessToken = accessToken;
                                 
-                                NSLog(@"%@", self.client.accessToken);
-                                [self requestMeWithToken:accessToken];
+                                [self getCurrentUser];
                             }
                             failure:^(NSError *error) {
                                 NSLog(@"Quering accessToken failed %@", error);
@@ -74,20 +73,26 @@
                               }];
 }
 
-- (void)requestMeWithToken:(NSString *)accessToken {
+- (void)getCurrentUser {
     
-    [[LinkedInClient instance] getCurrentUserProfile:accessToken];
+    // Download the current user profile and set the app's current user.
     
-    //    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)?oauth2_access_token=%@&format=json", self.client.accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-    //        Profile *profile = [[Profile alloc] init];
-    //        profile.data = result;
-    //        NSLog(@"current user %@", result);
-    //        NSLog(@"first name: %@", profile.firstName);
-    //        NSLog(@"last name: %@", profile.lastName);
-    //        NSLog(@"location: %@", profile.location);
-    //    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    //        NSLog(@"failed to fetch current user %@", error);
-    //    }];
+    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
+        
+        Profile *currentUser = [[Profile alloc] initWithDictionary:response];
+        [Profile setCurrentUser:currentUser];
+
+        NSLog(@"current user %@", response);
+        NSLog(@"first name: %@", currentUser.firstName);
+        NSLog(@"last name: %@", currentUser.lastName);
+        NSLog(@"location: %@", currentUser.location);
+    };
+
+    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed to download current user: %@", error.localizedDescription);
+    };
+    
+    [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
 }
 
 - (LIALinkedInHttpClient *)client {

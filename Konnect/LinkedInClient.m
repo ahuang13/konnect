@@ -72,25 +72,12 @@ static NSString *const BASE_URL_STRING = @"https://api.linkedin.com/v1/";
 #pragma mark - Public Instance Methods
 //------------------------------------------------------------------------------
 
-- (void) getCurrentUserProfile:(NSString *)accessToken {
+- (void)currentUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     
     static NSString *const END_POINT = @"people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)";
     
-    [self GET:END_POINT
-   parameters:nil
-      success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-          Profile *profile = [[Profile alloc] initWithDictionary:result];
-
-          [Profile setCurrentUser:profile];
-          
-          NSLog(@"current user %@", result);
-          NSLog(@"first name: %@", profile.firstName);
-          NSLog(@"last name: %@", profile.lastName);
-          NSLog(@"location: %@", profile.location);
-      }
-      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"failed to fetch current user %@", error);
-      }];
+    [self GET:END_POINT parameters:nil success:success failure:failure];
 }
 
 @end
