@@ -12,7 +12,7 @@
 #import "LIALinkedInApplication.h"
 #import "NSString+LIAEncode.h"
 #import "Profile.h"
-
+#import "LinkedInClient.h"
 
 @interface LogInViewController ()
 
@@ -50,32 +50,44 @@
 - (IBAction)onLoginButtonClicked:(UIButton *)sender
 {
     NSLog(@"onLoginButtonClicked");
+    
     [self.client getAuthorizationCode:^(NSString *code) {
-        [self.client getAccessToken:code success:^(NSDictionary *accessTokenData) {
-            NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
-            [self requestMeWithToken:accessToken];
-        }                   failure:^(NSError *error) {
-            NSLog(@"Quering accessToken failed %@", error);
-        }];
-    }                      cancel:^{
-        NSLog(@"Authorization was cancelled by user");
-    }                     failure:^(NSError *error) {
-        NSLog(@"Authorization failed %@", error);
-    }];
+        
+        [self.client getAccessToken:code
+                            success:^(NSDictionary *accessTokenData) {
+                                
+                                NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
+                                [LinkedInClient instance].accessToken = accessToken;
+                                
+                                NSLog(@"%@", self.client.accessToken);
+                                [self requestMeWithToken:accessToken];
+                            }
+                            failure:^(NSError *error) {
+                                NSLog(@"Quering accessToken failed %@", error);
+                            }];
+    }
+                               cancel:^{
+                                   NSLog(@"Authorization was cancelled by user");
+                               }
+                              failure:^(NSError *error) {
+                                  NSLog(@"Authorization failed %@", error);
+                              }];
 }
 
 - (void)requestMeWithToken:(NSString *)accessToken {
-    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)?oauth2_access_token=%@&format=json", accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
-        Profile *profile = [[Profile alloc] init];
-        profile.data = result;
-        NSLog(@"current user %@", result);
-        NSLog(@"first name: %@", profile.firstName);
-        NSLog(@"last name: %@", profile.lastName);
-        NSLog(@"location: %@", profile.location);
-
-    }        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed to fetch current user %@", error);
-    }];
+    
+    [[LinkedInClient instance] getCurrentUserProfile:accessToken];
+    
+    //    [self.client GET:[NSString stringWithFormat:@"https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name),three-current-positions,skills,educations)?oauth2_access_token=%@&format=json", self.client.accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *result) {
+    //        Profile *profile = [[Profile alloc] init];
+    //        profile.data = result;
+    //        NSLog(@"current user %@", result);
+    //        NSLog(@"first name: %@", profile.firstName);
+    //        NSLog(@"last name: %@", profile.lastName);
+    //        NSLog(@"location: %@", profile.location);
+    //    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    //        NSLog(@"failed to fetch current user %@", error);
+    //    }];
 }
 
 - (LIALinkedInHttpClient *)client {
