@@ -13,12 +13,14 @@
 #import "Profile.h"
 #import "SeekerViewController.h"
 #import "LinkedInClient.h"
+#import "RecruiterViewController.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
+@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
 
 @end
 
@@ -104,6 +106,15 @@
     return _seekerViewController;
 }
 
+- (RecruiterViewController *)recruiterViewController {
+    
+    if (!_recruiterViewController) {
+        _recruiterViewController = [[RecruiterViewController alloc] init];
+    }
+    
+    return _recruiterViewController;
+}
+
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
@@ -129,6 +140,16 @@
                                   selector:@selector(onSeekerLogout)
                                       name:SEEKER_LOGGED_OUT_NOTIFICATION
                                     object:nil];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onRecruiterLogin)
+                                      name:RECRUITER_LOGGED_IN_NOTIFICATION
+                                    object:nil];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onRecruiterLogout)
+                                      name:RECRUITER_LOGGED_OUT_NOTIFICATION
+                                    object:nil];
 }
 
 - (void)onSeekerLogin {
@@ -136,6 +157,14 @@
 }
 
 - (void)onSeekerLogout {
+    self.window.rootViewController = self.logInViewController;
+}
+
+- (void)onRecruiterLogin {
+    self.window.rootViewController = self.recruiterViewController;
+}
+
+- (void)onRecruiterLogout {
     self.window.rootViewController = self.logInViewController;
 }
 
