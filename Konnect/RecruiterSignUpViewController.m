@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    // Do any customizations to this view controller here.
+    // See "3.2. Subclassing PFSignUpViewController" in
+    // https://parse.com/tutorials/login-and-signup-views
 }
 
 - (void)didReceiveMemoryWarning
