@@ -7,8 +7,12 @@
 //
 
 #import "RecruiterViewController.h"
+#import <Parse/Parse.h>
+#import "Notifications.h"
 
 @interface RecruiterViewController ()
+
+- (IBAction)onSignOutButtonClick:(UIButton *)sender;
 
 @end
 
@@ -33,6 +37,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - PFSignUpViewControllerDelegate Methods
+//------------------------------------------------------------------------------
+
+- (IBAction)onSignOutButtonClick:(UIButton *)sender {
+    [PFUser logOut];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_LOGGED_OUT_NOTIFICATION object:nil];
 }
 
 @end
