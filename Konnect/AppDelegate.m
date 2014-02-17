@@ -12,6 +12,7 @@
 #import "Notifications.h"
 #import "Profile.h"
 #import "SeekerViewController.h"
+#import "LinkedInClient.h"
 
 @interface AppDelegate ()
 
@@ -78,7 +79,7 @@
 
 - (UIViewController *)rootViewController {
     
-    if ([Profile currentUser]) {
+    if ([LinkedInClient instance].accessToken) {
         return self.seekerViewController;
     } else {
         return self.logInViewController;
@@ -121,12 +122,12 @@
     
     [defaultNotificationCenter addObserver:self
                                   selector:@selector(onSeekerLogin)
-                                      name:SEEKER_LOGIN_NOTIFICATION
+                                      name:SEEKER_LOGGED_IN_NOTIFICATION
                                     object:nil];
     
     [defaultNotificationCenter addObserver:self
                                   selector:@selector(onSeekerLogout)
-                                      name:SEEKER_LOGOUT_NOTIFICATION
+                                      name:SEEKER_LOGGED_OUT_NOTIFICATION
                                     object:nil];
 }
 

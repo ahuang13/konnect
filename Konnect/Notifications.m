@@ -10,7 +10,7 @@
 
 @implementation Notifications
 
-NSString * const SEEKER_LOGIN_NOTIFICATION = @"seekerLoginNotification";
-NSString * const SEEKER_LOGOUT_NOTIFICATION = @"seekerLogoutNotification";
+NSString * const SEEKER_LOGGED_IN_NOTIFICATION = @"seekerLoggedInNotification";
+NSString * const SEEKER_LOGGED_OUT_NOTIFICATION = @"seekerLoggedOutNotification";
 
 @end

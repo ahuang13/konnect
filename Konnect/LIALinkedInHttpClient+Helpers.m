@@ -55,8 +55,6 @@
         
         NSString *accessToken = [accessTokenData objectForKey:@"access_token"];
         [LinkedInClient instance].accessToken = accessToken;
-        
-        [self getCurrentUser];
     };
     
     void (^failure)(NSError *) = ^void(NSError *error) {
@@ -64,28 +62,6 @@
     };
     
     [self getAccessToken:authorizationCode success:success failure:failure];
-}
-
-- (void)getCurrentUser {
-    
-    // Download the current user profile and set the app's current user.
-    
-    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
-        
-        Profile *currentUser = [[Profile alloc] initWithDictionary:response];
-        [Profile setCurrentUser:currentUser];
-        
-        NSLog(@"current user %@", response);
-        NSLog(@"first name: %@", currentUser.firstName);
-        NSLog(@"last name: %@", currentUser.lastName);
-        NSLog(@"location: %@", currentUser.location);
-    };
-    
-    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failed to download current user: %@", error.localizedDescription);
-    };
-    
-    [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
 }
 
 @end

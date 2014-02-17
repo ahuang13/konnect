@@ -62,10 +62,8 @@ static Profile *_currentUser;
     // Broadcast notification that current user has been set.
     if (!_currentUser && currentUser) {
         _currentUser = currentUser; // Needs to be set before firing the notification
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGIN_NOTIFICATION object:nil];
     } else if (_currentUser && !currentUser) {
         _currentUser = currentUser; // Needs to be set before firing the notification
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGOUT_NOTIFICATION object:nil];
     }
 }
 

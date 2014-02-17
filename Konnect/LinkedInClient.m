@@ -9,14 +9,19 @@
 #import "LinkedInClient.h"
 #import "Profile.h"
 #import "NSString+URLString.h"
+#import "Notifications.h"
 
 @implementation LinkedInClient
+
+@synthesize accessToken = _accessToken;
 
 //------------------------------------------------------------------------------
 #pragma mark - Constants
 //------------------------------------------------------------------------------
 
 static NSString *const BASE_URL_STRING = @"https://api.linkedin.com/v1/";
+
+static NSString *const ACCESS_TOKEN_KEY = @"accessTokenKey";
 
 //------------------------------------------------------------------------------
 #pragma mark - Public Class Methods
@@ -66,6 +71,42 @@ static NSString *const BASE_URL_STRING = @"https://api.linkedin.com/v1/";
     [mutableURLString appendString:accessTokenString];
     
     return [super GET:mutableURLString parameters:parameters success:success failure:failure];
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Getters/Setters
+//------------------------------------------------------------------------------
+
+- (NSString *)accessToken {
+    
+    if (!_accessToken) {
+        NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:ACCESS_TOKEN_KEY];
+        _accessToken = accessToken;
+    }
+    
+    return _accessToken;
+}
+
+- (void)setAccessToken:(NSString *)accessToken {
+    
+    if ([accessToken isEqualToString:_accessToken]) {
+        return;
+    }
+    
+    _accessToken = accessToken;
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    // Save the access token in NSUserDefaults and then broadcast notification.
+    if (accessToken) {
+        [userDefaults setObject:accessToken forKey:ACCESS_TOKEN_KEY];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGGED_IN_NOTIFICATION object:nil];
+    } else {
+        [userDefaults removeObjectForKey:ACCESS_TOKEN_KEY];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGGED_OUT_NOTIFICATION object:nil];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //------------------------------------------------------------------------------
