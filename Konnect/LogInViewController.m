@@ -63,7 +63,6 @@ shouldBeginLogInWithUsername:(NSString *)username
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:NULL];
     
-    // TODO: Set the current recruiter user and show the recruiter ViewController.
     NSLog(@"%@", user);
     [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
 }
@@ -111,7 +110,6 @@ shouldBeginLogInWithUsername:(NSString *)username
     
     [self dismissViewControllerAnimated:YES completion:NULL];
     
-    // TODO: Set current user and show Recruiter ViewController.
     NSLog(@"%@", user);
     [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
 }

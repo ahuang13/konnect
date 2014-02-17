@@ -32,6 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initParse:launchOptions];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Set the rootViewController depending on the logged in status.
@@ -40,8 +42,6 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    [self initParse:launchOptions];
     
     [self registerForLoginLogoutNotifications];
     
@@ -159,7 +159,7 @@
 }
 
 - (BOOL)isRecruiterLoggedIn {
-    return NO;
+    return ([PFUser currentUser] != nil);
 }
 
 - (void)onSeekerDidLogin {

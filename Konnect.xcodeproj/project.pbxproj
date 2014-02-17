@@ -333,10 +333,10 @@
 		A67A27FF18AF0BF8004551DF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A67A27F918AF0B26004551DF /* Profile.h */,
-				A67A27FA18AF0B26004551DF /* Profile.m */,
 				A67A27FC18AF0BED004551DF /* RestObject.h */,
 				A67A27FD18AF0BED004551DF /* RestObject.m */,
+				A67A27F918AF0B26004551DF /* Profile.h */,
+				A67A27FA18AF0B26004551DF /* Profile.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
