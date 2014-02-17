@@ -81,8 +81,10 @@
 
 - (UIViewController *)rootViewController {
     
-    if ([LinkedInClient instance].accessToken) {
+    if ([self isJobSeekerLoggedIn]) {
         return self.seekerViewController;
+    } else if ([self isRecruiterLoggedIn]) {
+        return self.recruiterViewController;
     } else {
         return self.logInViewController;
     }
@@ -150,6 +152,14 @@
                                   selector:@selector(onRecruiterDidLogout)
                                       name:RECRUITER_DID_LOGOUT_NOTIFICATION
                                     object:nil];
+}
+
+- (BOOL)isJobSeekerLoggedIn {
+    return ([LinkedInClient instance].accessToken != nil);
+}
+
+- (BOOL)isRecruiterLoggedIn {
+    return NO;
 }
 
 - (void)onSeekerDidLogin {
