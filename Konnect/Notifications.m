@@ -10,9 +10,9 @@
 
 @implementation Notifications
 
-NSString * const SEEKER_LOGGED_IN_NOTIFICATION = @"seekerLoggedInNotification";
-NSString * const SEEKER_LOGGED_OUT_NOTIFICATION = @"seekerLoggedOutNotification";
-NSString * const RECRUITER_LOGGED_IN_NOTIFICATION = @"recruiterLoggedInNotification";
-NSString * const RECRUITER_LOGGED_OUT_NOTIFICATION = @"recruiterLoggedOutNotification";
+NSString * const SEEKER_DID_LOGIN_NOTIFICATION = @"seekerLoggedInNotification";
+NSString * const SEEKER_DID_LOGOUT_NOTIFICATION = @"seekerLoggedOutNotification";
+NSString * const RECRUITER_DID_LOGIN_NOTIFICATION = @"recruiterLoggedInNotification";
+NSString * const RECRUITER_DID_LOGOUT_NOTIFICATION = @"recruiterLoggedOutNotification";
 
 @end

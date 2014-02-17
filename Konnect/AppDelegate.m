@@ -132,39 +132,39 @@
     NSNotificationCenter *defaultNotificationCenter = [NSNotificationCenter defaultCenter];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onSeekerLogin)
-                                      name:SEEKER_LOGGED_IN_NOTIFICATION
+                                  selector:@selector(onSeekerDidLogin)
+                                      name:SEEKER_DID_LOGIN_NOTIFICATION
                                     object:nil];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onSeekerLogout)
-                                      name:SEEKER_LOGGED_OUT_NOTIFICATION
+                                  selector:@selector(onSeekerDidLogout)
+                                      name:SEEKER_DID_LOGOUT_NOTIFICATION
                                     object:nil];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onRecruiterLogin)
-                                      name:RECRUITER_LOGGED_IN_NOTIFICATION
+                                  selector:@selector(onRecruiterDidLogin)
+                                      name:RECRUITER_DID_LOGIN_NOTIFICATION
                                     object:nil];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onRecruiterLogout)
-                                      name:RECRUITER_LOGGED_OUT_NOTIFICATION
+                                  selector:@selector(onRecruiterDidLogout)
+                                      name:RECRUITER_DID_LOGOUT_NOTIFICATION
                                     object:nil];
 }
 
-- (void)onSeekerLogin {
+- (void)onSeekerDidLogin {
     self.window.rootViewController = self.seekerViewController;
 }
 
-- (void)onSeekerLogout {
+- (void)onSeekerDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
 
-- (void)onRecruiterLogin {
+- (void)onRecruiterDidLogin {
     self.window.rootViewController = self.recruiterViewController;
 }
 
-- (void)onRecruiterLogout {
+- (void)onRecruiterDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
 

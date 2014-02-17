@@ -45,7 +45,7 @@
 
 - (IBAction)onSignOutButtonClick:(UIButton *)sender {
     [PFUser logOut];
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_LOGGED_OUT_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGOUT_NOTIFICATION object:nil];
 }
 
 @end

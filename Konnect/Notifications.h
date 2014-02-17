@@ -10,9 +10,9 @@
 
 @interface Notifications : NSObject
 
-extern NSString * const SEEKER_LOGGED_IN_NOTIFICATION;
-extern NSString * const SEEKER_LOGGED_OUT_NOTIFICATION;
-extern NSString * const RECRUITER_LOGGED_IN_NOTIFICATION;
-extern NSString * const RECRUITER_LOGGED_OUT_NOTIFICATION;
+extern NSString * const SEEKER_DID_LOGIN_NOTIFICATION;
+extern NSString * const SEEKER_DID_LOGOUT_NOTIFICATION;
+extern NSString * const RECRUITER_DID_LOGIN_NOTIFICATION;
+extern NSString * const RECRUITER_DID_LOGOUT_NOTIFICATION;
 
 @end

@@ -65,7 +65,7 @@ shouldBeginLogInWithUsername:(NSString *)username
     
     // TODO: Set the current recruiter user and show the recruiter ViewController.
     NSLog(@"%@", user);
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_LOGGED_IN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
 }
 
 // Sent to the delegate when the log in attempt fails.
@@ -113,7 +113,7 @@ shouldBeginLogInWithUsername:(NSString *)username
     
     // TODO: Set current user and show Recruiter ViewController.
     NSLog(@"%@", user);
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_LOGGED_IN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
 }
 
 // Sent to the delegate when the sign up attempt fails.
