@@ -11,14 +11,15 @@
 
 @interface Profile : RestObject
 
++ (Profile *)currentUser;
++ (void)setCurrentUser:(Profile *)profile;
+
 @property (nonatomic, strong, readonly) NSString *firstName;
 @property (nonatomic, strong, readonly) NSString *lastName;
 @property (nonatomic, strong, readonly) NSString *location;
 @property (nonatomic, strong, readonly) NSString *companyName;
 @property (nonatomic, strong, readonly) NSString *currentPosition;
 @property (nonatomic, strong, readonly) NSString *positionDescription;
-
-
 
 @end
 

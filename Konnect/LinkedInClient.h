@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
+@class Profile;
 
 @interface LinkedInClient : AFHTTPRequestOperationManager
 
+@property (nonatomic, strong) NSString *accessToken;
+
++ (LinkedInClient *)instance;
+
+- (void)currentUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
+                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 @end
