@@ -13,12 +13,14 @@
 #import "Profile.h"
 #import "SeekerViewController.h"
 #import "LinkedInClient.h"
+#import "RecruiterViewController.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
+@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
 
 @end
 
@@ -30,6 +32,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initParse:launchOptions];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Set the rootViewController depending on the logged in status.
@@ -38,8 +42,6 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    [self initParse:launchOptions];
     
     [self registerForLoginLogoutNotifications];
     
@@ -79,8 +81,10 @@
 
 - (UIViewController *)rootViewController {
     
-    if ([LinkedInClient instance].accessToken) {
+    if ([self isJobSeekerLoggedIn]) {
         return self.seekerViewController;
+    } else if ([self isRecruiterLoggedIn]) {
+        return self.recruiterViewController;
     } else {
         return self.logInViewController;
     }
@@ -104,6 +108,15 @@
     return _seekerViewController;
 }
 
+- (RecruiterViewController *)recruiterViewController {
+    
+    if (!_recruiterViewController) {
+        _recruiterViewController = [[RecruiterViewController alloc] init];
+    }
+    
+    return _recruiterViewController;
+}
+
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
@@ -121,21 +134,47 @@
     NSNotificationCenter *defaultNotificationCenter = [NSNotificationCenter defaultCenter];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onSeekerLogin)
-                                      name:SEEKER_LOGGED_IN_NOTIFICATION
+                                  selector:@selector(onSeekerDidLogin)
+                                      name:SEEKER_DID_LOGIN_NOTIFICATION
                                     object:nil];
     
     [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onSeekerLogout)
-                                      name:SEEKER_LOGGED_OUT_NOTIFICATION
+                                  selector:@selector(onSeekerDidLogout)
+                                      name:SEEKER_DID_LOGOUT_NOTIFICATION
+                                    object:nil];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onRecruiterDidLogin)
+                                      name:RECRUITER_DID_LOGIN_NOTIFICATION
+                                    object:nil];
+    
+    [defaultNotificationCenter addObserver:self
+                                  selector:@selector(onRecruiterDidLogout)
+                                      name:RECRUITER_DID_LOGOUT_NOTIFICATION
                                     object:nil];
 }
 
-- (void)onSeekerLogin {
+- (BOOL)isJobSeekerLoggedIn {
+    return ([LinkedInClient instance].accessToken != nil);
+}
+
+- (BOOL)isRecruiterLoggedIn {
+    return ([PFUser currentUser] != nil);
+}
+
+- (void)onSeekerDidLogin {
     self.window.rootViewController = self.seekerViewController;
 }
 
-- (void)onSeekerLogout {
+- (void)onSeekerDidLogout {
+    self.window.rootViewController = self.logInViewController;
+}
+
+- (void)onRecruiterDidLogin {
+    self.window.rootViewController = self.recruiterViewController;
+}
+
+- (void)onRecruiterDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
 

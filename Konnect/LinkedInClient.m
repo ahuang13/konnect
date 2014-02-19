@@ -100,10 +100,10 @@ static NSString *const ACCESS_TOKEN_KEY = @"accessTokenKey";
     // Save the access token in NSUserDefaults and then broadcast notification.
     if (accessToken) {
         [userDefaults setObject:accessToken forKey:ACCESS_TOKEN_KEY];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGGED_IN_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGIN_NOTIFICATION object:nil];
     } else {
         [userDefaults removeObjectForKey:ACCESS_TOKEN_KEY];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_LOGGED_OUT_NOTIFICATION object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGOUT_NOTIFICATION object:nil];
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];

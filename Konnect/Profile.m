@@ -17,7 +17,7 @@
 #pragma mark - Constants
 //------------------------------------------------------------------------------
 
-NSString * const CURRENT_USER_KEY = @"CurrentUserKey";
+NSString * const CURRENT_JOB_SEEKER_KEY = @"CurrentJobSeekerKey";
 
 //------------------------------------------------------------------------------
 #pragma mark - Static Variables
@@ -31,7 +31,7 @@ static Profile *_currentUser;
 
 + (Profile *)currentUser {
     if (!_currentUser) {
-        NSData *userData = [[NSUserDefaults standardUserDefaults] dataForKey:CURRENT_USER_KEY];
+        NSData *userData = [[NSUserDefaults standardUserDefaults] dataForKey:CURRENT_JOB_SEEKER_KEY];
         if (userData) {
             NSDictionary *userDictionary = [NSJSONSerialization JSONObjectWithData:userData options:NSJSONReadingMutableContainers error:nil];
             _currentUser = [[Profile alloc] initWithDictionary:userDictionary];
@@ -45,26 +45,21 @@ static Profile *_currentUser;
     
     // Update NSUserDefaults with the new current user.
     if (currentUser) {
-    
+        
         NSData *userData = [NSJSONSerialization dataWithJSONObject:currentUser.data
                                                            options:NSJSONWritingPrettyPrinted
                                                              error:nil];
-        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:CURRENT_USER_KEY];
-    
+        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:CURRENT_JOB_SEEKER_KEY];
+        
     } else {
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_USER_KEY];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_JOB_SEEKER_KEY];
         [LinkedInClient instance].accessToken = nil;
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    // Broadcast notification that current user has been set.
-    if (!_currentUser && currentUser) {
-        _currentUser = currentUser; // Needs to be set before firing the notification
-    } else if (_currentUser && !currentUser) {
-        _currentUser = currentUser; // Needs to be set before firing the notification
-    }
+    _currentUser = currentUser;
 }
 
 //------------------------------------------------------------------------------
