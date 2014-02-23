@@ -10,6 +10,9 @@
 #import "Profile.h"
 #import "AFHTTPRequestOperation.h"
 #import "LinkedInClient.h"
+#import "Education.h"
+#import "Company.h"
+
 
 @interface SeekerViewController ()
 
@@ -66,6 +69,13 @@
         NSLog(@"first name: %@", currentUser.firstName);
         NSLog(@"last name: %@", currentUser.lastName);
         NSLog(@"location: %@", currentUser.location);
+        Education *education = [currentUser.educations objectAtIndex:0];
+        NSLog(@"education endYear: %@", education.endYear);
+        Company *company = [currentUser.currentPositions objectAtIndex:0];
+        NSLog(@"companyName: %@", company.name);
+
+        
+
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {

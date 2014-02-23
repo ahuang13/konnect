@@ -10,6 +10,8 @@
 #import "NSDictionary+CPAdditions.h"
 #import "LinkedInClient.h"
 #import "Notifications.h"
+#import "Education.h"
+#import "Company.h"
 
 @implementation Profile
 
@@ -18,6 +20,7 @@
 //------------------------------------------------------------------------------
 
 NSString * const CURRENT_JOB_SEEKER_KEY = @"CurrentJobSeekerKey";
+
 
 //------------------------------------------------------------------------------
 #pragma mark - Static Variables
@@ -74,8 +77,41 @@ static Profile *_currentUser;
     return [self.data valueOrNilForKeyPath:@"lastName"];
 }
 
+- (NSString *)pictureUrl {
+    return [self.data valueOrNilForKeyPath:@"pictureUrl"];
+}
+
 - (NSString *)location {
     return [[self.data valueOrNilForKeyPath:@"location"] valueOrNilForKeyPath:@"name"];}
+
+
+- (NSArray *)currentPositions {
+    // create an array of company objects to return
+    NSArray *companies = [[self.data valueOrNilForKeyPath:@"threeCurrentPositions"] objectForKey:@"values"];
+    NSMutableArray *companiessArray = [[NSMutableArray alloc] init];
+    for (id companyDictionary in companies) {
+        Company *company = [[Company alloc] initWithDictionary:companyDictionary];
+        [companiessArray addObject:company];
+    }
+    
+    // convert company array to non mutable array and return
+    return [NSArray arrayWithArray:companiessArray];
+}
+
+- (NSArray *)educations {
+    // create an array of education objects to return
+    NSArray *educations = [[self.data valueOrNilForKeyPath:@"educations"] objectForKey:@"values"];
+    NSMutableArray *educationsArray = [[NSMutableArray alloc] init];
+    for (id educationDictionary in educations) {
+        Education *education = [[Education alloc] initWithDictionary:educationDictionary];
+        [educationsArray addObject:education];
+    }
+    
+    // convert education array to non mutable array and return
+    return [NSArray arrayWithArray:educationsArray];
+    
+    
+}
 
 
 

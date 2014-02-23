@@ -42,6 +42,9 @@
 		A640206618A7277100A90BE3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206518A7277100A90BE3 /* Security.framework */; };
 		A640206818A7277800A90BE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206718A7277800A90BE3 /* StoreKit.framework */; };
 		A640206A18A7278000A90BE3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640206918A7278000A90BE3 /* SystemConfiguration.framework */; };
+		A6446A3C18B70F6900C81CC0 /* Education.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A3B18B70F6900C81CC0 /* Education.m */; };
+		A6446A3F18B70F8B00C81CC0 /* CurrentPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */; };
+		A6446A4218B70FAE00C81CC0 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A4118B70FAE00C81CC0 /* Company.m */; };
 		A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */; };
 		A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */; };
 		A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27ED18AE83C6004551DF /* LIALinkedInHttpClient.m */; };
@@ -111,6 +114,12 @@
 		A640206518A7277100A90BE3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A640206718A7277800A90BE3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A640206918A7278000A90BE3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A6446A3A18B70F6900C81CC0 /* Education.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Education.h; sourceTree = "<group>"; };
+		A6446A3B18B70F6900C81CC0 /* Education.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Education.m; sourceTree = "<group>"; };
+		A6446A3D18B70F8B00C81CC0 /* CurrentPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentPosition.h; sourceTree = "<group>"; };
+		A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPosition.m; sourceTree = "<group>"; };
+		A6446A4018B70FAE00C81CC0 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		A6446A4118B70FAE00C81CC0 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
 		A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInApplication.m; sourceTree = "<group>"; };
 		A67A27EA18AE83C6004551DF /* LIALinkedInAuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInAuthorizationViewController.h; sourceTree = "<group>"; };
@@ -337,6 +346,12 @@
 				A67A27FD18AF0BED004551DF /* RestObject.m */,
 				A67A27F918AF0B26004551DF /* Profile.h */,
 				A67A27FA18AF0B26004551DF /* Profile.m */,
+				A6446A3A18B70F6900C81CC0 /* Education.h */,
+				A6446A3B18B70F6900C81CC0 /* Education.m */,
+				A6446A3D18B70F8B00C81CC0 /* CurrentPosition.h */,
+				A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */,
+				A6446A4018B70FAE00C81CC0 /* Company.h */,
+				A6446A4118B70FAE00C81CC0 /* Company.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -480,6 +495,7 @@
 				A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */,
 				9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */,
 				9252EB80189E1A8A00DB6798 /* AppDelegate.m in Sources */,
+				A6446A3C18B70F6900C81CC0 /* Education.m in Sources */,
 				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
@@ -488,9 +504,11 @@
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
 				92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
+				A6446A4218B70FAE00C81CC0 /* Company.m in Sources */,
 				A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */,
 				92EFA80318B17DD5005640B0 /* SeekerViewController.m in Sources */,
 				A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */,
+				A6446A3F18B70F8B00C81CC0 /* CurrentPosition.m in Sources */,
 				A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */,
 				92EFA80A18B1B087005640B0 /* RecruiterSignUpViewController.m in Sources */,
 				92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */,

@@ -16,10 +16,12 @@
 
 @property (nonatomic, strong, readonly) NSString *firstName;
 @property (nonatomic, strong, readonly) NSString *lastName;
+@property (nonatomic, strong, readonly) NSString *pictureUrl;
 @property (nonatomic, strong, readonly) NSString *location;
-@property (nonatomic, strong, readonly) NSString *companyName;
-@property (nonatomic, strong, readonly) NSString *currentPosition;
-@property (nonatomic, strong, readonly) NSString *positionDescription;
+
+@property (nonatomic, strong, readonly) NSArray *currentPositions;
+@property (nonatomic, strong, readonly) NSArray *educations;
+
 
 @end
 
