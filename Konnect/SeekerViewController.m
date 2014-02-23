@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     [self tempGetCurrentUser];
 }
 
@@ -49,7 +49,7 @@
 //------------------------------------------------------------------------------
 
 - (IBAction)onSignOutButtonClick:(UIButton *)sender {
-    [Profile setCurrentUser:nil];
+    [[LinkedInClient instance] setAccessToken:nil];
 }
 
 //------------------------------------------------------------------------------
@@ -63,7 +63,6 @@
     void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
         Profile *currentUser = [[Profile alloc] initWithDictionary:response];
-        [Profile setCurrentUser:currentUser];
         
         NSLog(@"current user %@", response);
         NSLog(@"first name: %@", currentUser.firstName);
@@ -73,9 +72,6 @@
         NSLog(@"education endYear: %@", education.endYear);
         Company *company = [currentUser.currentPositions objectAtIndex:0];
         NSLog(@"companyName: %@", company.name);
-
-        
-
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {

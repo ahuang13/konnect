@@ -11,17 +11,15 @@
 
 @interface Profile : RestObject
 
-+ (Profile *)currentUser;
-+ (void)setCurrentUser:(Profile *)profile;
+- (id)initWithDictionary: (NSDictionary *)dictionary;
 
-@property (nonatomic, strong, readonly) NSString *firstName;
-@property (nonatomic, strong, readonly) NSString *lastName;
-@property (nonatomic, strong, readonly) NSString *pictureUrl;
-@property (nonatomic, strong, readonly) NSString *location;
+@property (nonatomic, strong) NSString *firstName;
+@property (nonatomic, strong) NSString *lastName;
+@property (nonatomic, strong) NSString *pictureUrl;
+@property (nonatomic, strong) NSString *location;
 
-@property (nonatomic, strong, readonly) NSArray *currentPositions;
-@property (nonatomic, strong, readonly) NSArray *educations;
-
+@property (nonatomic, strong) NSArray *currentPositions;
+@property (nonatomic, strong) NSArray *educations;
 
 @end
 
