@@ -19,7 +19,7 @@
         
         NSDictionary *endDate = dictionary[@"endDate"];
         if (endDate){
-            self.endYear = endDate[@"year"];
+            self.endYear = [endDate[@"year"] stringValue];
         }
     }
     

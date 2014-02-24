@@ -10,14 +10,17 @@
 
 @implementation Company
 
-- (id)initWithDictionary: (NSDictionary *)dictionary {
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    
     self = [super init];
+    
     if (self) {
+        
         NSDictionary *company = dictionary[@"company"];
         if (company)
         {
+            self.id = [company[@"id"] integerValue];
             self.name = company[@"name"];
-            self.companyId = company[@"id"];
             self.size = company[@"size"];
             self.industry = company[@"industry"];
         }

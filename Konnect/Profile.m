@@ -12,6 +12,7 @@
 #import "Notifications.h"
 #import "Education.h"
 #import "Company.h"
+#import "CurrentPosition.h"
 
 @implementation Profile
 
@@ -50,6 +51,14 @@ static Profile *_currentUser;
 }
 
 //------------------------------------------------------------------------------
+#pragma mark - Getters/Setters
+//------------------------------------------------------------------------------
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
+//------------------------------------------------------------------------------
 #pragma mark - Class Methods
 //------------------------------------------------------------------------------
 
@@ -60,8 +69,8 @@ static Profile *_currentUser;
     NSArray *currentPositionsJSONArray = dictionary[@"threeCurrentPositions"][@"values"];
     
     for (id positionDict in currentPositionsJSONArray) {
-        Company *company = [[Company alloc] initWithDictionary:positionDict];
-        [currentPositions addObject:company];
+        CurrentPosition *position = [[CurrentPosition alloc] initWithDictionary:positionDict];
+        [currentPositions addObject:position];
     }
     
     return currentPositions;

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Profile;
 
-@interface SeekerViewController : UIViewController
+@interface SeekerViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) Profile *currentUserProfile;
 
 @end

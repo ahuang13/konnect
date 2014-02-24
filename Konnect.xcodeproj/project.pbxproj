@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		921BBBC118BAE7E100C727F1 /* SeekerProfileExperienceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BBBC018BAE7E100C727F1 /* SeekerProfileExperienceCell.m */; };
+		921BBBC318BAE7F800C727F1 /* SeekerProfileExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921BBBC218BAE7F800C727F1 /* SeekerProfileExperienceCell.xib */; };
+		921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BBBC518BB2B5800C727F1 /* UITableView+Seeker.m */; };
+		921BBBC918BBBBA800C727F1 /* SeekerProfileEducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */; };
+		921BBBCD18BBBBD600C727F1 /* SeekerProfileEducationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */; };
+		9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */; };
+		9223F2AC18BA827A006FD45E /* SeekerProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */; };
 		9252EB70189E1A8A00DB6798 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9252EB6F189E1A8A00DB6798 /* Foundation.framework */; };
 		9252EB72189E1A8A00DB6798 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9252EB71189E1A8A00DB6798 /* CoreGraphics.framework */; };
 		9252EB74189E1A8A00DB6798 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9252EB73189E1A8A00DB6798 /* UIKit.framework */; };
@@ -67,6 +74,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		921BBBBF18BAE7E100C727F1 /* SeekerProfileExperienceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerProfileExperienceCell.h; sourceTree = "<group>"; };
+		921BBBC018BAE7E100C727F1 /* SeekerProfileExperienceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerProfileExperienceCell.m; sourceTree = "<group>"; };
+		921BBBC218BAE7F800C727F1 /* SeekerProfileExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerProfileExperienceCell.xib; sourceTree = "<group>"; };
+		921BBBC418BB2B5800C727F1 /* UITableView+Seeker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Seeker.h"; sourceTree = "<group>"; };
+		921BBBC518BB2B5800C727F1 /* UITableView+Seeker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Seeker.m"; sourceTree = "<group>"; };
+		921BBBC718BBBBA800C727F1 /* SeekerProfileEducationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerProfileEducationCell.h; sourceTree = "<group>"; };
+		921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerProfileEducationCell.m; sourceTree = "<group>"; };
+		921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerProfileEducationCell.xib; sourceTree = "<group>"; };
+		9223F2A818BA8261006FD45E /* SeekerProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerProfileHeaderCell.h; sourceTree = "<group>"; };
+		9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerProfileHeaderCell.m; sourceTree = "<group>"; };
+		9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerProfileHeaderCell.xib; sourceTree = "<group>"; };
 		9252EB6C189E1A8A00DB6798 /* Konnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9252EB6F189E1A8A00DB6798 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9252EB71189E1A8A00DB6798 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -287,6 +305,15 @@
 				92EFA80618B1AFDF005640B0 /* RecruiterLoginViewController.m */,
 				92EFA80818B1B087005640B0 /* RecruiterSignUpViewController.h */,
 				92EFA80918B1B087005640B0 /* RecruiterSignUpViewController.m */,
+				9223F2A818BA8261006FD45E /* SeekerProfileHeaderCell.h */,
+				9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */,
+				9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */,
+				921BBBBF18BAE7E100C727F1 /* SeekerProfileExperienceCell.h */,
+				921BBBC018BAE7E100C727F1 /* SeekerProfileExperienceCell.m */,
+				921BBBC218BAE7F800C727F1 /* SeekerProfileExperienceCell.xib */,
+				921BBBC718BBBBA800C727F1 /* SeekerProfileEducationCell.h */,
+				921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */,
+				921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -310,6 +337,8 @@
 				92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */,
 				92EFA7FA18B05D2E005640B0 /* NSString+URLString.h */,
 				92EFA7FB18B05D2E005640B0 /* NSString+URLString.m */,
+				921BBBC418BB2B5800C727F1 /* UITableView+Seeker.h */,
+				921BBBC518BB2B5800C727F1 /* UITableView+Seeker.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -434,10 +463,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9252EB7A189E1A8A00DB6798 /* InfoPlist.strings in Resources */,
+				921BBBCD18BBBBD600C727F1 /* SeekerProfileEducationCell.xib in Resources */,
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
 				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
 				92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */,
 				9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */,
+				921BBBC318BAE7F800C727F1 /* SeekerProfileExperienceCell.xib in Resources */,
+				9223F2AC18BA827A006FD45E /* SeekerProfileHeaderCell.xib in Resources */,
 				92EFA80F18B1B0DC005640B0 /* RecruiterViewController.xib in Resources */,
 				A67A27F818AE83C6004551DF /* 01-refresh@2x.png in Resources */,
 			);
@@ -500,9 +532,13 @@
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
 				92EFA80718B1AFDF005640B0 /* RecruiterLoginViewController.m in Sources */,
+				9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */,
+				921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */,
 				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
+				921BBBC918BBBBA800C727F1 /* SeekerProfileEducationCell.m in Sources */,
 				92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */,
+				921BBBC118BAE7E100C727F1 /* SeekerProfileExperienceCell.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
 				A6446A4218B70FAE00C81CC0 /* Company.m in Sources */,
 				A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */,
