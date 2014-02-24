@@ -21,7 +21,6 @@
 @interface LogInViewController ()
 
 - (IBAction)onLoginButtonClicked:(UIButton *)sender;
-- (IBAction)onRecruiterLoginButtonClicked:(UIButton *)sender;
 
 @end
 

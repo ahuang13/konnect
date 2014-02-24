@@ -14,11 +14,13 @@
 #import "SeekerViewController.h"
 #import "LinkedInClient.h"
 #import "RecruiterViewController.h"
+#import "SeekerOrRecruiterViewController.h"
 
 @interface AppDelegate ()
 
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
+@property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
 @property (nonatomic, strong) RecruiterViewController *recruiterViewController;
 
@@ -99,6 +101,15 @@
     return _logInViewController;
 }
 
+- (SeekerOrRecruiterViewController *)seekerOrRecruiterViewController {
+    
+    if (!_seekerOrRecruiterViewController) {
+        _seekerOrRecruiterViewController = [[SeekerOrRecruiterViewController alloc] init];
+    }
+    
+    return _seekerOrRecruiterViewController;
+}
+
 - (SeekerViewController *)seekerViewController {
     
     if (!_seekerViewController) {
@@ -163,7 +174,7 @@
 }
 
 - (void)onSeekerDidLogin {
-    self.window.rootViewController = self.seekerViewController;
+    self.window.rootViewController = self.seekerOrRecruiterViewController;
 }
 
 - (void)onSeekerDidLogout {
