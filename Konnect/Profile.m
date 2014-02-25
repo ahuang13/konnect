@@ -12,6 +12,7 @@
 #import "Notifications.h"
 #import "Education.h"
 #import "Company.h"
+#import "CurrentPosition.h"
 
 @implementation Profile
 
@@ -21,7 +22,6 @@
 
 NSString * const CURRENT_JOB_SEEKER_KEY = @"CurrentJobSeekerKey";
 
-
 //------------------------------------------------------------------------------
 #pragma mark - Static Variables
 //------------------------------------------------------------------------------
@@ -29,90 +29,65 @@ NSString * const CURRENT_JOB_SEEKER_KEY = @"CurrentJobSeekerKey";
 static Profile *_currentUser;
 
 //------------------------------------------------------------------------------
+#pragma mark - Initializer
+//------------------------------------------------------------------------------
+
+- (id)initWithDictionary: (NSDictionary *)dictionary {
+    
+    self = [super init];
+    
+    if (self) {
+        
+        self.firstName = dictionary[@"firstName"];
+        self.lastName = dictionary[@"lastName"];
+        self.pictureUrl = dictionary[@"pictureUrl"];
+        self.location = dictionary[@"location"][@"name"];
+        
+        self.currentPositions = [Profile parseCurrentPositions:dictionary];
+        self.educations = [Profile parseEducations:dictionary];
+    }
+    
+    return self;
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Getters/Setters
+//------------------------------------------------------------------------------
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
+//------------------------------------------------------------------------------
 #pragma mark - Class Methods
 //------------------------------------------------------------------------------
 
-+ (Profile *)currentUser {
-    if (!_currentUser) {
-        NSData *userData = [[NSUserDefaults standardUserDefaults] dataForKey:CURRENT_JOB_SEEKER_KEY];
-        if (userData) {
-            NSDictionary *userDictionary = [NSJSONSerialization JSONObjectWithData:userData options:NSJSONReadingMutableContainers error:nil];
-            _currentUser = [[Profile alloc] initWithDictionary:userDictionary];
-        }
++ (NSArray *)parseCurrentPositions:(NSDictionary *)dictionary {
+    
+    NSMutableArray *currentPositions = [[NSMutableArray alloc] init];
+    
+    NSArray *currentPositionsJSONArray = dictionary[@"threeCurrentPositions"][@"values"];
+    
+    for (id positionDict in currentPositionsJSONArray) {
+        CurrentPosition *position = [[CurrentPosition alloc] initWithDictionary:positionDict];
+        [currentPositions addObject:position];
     }
     
-    return _currentUser;
+    return currentPositions;
 }
 
-+ (void)setCurrentUser:(Profile *)currentUser {
++ (NSArray *)parseEducations:(NSDictionary *)dictionary {
     
-    // Update NSUserDefaults with the new current user.
-    if (currentUser) {
-        
-        NSData *userData = [NSJSONSerialization dataWithJSONObject:currentUser.data
-                                                           options:NSJSONWritingPrettyPrinted
-                                                             error:nil];
-        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:CURRENT_JOB_SEEKER_KEY];
-        
-    } else {
-        
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_JOB_SEEKER_KEY];
-        [LinkedInClient instance].accessToken = nil;
+    NSMutableArray *educations = [[NSMutableArray alloc] init];
+    
+    NSArray *educationsJSONArray = dictionary[@"educations"][@"values"];
+    
+    for (id educationDict in educationsJSONArray) {
+        Education *education = [[Education alloc] initWithDictionary:educationDict];
+        [educations addObject:education];
     }
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    _currentUser = currentUser;
+    return educations;
 }
-
-//------------------------------------------------------------------------------
-#pragma mark - Getters
-//------------------------------------------------------------------------------
-
-- (NSString *)firstName {
-    return [self.data valueOrNilForKeyPath:@"firstName"];
-}
-
-- (NSString *)lastName {
-    return [self.data valueOrNilForKeyPath:@"lastName"];
-}
-
-- (NSString *)pictureUrl {
-    return [self.data valueOrNilForKeyPath:@"pictureUrl"];
-}
-
-- (NSString *)location {
-    return [[self.data valueOrNilForKeyPath:@"location"] valueOrNilForKeyPath:@"name"];}
-
-
-- (NSArray *)currentPositions {
-    // create an array of company objects to return
-    NSArray *companies = [[self.data valueOrNilForKeyPath:@"threeCurrentPositions"] objectForKey:@"values"];
-    NSMutableArray *companiessArray = [[NSMutableArray alloc] init];
-    for (id companyDictionary in companies) {
-        Company *company = [[Company alloc] initWithDictionary:companyDictionary];
-        [companiessArray addObject:company];
-    }
-    
-    // convert company array to non mutable array and return
-    return [NSArray arrayWithArray:companiessArray];
-}
-
-- (NSArray *)educations {
-    // create an array of education objects to return
-    NSArray *educations = [[self.data valueOrNilForKeyPath:@"educations"] objectForKey:@"values"];
-    NSMutableArray *educationsArray = [[NSMutableArray alloc] init];
-    for (id educationDictionary in educations) {
-        Education *education = [[Education alloc] initWithDictionary:educationDictionary];
-        [educationsArray addObject:education];
-    }
-    
-    // convert education array to non mutable array and return
-    return [NSArray arrayWithArray:educationsArray];
-    
-    
-}
-
-
 
 @end

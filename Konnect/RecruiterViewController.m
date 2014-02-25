@@ -57,7 +57,7 @@
 #pragma mark - IBAction Methods
 
 - (void)onSignOutButton {
-    [Profile setCurrentUser:nil];
+    [[LinkedInClient instance] setAccessToken:nil];
 }
 
 
@@ -70,8 +70,6 @@
     void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
         Profile *currentUser = [[Profile alloc] initWithDictionary:response];
-        [Profile setCurrentUser:currentUser];
-        
         NSLog(@"current user %@", response);
         self.company = [currentUser.currentPositions objectAtIndex:0];
         self.companyNameLabel.text = self.company.name;

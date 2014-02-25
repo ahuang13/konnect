@@ -10,4 +10,17 @@
 
 @implementation CurrentPosition
 
+- (id)initWithDictionary:(NSDictionary *)dictionary {
+    
+    self = [super init];
+    
+    if (self) {
+        self.company = [[Company alloc] initWithDictionary:dictionary];
+        self.title = dictionary[@"title"];
+        self.summary = dictionary[@"summary"];
+    }
+    
+    return self;
+}
+
 @end

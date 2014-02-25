@@ -2,17 +2,16 @@
 //  SeekerOrRecruiterViewController.m
 //  Konnect
 //
-//  Created by fxie on 2/22/14.
+//  Created by fxie on 2/24/14.
 //  Copyright (c) 2014 Angus Huang. All rights reserved.
 //
 
 #import "SeekerOrRecruiterViewController.h"
-#import "Notifications.h"
-
-
+#import "LinkedInClient.h"
+#import "AppDelegate.h"
 @interface SeekerOrRecruiterViewController ()
-- (IBAction)onCandidateButton:(id)sender;
-- (IBAction)onHiringManagerButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *seekerOrRecruiterSegmentedControl;
+- (IBAction)signOutButton:(id)sender;
 
 @end
 
@@ -30,7 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.seekerOrRecruiterSegmentedControl.selectedSegmentIndex = 0;
+    [self.seekerOrRecruiterSegmentedControl addTarget:self
+                                               action:@selector(selectSeekerOrRecruiter:)
+                                     forControlEvents:UIControlEventValueChanged];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,11 +42,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)onCandidateButton:(id)sender {
+- (IBAction)signOutButton:(id)sender {
+    [LinkedInClient instance].accessToken = nil;
+    
 }
 
-- (IBAction)onHiringManagerButton:(id)sender {
+#pragma mark - Private Methods
+- (void) selectSeekerOrRecruiter:(UISegmentedControl *)sender {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.seekerOrRecruiter = sender.selectedSegmentIndex;
+        
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
 }
 @end

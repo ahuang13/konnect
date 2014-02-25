@@ -20,9 +20,15 @@
 
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
-@property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
 @property (nonatomic, strong) RecruiterViewController *recruiterViewController;
+@property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
+@property (nonatomic, strong) UITabBarController *tabBarController;
+
+
+@property (nonatomic, strong) UINavigationController *navController;
+
+
 
 @end
 
@@ -85,8 +91,6 @@
     
     if ([self isJobSeekerLoggedIn]) {
         return self.seekerViewController;
-    } else if ([self isRecruiterLoggedIn]) {
-        return self.recruiterViewController;
     } else {
         return self.logInViewController;
     }
@@ -101,14 +105,6 @@
     return _logInViewController;
 }
 
-- (SeekerOrRecruiterViewController *)seekerOrRecruiterViewController {
-    
-    if (!_seekerOrRecruiterViewController) {
-        _seekerOrRecruiterViewController = [[SeekerOrRecruiterViewController alloc] init];
-    }
-    
-    return _seekerOrRecruiterViewController;
-}
 
 - (SeekerViewController *)seekerViewController {
     
@@ -126,6 +122,25 @@
     }
     
     return _recruiterViewController;
+}
+
+- (SeekerOrRecruiterViewController *)seekerOrRecruiterViewController {
+    
+    if (!_seekerOrRecruiterViewController) {
+        _seekerOrRecruiterViewController = [[SeekerOrRecruiterViewController alloc] init];
+    }
+    
+    return _seekerOrRecruiterViewController;
+}
+
+- (UITabBarController *)tabBarController {
+    
+    if (!_tabBarController) {
+        _tabBarController = [[UITabBarController alloc] init];
+        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.seekerViewController, nil];
+    }
+    
+    return _tabBarController;
 }
 
 //------------------------------------------------------------------------------
@@ -153,40 +168,19 @@
                                   selector:@selector(onSeekerDidLogout)
                                       name:SEEKER_DID_LOGOUT_NOTIFICATION
                                     object:nil];
-    
-    [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onRecruiterDidLogin)
-                                      name:RECRUITER_DID_LOGIN_NOTIFICATION
-                                    object:nil];
-    
-    [defaultNotificationCenter addObserver:self
-                                  selector:@selector(onRecruiterDidLogout)
-                                      name:RECRUITER_DID_LOGOUT_NOTIFICATION
-                                    object:nil];
+}
+
+- (void)onSeekerDidLogin {
+    self.window.rootViewController = self.tabBarController;
 }
 
 - (BOOL)isJobSeekerLoggedIn {
     return ([LinkedInClient instance].accessToken != nil);
 }
 
-- (BOOL)isRecruiterLoggedIn {
-    return ([PFUser currentUser] != nil);
-}
-
-- (void)onSeekerDidLogin {
-    self.window.rootViewController = self.seekerOrRecruiterViewController;
-}
-
 - (void)onSeekerDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
 
-- (void)onRecruiterDidLogin {
-    self.window.rootViewController = self.recruiterViewController;
-}
-
-- (void)onRecruiterDidLogout {
-    self.window.rootViewController = self.logInViewController;
-}
 
 @end
