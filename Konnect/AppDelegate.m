@@ -137,7 +137,7 @@
     
     if (!_tabBarController) {
         _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.seekerViewController, nil];
+        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.recruiterViewController, nil];
     }
     
     return _tabBarController;

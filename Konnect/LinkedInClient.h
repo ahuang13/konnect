@@ -20,5 +20,5 @@
                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 
-- (void)currentCompanyWithId:(NSString*)companyId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (void)currentCompanyWithId:(NSInteger)companyId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 @end

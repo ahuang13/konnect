@@ -13,6 +13,7 @@
 #import "Company.h"
 #import "AFHTTPRequestOperation.h"
 #import "LinkedInClient.h"
+#import "CurrentPosition.h"
 
 @interface RecruiterViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
@@ -43,9 +44,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButton)];
-    
-    [self getCurrentUser];
+    [self getCurrentUserCompany];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,7 +62,7 @@
 
 #pragma mark - Private Methods
 
-- (void)getCurrentUser {
+- (void)getCurrentUserCompany {
     
     // Download the current user profile and set the app's current user.
     
@@ -71,13 +70,16 @@
         
         Profile *currentUser = [[Profile alloc] initWithDictionary:response];
         NSLog(@"current user %@", response);
-        self.company = [currentUser.currentPositions objectAtIndex:0];
+        CurrentPosition *currentPosition = [currentUser.currentPositions objectAtIndex:0];
+        self.company = currentPosition.company;
         self.companyNameLabel.text = self.company.name;
         self.companySizeLabel.text = self.company.size;
-        self.descriptionLabel.text = self.company.description;
         
         NSLog(@"companyName: %@", self.company.name);
-        NSLog(@"company id: %@", self.company.companyId);
+        NSLog(@"company id: %ld", (long)self.company.id);
+        
+        // Download company details to set description
+        [self getCompanyDetailsWithCompany:self.company];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -85,6 +87,27 @@
     };
     
     [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
+}
+
+- (void)getCompanyDetailsWithCompany:(Company *) company{
+    
+    // Download the current user's company profile and set the app's user company.
+    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
+        
+        NSLog(@"company detail: %@", response);
+        company.companyDetails = response;
+        self.descriptionLabel.text = company.description;
+        
+        NSLog(@"company description: %@", company.description );
+        NSLog(@"company logo url: %@", company.logoUrl);
+    };
+    
+    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed to download current company: %@", error);//error.localizedDescription);
+    };
+    
+    [[LinkedInClient instance] currentCompanyWithId: company.id success:success failure:failure];
+    
 }
 
 @end

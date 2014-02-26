@@ -32,36 +32,13 @@
 }
 
 - (NSString *)description {
-    if (!self.companyDetails){
-        // Company details not yet downloaded
-        [self loadCompanyDetails];
-    }
+    
     return self.companyDetails[@"description"];
 }
 
 - (NSString *)logoUrl {
-    if (!self.companyDetails){
-        // Company details not yet downloaded
-        [self loadCompanyDetails];
-    }
-    return self.companyDetails[@"logo-url"];
+    
+    return self.companyDetails[@"logoUrl"];
 }
 
-
-
-#pragma mark - Private Methods
-- (void)loadCompanyDetails {
-    // Download the current user's company profile and set the app's user company.
-    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
-        
-        NSLog(@"company description: %@", response);
-        self.companyDetails = response;
-    };
-    
-    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failed to download current company: %@", error);//error.localizedDescription);
-    };
-    
-    [[LinkedInClient instance] currentCompanyWithId: self.companyId success:success failure:failure];
-}
 @end

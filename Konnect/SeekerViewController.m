@@ -54,7 +54,6 @@ static const NSInteger EDUCATIONS = 3;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButtonClick)];
     [self.tableView registerSeekerCells];
 }
 

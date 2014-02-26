@@ -121,9 +121,9 @@ static NSString *const ACCESS_TOKEN_KEY = @"accessTokenKey";
     [self GET:END_POINT parameters:nil success:success failure:failure];
 }
 
-- (void)currentCompanyWithId:(NSNumber*)companyId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+- (void)currentCompanyWithId:(NSInteger)companyId success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     
-    NSString *companyWithIdString = [@"companies/id=" stringByAppendingString:[companyId stringValue]];
+    NSString *companyWithIdString = [@"companies/id=" stringByAppendingString:[NSString stringWithFormat: @"%d", companyId]];
     NSString *const END_POINT = [companyWithIdString stringByAppendingString:@":(description,logo-url)"];
     
     [self GET:END_POINT parameters:nil success:success failure:failure];
