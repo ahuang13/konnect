@@ -7,6 +7,8 @@
 //
 
 #import "Company.h"
+#import "AFHTTPRequestOperation.h"
+#import "LinkedInClient.h"
 
 @implementation Company
 
@@ -30,7 +32,13 @@
 }
 
 - (NSString *)description {
-    //TODO fetch company description from api
-    return nil;
+    
+    return self.companyDetails[@"description"];
 }
+
+- (NSString *)logoUrl {
+    
+    return self.companyDetails[@"logoUrl"];
+}
+
 @end

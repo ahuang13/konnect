@@ -35,11 +35,11 @@
 		92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FE18B06DFE005640B0 /* Notifications.m */; };
 		92EFA80318B17DD5005640B0 /* SeekerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80118B17DD5005640B0 /* SeekerViewController.m */; };
 		92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFA80218B17DD5005640B0 /* SeekerViewController.xib */; };
-		92EFA80718B1AFDF005640B0 /* RecruiterLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80618B1AFDF005640B0 /* RecruiterLoginViewController.m */; };
-		92EFA80A18B1B087005640B0 /* RecruiterSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80918B1B087005640B0 /* RecruiterSignUpViewController.m */; };
 		92EFA80E18B1B0DC005640B0 /* RecruiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */; };
 		92EFA80F18B1B0DC005640B0 /* RecruiterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */; };
 		9CE8E8BA8BF24643A9BB185B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B42B954BAD2B447DA8987B0F /* libPods.a */; };
+		A614E13E18BC5FDF0087D781 /* SeekerOrRecruiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A614E13C18BC5FDF0087D781 /* SeekerOrRecruiterViewController.m */; };
+		A614E13F18BC5FDF0087D781 /* SeekerOrRecruiterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A614E13D18BC5FDF0087D781 /* SeekerOrRecruiterViewController.xib */; };
 		A640205A18A7272700A90BE3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205918A7272700A90BE3 /* AudioToolbox.framework */; };
 		A640205C18A7273000A90BE3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205B18A7273000A90BE3 /* CFNetwork.framework */; };
 		A640205E18A7274000A90BE3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205D18A7274000A90BE3 /* CoreLocation.framework */; };
@@ -116,13 +116,12 @@
 		92EFA80018B17DD5005640B0 /* SeekerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerViewController.h; sourceTree = "<group>"; };
 		92EFA80118B17DD5005640B0 /* SeekerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerViewController.m; sourceTree = "<group>"; };
 		92EFA80218B17DD5005640B0 /* SeekerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerViewController.xib; sourceTree = "<group>"; };
-		92EFA80518B1AFDF005640B0 /* RecruiterLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterLoginViewController.h; sourceTree = "<group>"; };
-		92EFA80618B1AFDF005640B0 /* RecruiterLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterLoginViewController.m; sourceTree = "<group>"; };
-		92EFA80818B1B087005640B0 /* RecruiterSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterSignUpViewController.h; sourceTree = "<group>"; };
-		92EFA80918B1B087005640B0 /* RecruiterSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterSignUpViewController.m; sourceTree = "<group>"; };
 		92EFA80B18B1B0DC005640B0 /* RecruiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterViewController.h; sourceTree = "<group>"; };
 		92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterViewController.m; sourceTree = "<group>"; };
 		92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecruiterViewController.xib; sourceTree = "<group>"; };
+		A614E13B18BC5FDF0087D781 /* SeekerOrRecruiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerOrRecruiterViewController.h; sourceTree = "<group>"; };
+		A614E13C18BC5FDF0087D781 /* SeekerOrRecruiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerOrRecruiterViewController.m; sourceTree = "<group>"; };
+		A614E13D18BC5FDF0087D781 /* SeekerOrRecruiterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerOrRecruiterViewController.xib; sourceTree = "<group>"; };
 		A640205918A7272700A90BE3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A640205B18A7273000A90BE3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A640205D18A7274000A90BE3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -301,10 +300,6 @@
 				92EFA80B18B1B0DC005640B0 /* RecruiterViewController.h */,
 				92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */,
 				92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */,
-				92EFA80518B1AFDF005640B0 /* RecruiterLoginViewController.h */,
-				92EFA80618B1AFDF005640B0 /* RecruiterLoginViewController.m */,
-				92EFA80818B1B087005640B0 /* RecruiterSignUpViewController.h */,
-				92EFA80918B1B087005640B0 /* RecruiterSignUpViewController.m */,
 				9223F2A818BA8261006FD45E /* SeekerProfileHeaderCell.h */,
 				9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */,
 				9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */,
@@ -314,6 +309,9 @@
 				921BBBC718BBBBA800C727F1 /* SeekerProfileEducationCell.h */,
 				921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */,
 				921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */,
+				A614E13B18BC5FDF0087D781 /* SeekerOrRecruiterViewController.h */,
+				A614E13C18BC5FDF0087D781 /* SeekerOrRecruiterViewController.m */,
+				A614E13D18BC5FDF0087D781 /* SeekerOrRecruiterViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -467,6 +465,7 @@
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
 				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
 				92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */,
+				A614E13F18BC5FDF0087D781 /* SeekerOrRecruiterViewController.xib in Resources */,
 				9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */,
 				921BBBC318BAE7F800C727F1 /* SeekerProfileExperienceCell.xib in Resources */,
 				9223F2AC18BA827A006FD45E /* SeekerProfileHeaderCell.xib in Resources */,
@@ -531,7 +530,7 @@
 				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
-				92EFA80718B1AFDF005640B0 /* RecruiterLoginViewController.m in Sources */,
+				A614E13E18BC5FDF0087D781 /* SeekerOrRecruiterViewController.m in Sources */,
 				9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */,
 				921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */,
 				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
@@ -546,7 +545,6 @@
 				A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */,
 				A6446A3F18B70F8B00C81CC0 /* CurrentPosition.m in Sources */,
 				A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */,
-				92EFA80A18B1B087005640B0 /* RecruiterSignUpViewController.m in Sources */,
 				92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

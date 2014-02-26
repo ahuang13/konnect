@@ -14,8 +14,11 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *industry;
-@property (nonatomic, strong) NSString *companyId;
 @property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *logoUrl;
+@property (nonatomic, strong) NSDictionary *companyDetails;
+
+
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
