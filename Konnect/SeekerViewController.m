@@ -18,6 +18,7 @@
 #import "SeekerProfileEducationCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "UITableView+Seeker.h"
+#import "Parse/Parse.h"
 
 @interface SeekerViewController ()
 
@@ -184,8 +185,11 @@ static const NSInteger EDUCATIONS = 3;
         NSLog(@"education endYear: %@", education.endYear);
         CurrentPosition *position = [currentUser.currentPositions objectAtIndex:0];
         NSLog(@"companyName: %@", position.company.name);
+
         
         self.currentUserProfile = currentUser;
+        
+        [self createOrUpdateCandidateProfile:currentUser];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -193,6 +197,50 @@ static const NSInteger EDUCATIONS = 3;
     };
     
     [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
+}
+
+- (void)createOrUpdateCandidateProfile:(Profile *)profile {
+    // Get parse object with the user's first and last name
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+    [profileQuery whereKey:@"firstName" equalTo:profile.firstName];
+    [profileQuery whereKey:@"lastName" equalTo:profile.lastName];
+
+    
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count] == 0) {
+                
+                // If parse object doesnt exist, create it
+                PFObject *seekerProfile = [PFObject objectWithClassName:@"SeekerProfile"];
+                
+                [seekerProfile setObject:profile.firstName forKey:@"firstName"];
+                [seekerProfile setObject:profile.lastName forKey:@"lastName"];
+                [seekerProfile setObject:profile.location forKey:@"location"];
+                
+                CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
+                [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];
+                [seekerProfile setObject:currentPosition.summary forKey:@"jobDescription"];
+                
+                // Create parse objects for educations
+                for (Education *education in profile.educations) {
+                    
+                    PFObject *pfeducation = [PFObject objectWithClassName:@"Education"];
+                    [pfeducation setObject:education.school forKey:@"schoolName"];
+                    [pfeducation setObject:education.degree forKey:@"degree"];
+                    [pfeducation setObject:education.major forKey:@"major"];
+                    [pfeducation setObject:seekerProfile forKey:@"seekerProfile"];
+                    
+                    // Save the new education profile
+                    [pfeducation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                        }
+                    }];
+                }
+            }
+        }
+    }];
+
+    
 }
 
 @end
