@@ -67,6 +67,9 @@ static const NSInteger EDUCATIONS = 3;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onSignOutButtonClick {
+    [[LinkedInClient instance] setAccessToken:nil];
+}
 //------------------------------------------------------------------------------
 #pragma mark - IBAction Methods
 //------------------------------------------------------------------------------

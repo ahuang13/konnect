@@ -14,14 +14,11 @@
 #import "NSString+LIAEncode.h"
 #import "Profile.h"
 #import "LinkedInClient.h"
-#import "RecruiterLoginViewController.h"
-#import "RecruiterSignUpViewController.h"
 #import "Notifications.h"
 
 @interface LogInViewController ()
 
 - (IBAction)onLoginButtonClicked:(UIButton *)sender;
-- (IBAction)onRecruiterLoginButtonClicked:(UIButton *)sender;
 
 @end
 
@@ -131,23 +128,6 @@ shouldBeginLogInWithUsername:(NSString *)username
 
 - (IBAction)onLoginButtonClicked:(UIButton *)sender {
     [[LIALinkedInHttpClient instance] login];
-}
-
-- (IBAction)onRecruiterLoginButtonClicked:(UIButton *)sender {
-    
-    // Create the log in view controller
-    RecruiterLoginViewController *logInViewController = [[RecruiterLoginViewController alloc] init];
-    [logInViewController setDelegate:self]; // Set ourselves as the delegate
-    
-    // Create the sign up view controller
-    RecruiterSignUpViewController *signUpViewController = [[RecruiterSignUpViewController alloc] init];
-    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-    
-    // Assign our sign up controller to be displayed from the login controller
-    [logInViewController setSignUpController:signUpViewController];
-    
-    // Present the log in view controller
-    [self presentViewController:logInViewController animated:YES completion:NULL];
 }
 
 @end
