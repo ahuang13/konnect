@@ -30,8 +30,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        // TODO: initialize self.isRecruiterMode here from NSUserDefaults
+        [self initTabBarItem];
     }
     return self;
 }
@@ -76,7 +75,16 @@
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
 
-- (void) segmentedControlValueDidChange:(UISegmentedControl *)sender {
+- (void)initTabBarItem {
+    
+    NSString *title = @"Settings";
+    UIImage *icon = [UIImage imageNamed:@"settings"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
+}
+
+- (void)segmentedControlValueDidChange:(UISegmentedControl *)sender {
     self.appDelegate.isRecruiterMode = (sender.selectedSegmentIndex == 1);
 }
 

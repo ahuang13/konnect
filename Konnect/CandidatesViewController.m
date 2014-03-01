@@ -14,14 +14,22 @@
 
 @implementation CandidatesViewController
 
+//------------------------------------------------------------------------------
+#pragma mark - Initializers
+//------------------------------------------------------------------------------
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self initTabBarItem];
     }
     return self;
 }
+
+//------------------------------------------------------------------------------
+#pragma mark - Lifecycle
+//------------------------------------------------------------------------------
 
 - (void)viewDidLoad
 {
@@ -33,6 +41,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)initTabBarItem {
+    
+    NSString *title = @"Candidates";
+    UIImage *icon = [UIImage imageNamed:@"browse"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
 }
 
 @end

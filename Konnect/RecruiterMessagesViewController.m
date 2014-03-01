@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self initTabBarItem];
     }
     return self;
 }
@@ -33,6 +33,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)initTabBarItem {
+    
+    NSString *title = @"Messages";
+    UIImage *icon = [UIImage imageNamed:@"messages"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
 }
 
 @end
