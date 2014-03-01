@@ -14,6 +14,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "LinkedInClient.h"
 #import "CurrentPosition.h"
+#import "Parse/Parse.h"
 
 @interface RecruiterViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
@@ -35,7 +36,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Job Profile";
     }
     return self;
 }
@@ -43,6 +43,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitle:@"Job Profile"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action: @selector(onDoneButton)];
+    
+    [self loadJobProfile];
+    self.titleTextField.delegate = self;
+    self.salaryTextField.delegate = self;
+    self.locationTextField.delegate = self;
     
     [self getCurrentUserCompany];
 }
@@ -53,14 +60,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - IBAction Methods
+#pragma mark - UITextFieldDelegate Methods
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.titleTextField){
+        NSLog(@"title field is %@", textField.text);
+    }
+    else if (textField == self.salaryTextField){
+        NSLog(@"salary field is %@", textField.text);
 
-- (void)onSignOutButton {
-    [[LinkedInClient instance] setAccessToken:nil];
+    }
+    else if (textField == self.locationTextField){
+        NSLog(@"location field is %@", textField.text);
+        
+    }
+    [self.view endEditing: YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 
+
 #pragma mark - Private Methods
+- (void) onDoneButton {
+    NSLog(@"on done button");
+
+}
+
+- (void) loadJobProfile {
+    //TODO load from parse
+}
 
 - (void)getCurrentUserCompany {
     

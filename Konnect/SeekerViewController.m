@@ -47,7 +47,6 @@ static const NSInteger EDUCATIONS = 3;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }

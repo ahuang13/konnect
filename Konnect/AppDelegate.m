@@ -25,7 +25,6 @@
 @property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 
-
 @property (nonatomic, strong) UINavigationController *navController;
 
 
@@ -137,7 +136,7 @@
     
     if (!_tabBarController) {
         _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.seekerViewController, nil];
+        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.recruiterViewController, nil];
     }
     
     return _tabBarController;
