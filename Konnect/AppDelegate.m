@@ -87,7 +87,7 @@
 - (UIViewController *)rootViewController {
     
     if ([self isJobSeekerLoggedIn]) {
-        return self.seekerViewController;
+        return self.tabBarController;
     } else {
         return self.logInViewController;
     }
