@@ -50,7 +50,7 @@
 - (void)initTabBarItem {
     
     NSString *title = @"Jobs";
-    UIImage *icon = [UIImage imageNamed:@"browse"];
+    UIImage *icon = [UIImage imageNamed:@"briefcase-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;

@@ -77,7 +77,7 @@
 - (void)initTabBarItem {
     
     NSString *title = @"Job Listing";
-    UIImage *icon = [UIImage imageNamed:@"profile"];
+    UIImage *icon = [UIImage imageNamed:@"contact_card-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;

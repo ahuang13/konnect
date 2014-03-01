@@ -50,7 +50,7 @@
 - (void)initTabBarItem {
     
     NSString *title = @"Candidates";
-    UIImage *icon = [UIImage imageNamed:@"browse"];
+    UIImage *icon = [UIImage imageNamed:@"group-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;

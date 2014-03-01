@@ -78,7 +78,7 @@
 - (void)initTabBarItem {
     
     NSString *title = @"Settings";
-    UIImage *icon = [UIImage imageNamed:@"settings"];
+    UIImage *icon = [UIImage imageNamed:@"settings-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;

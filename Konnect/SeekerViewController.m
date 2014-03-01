@@ -171,7 +171,7 @@ static const NSInteger EDUCATIONS = 3;
 - (void)initTabBarItem {
     
     NSString *title = @"My Profile";
-    UIImage *icon = [UIImage imageNamed:@"profile"];
+    UIImage *icon = [UIImage imageNamed:@"user_male4-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;

@@ -42,7 +42,7 @@
 - (void)initTabBarItem {
     
     NSString *title = @"Messages";
-    UIImage *icon = [UIImage imageNamed:@"messages"];
+    UIImage *icon = [UIImage imageNamed:@"quote-50"];
     UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
     
     self.tabBarItem = tabBarItem;
