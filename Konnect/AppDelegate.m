@@ -11,21 +11,30 @@
 #import <Parse/Parse.h>
 #import "Notifications.h"
 #import "Profile.h"
-#import "SeekerViewController.h"
 #import "LinkedInClient.h"
-#import "RecruiterViewController.h"
 #import "SettingsViewController.h"
+#import "SeekerViewController.h"
+#import "RecruiterViewController.h"
+#import "CandidatesViewController.h"
+#import "JobsViewController.h"
+#import "RecruiterMessagesViewController.h"
+#import "SeekerMessagesViewController.h"
 
 @interface AppDelegate ()
 
+// Root View Controllers
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
-@property (nonatomic, strong) SeekerViewController *seekerViewController;
-@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
-@property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 
-@property (nonatomic, strong) UINavigationController *navController;
+// Tab Bar Content View Controllers
+@property (nonatomic, strong) SettingsViewController *settingsViewController;
+@property (nonatomic, strong) SeekerViewController *seekerViewController;
+@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
+@property (nonatomic, strong) CandidatesViewController *candidatesViewController;
+@property (nonatomic, strong) JobsViewController *jobsViewController;
+@property (nonatomic, strong) RecruiterMessagesViewController *recruiterMessagesViewController;
+@property (nonatomic, strong) SeekerMessagesViewController *seekerMessagesViewController;
 
 @end
 
@@ -102,6 +111,29 @@
     return _logInViewController;
 }
 
+- (UITabBarController *)tabBarController {
+    
+    if (!_tabBarController) {
+        _tabBarController = [[UITabBarController alloc] init];
+        _tabBarController.viewControllers = [NSArray arrayWithObjects:
+                                             self.settingsViewController,
+                                             self.recruiterViewController,
+                                             self.candidatesViewController,
+                                             self.recruiterMessagesViewController,
+                                             nil];
+    }
+    
+    return _tabBarController;
+}
+
+- (SettingsViewController *)settingsViewController {
+    
+    if (!_settingsViewController) {
+        _settingsViewController = [[SettingsViewController alloc] init];
+    }
+    
+    return _settingsViewController;
+}
 
 - (SeekerViewController *)seekerViewController {
     
@@ -121,23 +153,40 @@
     return _recruiterViewController;
 }
 
-- (SettingsViewController *)settingsViewController {
+- (CandidatesViewController *)candidatesViewController {
     
-    if (!_settingsViewController) {
-        _settingsViewController = [[SettingsViewController alloc] init];
+    if (!_candidatesViewController) {
+        _candidatesViewController = [[CandidatesViewController alloc] init];
     }
     
-    return _settingsViewController;
+    return _candidatesViewController;
 }
 
-- (UITabBarController *)tabBarController {
+- (JobsViewController *)jobsViewController {
     
-    if (!_tabBarController) {
-        _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.settingsViewController, self.recruiterViewController, nil];
+    if (!_jobsViewController) {
+        _jobsViewController = [[JobsViewController alloc] init];
     }
     
-    return _tabBarController;
+    return _jobsViewController;
+}
+
+- (RecruiterMessagesViewController *)recruiterMessagesViewController {
+    
+    if (!_recruiterMessagesViewController) {
+        _recruiterMessagesViewController = [[RecruiterMessagesViewController alloc] init];
+    }
+    
+    return _recruiterMessagesViewController;
+}
+
+- (SeekerMessagesViewController *)seekerMessagesViewController {
+    
+    if (!_seekerMessagesViewController) {
+        _seekerMessagesViewController = [[SeekerMessagesViewController alloc] init];
+    }
+    
+    return _seekerMessagesViewController;
 }
 
 //------------------------------------------------------------------------------
