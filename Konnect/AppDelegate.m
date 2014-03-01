@@ -14,7 +14,7 @@
 #import "SeekerViewController.h"
 #import "LinkedInClient.h"
 #import "RecruiterViewController.h"
-#import "SeekerOrRecruiterViewController.h"
+#import "SettingsViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,13 +22,10 @@
 @property (nonatomic, strong) LogInViewController *logInViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
 @property (nonatomic, strong) RecruiterViewController *recruiterViewController;
-@property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
+@property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 
-
 @property (nonatomic, strong) UINavigationController *navController;
-
-
 
 @end
 
@@ -41,7 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initParse:launchOptions];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Set the rootViewController depending on the logged in status.
@@ -124,20 +121,20 @@
     return _recruiterViewController;
 }
 
-- (SeekerOrRecruiterViewController *)seekerOrRecruiterViewController {
+- (SettingsViewController *)settingsViewController {
     
-    if (!_seekerOrRecruiterViewController) {
-        _seekerOrRecruiterViewController = [[SeekerOrRecruiterViewController alloc] init];
+    if (!_settingsViewController) {
+        _settingsViewController = [[SettingsViewController alloc] init];
     }
     
-    return _seekerOrRecruiterViewController;
+    return _settingsViewController;
 }
 
 - (UITabBarController *)tabBarController {
     
     if (!_tabBarController) {
         _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.recruiterViewController, nil];
+        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.settingsViewController, self.recruiterViewController, nil];
     }
     
     return _tabBarController;

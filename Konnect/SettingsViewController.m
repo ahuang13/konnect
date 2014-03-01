@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Angus Huang. All rights reserved.
 //
 
-#import "SeekerOrRecruiterViewController.h"
+#import "SettingsViewController.h"
 #import "LinkedInClient.h"
 #import "AppDelegate.h"
-@interface SeekerOrRecruiterViewController ()
+@interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *seekerOrRecruiterSegmentedControl;
 - (IBAction)signOutButton:(id)sender;
 
 @end
 
-@implementation SeekerOrRecruiterViewController
+@implementation SettingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
