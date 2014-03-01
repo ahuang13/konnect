@@ -46,7 +46,7 @@ static const NSInteger EDUCATIONS = 3;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self initTabBarItem];
     }
     return self;
 }
@@ -167,6 +167,15 @@ static const NSInteger EDUCATIONS = 3;
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
+
+- (void)initTabBarItem {
+    
+    NSString *title = @"My Profile";
+    UIImage *icon = [UIImage imageNamed:@"user_male4-50"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
+}
 
 - (void)tempGetCurrentUser {
     

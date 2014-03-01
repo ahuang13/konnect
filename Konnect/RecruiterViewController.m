@@ -31,14 +31,22 @@
 
 @implementation RecruiterViewController
 
+//------------------------------------------------------------------------------
+#pragma mark - Initializers
+//------------------------------------------------------------------------------
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Job Profile";
+        [self initTabBarItem];
     }
     return self;
 }
+
+//------------------------------------------------------------------------------
+#pragma mark - Lifecycle
+//------------------------------------------------------------------------------
 
 - (void)viewDidLoad
 {
@@ -53,14 +61,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - IBAction Methods
+//------------------------------------------------------------------------------
+#pragma mark - IBActions
+//------------------------------------------------------------------------------
 
 - (void)onSignOutButton {
     [[LinkedInClient instance] setAccessToken:nil];
 }
 
 
+//------------------------------------------------------------------------------
 #pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)initTabBarItem {
+    
+    NSString *title = @"Job Listing";
+    UIImage *icon = [UIImage imageNamed:@"contact_card-50"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
+}
 
 - (void)getCurrentUserCompany {
     

@@ -11,24 +11,34 @@
 #import <Parse/Parse.h>
 #import "Notifications.h"
 #import "Profile.h"
-#import "SeekerViewController.h"
 #import "LinkedInClient.h"
+#import "SettingsViewController.h"
+#import "SeekerViewController.h"
 #import "RecruiterViewController.h"
-#import "SeekerOrRecruiterViewController.h"
+#import "CandidatesViewController.h"
+#import "JobsViewController.h"
+#import "RecruiterMessagesViewController.h"
+#import "SeekerMessagesViewController.h"
 
 @interface AppDelegate ()
 
+// Root View Controllers
 @property (nonatomic, strong, readonly) UIViewController *rootViewController;
 @property (nonatomic, strong) LogInViewController *logInViewController;
-@property (nonatomic, strong) SeekerViewController *seekerViewController;
-@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
-@property (nonatomic, strong) SeekerOrRecruiterViewController *seekerOrRecruiterViewController;
 @property (nonatomic, strong) UITabBarController *tabBarController;
 
+// Tab Bar Content View Controllers
+@property (nonatomic, strong) SettingsViewController *settingsViewController;
+@property (nonatomic, strong) SeekerViewController *seekerViewController;
+@property (nonatomic, strong) RecruiterViewController *recruiterViewController;
+@property (nonatomic, strong) CandidatesViewController *candidatesViewController;
+@property (nonatomic, strong) JobsViewController *jobsViewController;
+@property (nonatomic, strong) RecruiterMessagesViewController *recruiterMessagesViewController;
+@property (nonatomic, strong) SeekerMessagesViewController *seekerMessagesViewController;
 
-@property (nonatomic, strong) UINavigationController *navController;
-
-
+// Other private properties
+@property (nonatomic, strong) NSArray *recruiterViewControllers;
+@property (nonatomic, strong) NSArray *seekerViewControllers;
 
 @end
 
@@ -41,7 +51,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initParse:launchOptions];
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Set the rootViewController depending on the logged in status.
@@ -83,14 +93,62 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
 //------------------------------------------------------------------------------
-#pragma mark - Getters
+#pragma mark - Public Getters/Setters
 //------------------------------------------------------------------------------
+
+- (void)setIsRecruiterMode:(BOOL)isRecruiterMode {
+    
+    // If the value is not changing, return immediately.
+    if (isRecruiterMode == _isRecruiterMode)
+        return;
+    
+    // Set the new value.
+    _isRecruiterMode = isRecruiterMode;
+    
+    // Update the tab bar's content view controllers.
+    if (_isRecruiterMode) {
+        self.tabBarController.viewControllers = self.recruiterViewControllers;
+    } else {
+        self.tabBarController.viewControllers = self.seekerViewControllers;
+    }
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Getters/Setters
+//------------------------------------------------------------------------------
+
+- (NSArray *)recruiterViewControllers {
+    
+    if (!_recruiterViewControllers) {
+        _recruiterViewControllers = [NSArray arrayWithObjects:
+                                     self.settingsViewController,
+                                     self.recruiterViewController,
+                                     self.candidatesViewController,
+                                     self.recruiterMessagesViewController,
+                                     nil];
+    }
+    return _recruiterViewControllers;
+}
+
+- (NSArray *)seekerViewControllers {
+    
+    if (!_seekerViewControllers) {
+        _seekerViewControllers = [NSArray arrayWithObjects:
+                                  self.settingsViewController,
+                                  self.seekerViewController,
+                                  self.jobsViewController,
+                                  self.seekerMessagesViewController,
+                                  nil];
+    }
+    return _seekerViewControllers;
+}
 
 - (UIViewController *)rootViewController {
     
     if ([self isJobSeekerLoggedIn]) {
-        return self.seekerViewController;
+        return self.tabBarController;
     } else {
         return self.logInViewController;
     }
@@ -105,6 +163,30 @@
     return _logInViewController;
 }
 
+- (UITabBarController *)tabBarController {
+    
+    if (!_tabBarController) {
+        
+        _tabBarController = [[UITabBarController alloc] init];
+
+        if (_isRecruiterMode) {
+            _tabBarController.viewControllers = self.recruiterViewControllers;
+        } else {
+            _tabBarController.viewControllers = self.seekerViewControllers;
+        }
+    }
+    
+    return _tabBarController;
+}
+
+- (SettingsViewController *)settingsViewController {
+    
+    if (!_settingsViewController) {
+        _settingsViewController = [[SettingsViewController alloc] init];
+    }
+    
+    return _settingsViewController;
+}
 
 - (SeekerViewController *)seekerViewController {
     
@@ -124,23 +206,40 @@
     return _recruiterViewController;
 }
 
-- (SeekerOrRecruiterViewController *)seekerOrRecruiterViewController {
+- (CandidatesViewController *)candidatesViewController {
     
-    if (!_seekerOrRecruiterViewController) {
-        _seekerOrRecruiterViewController = [[SeekerOrRecruiterViewController alloc] init];
+    if (!_candidatesViewController) {
+        _candidatesViewController = [[CandidatesViewController alloc] init];
     }
     
-    return _seekerOrRecruiterViewController;
+    return _candidatesViewController;
 }
 
-- (UITabBarController *)tabBarController {
+- (JobsViewController *)jobsViewController {
     
-    if (!_tabBarController) {
-        _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:self.seekerOrRecruiterViewController, self.recruiterViewController, nil];
+    if (!_jobsViewController) {
+        _jobsViewController = [[JobsViewController alloc] init];
     }
     
-    return _tabBarController;
+    return _jobsViewController;
+}
+
+- (RecruiterMessagesViewController *)recruiterMessagesViewController {
+    
+    if (!_recruiterMessagesViewController) {
+        _recruiterMessagesViewController = [[RecruiterMessagesViewController alloc] init];
+    }
+    
+    return _recruiterMessagesViewController;
+}
+
+- (SeekerMessagesViewController *)seekerMessagesViewController {
+    
+    if (!_seekerMessagesViewController) {
+        _seekerMessagesViewController = [[SeekerMessagesViewController alloc] init];
+    }
+    
+    return _seekerMessagesViewController;
 }
 
 //------------------------------------------------------------------------------
@@ -181,6 +280,5 @@
 - (void)onSeekerDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
-
 
 @end
