@@ -36,6 +36,10 @@
 @property (nonatomic, strong) RecruiterMessagesViewController *recruiterMessagesViewController;
 @property (nonatomic, strong) SeekerMessagesViewController *seekerMessagesViewController;
 
+// Other private properties
+@property (nonatomic, strong) NSArray *recruiterViewControllers;
+@property (nonatomic, strong) NSArray *seekerViewControllers;
+
 @end
 
 @implementation AppDelegate
@@ -89,9 +93,57 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
 //------------------------------------------------------------------------------
-#pragma mark - Getters
+#pragma mark - Public Getters/Setters
 //------------------------------------------------------------------------------
+
+- (void)setIsRecruiterMode:(BOOL)isRecruiterMode {
+    
+    // If the value is not changing, return immediately.
+    if (isRecruiterMode == _isRecruiterMode)
+        return;
+    
+    // Set the new value.
+    _isRecruiterMode = isRecruiterMode;
+    
+    // Update the tab bar's content view controllers.
+    if (_isRecruiterMode) {
+        self.tabBarController.viewControllers = self.recruiterViewControllers;
+    } else {
+        self.tabBarController.viewControllers = self.seekerViewControllers;
+    }
+}
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Getters/Setters
+//------------------------------------------------------------------------------
+
+- (NSArray *)recruiterViewControllers {
+    
+    if (!_recruiterViewControllers) {
+        _recruiterViewControllers = [NSArray arrayWithObjects:
+                                     self.settingsViewController,
+                                     self.recruiterViewController,
+                                     self.candidatesViewController,
+                                     self.recruiterMessagesViewController,
+                                     nil];
+    }
+    return _recruiterViewControllers;
+}
+
+- (NSArray *)seekerViewControllers {
+    
+    if (!_seekerViewControllers) {
+        _seekerViewControllers = [NSArray arrayWithObjects:
+                                  self.settingsViewController,
+                                  self.seekerViewController,
+                                  self.jobsViewController,
+                                  self.seekerMessagesViewController,
+                                  nil];
+    }
+    return _seekerViewControllers;
+}
 
 - (UIViewController *)rootViewController {
     
@@ -114,13 +166,14 @@
 - (UITabBarController *)tabBarController {
     
     if (!_tabBarController) {
+        
         _tabBarController = [[UITabBarController alloc] init];
-        _tabBarController.viewControllers = [NSArray arrayWithObjects:
-                                             self.settingsViewController,
-                                             self.recruiterViewController,
-                                             self.candidatesViewController,
-                                             self.recruiterMessagesViewController,
-                                             nil];
+
+        if (_isRecruiterMode) {
+            _tabBarController.viewControllers = self.recruiterViewControllers;
+        } else {
+            _tabBarController.viewControllers = self.seekerViewControllers;
+        }
     }
     
     return _tabBarController;
@@ -227,6 +280,5 @@
 - (void)onSeekerDidLogout {
     self.window.rootViewController = self.logInViewController;
 }
-
 
 @end
