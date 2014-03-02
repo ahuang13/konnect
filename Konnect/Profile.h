@@ -18,6 +18,7 @@
 @property (nonatomic, strong, readonly) NSString *fullName;
 @property (nonatomic, strong) NSString *pictureUrl;
 @property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *linkedInId;
 
 @property (nonatomic, strong) NSArray *currentPositions;
 @property (nonatomic, strong) NSArray *educations;
