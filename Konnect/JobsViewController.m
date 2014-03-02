@@ -72,7 +72,7 @@
                     NSString *company = [object objectForKey:@"companyName"];
                     NSString *title = [object objectForKey:@"title"];
                 
-                    NSLog(@"Come work as a %@or %@!", title, company);
+                    NSLog(@"Come work as a %@ at %@!", title, company);
                 
                     [self.jobs addObject:object];
                 }
