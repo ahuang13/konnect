@@ -18,4 +18,6 @@
 
 - (void)initWithProfile:(Profile *)profile;
 
++ (CGFloat)heightForProfile:(Profile *)profile;
+
 @end

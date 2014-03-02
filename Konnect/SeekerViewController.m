@@ -79,7 +79,17 @@ static const NSInteger EDUCATIONS = 3;
 //------------------------------------------------------------------------------
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 200; // TODO
+
+    NSInteger sectionIndex = indexPath.section;
+    
+    switch (sectionIndex) {
+        case HEADER: {
+            return [SeekerProfileHeaderCell heightForProfile:self.currentUserProfile];
+        }
+        default: {
+            return 200;
+        }
+    }
 }
 
 //------------------------------------------------------------------------------

@@ -36,4 +36,9 @@
     // TODO: Set profile image URL
 }
 
++ (CGFloat)heightForProfile:(Profile *)profile {
+    CGFloat height = 25 + 80 + 10;
+    return height;
+}
+
 @end
