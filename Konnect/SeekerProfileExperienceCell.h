@@ -18,4 +18,6 @@
 
 - (void)initWithPosition:(CurrentPosition *)position;
 
++ (CGFloat)heightForPosition:(CurrentPosition *)position withWidth:(CGFloat)width;
+
 @end

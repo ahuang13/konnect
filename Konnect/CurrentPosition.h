@@ -12,8 +12,9 @@
 @interface CurrentPosition : NSObject
 
 @property (nonatomic, strong) NSString *title;
-//TODO @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, strong) Company *company;
+//TODO @property (nonatomic, strong) NSDate *startDate;
+@property (nonatomic, strong, readonly) NSString *dates;
 @property (nonatomic, strong) NSString *summary;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;

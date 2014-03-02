@@ -23,4 +23,14 @@
     return self;
 }
 
+// TODO: Format actual date object into string.
+- (NSString *)dates {
+    return @"#TEMP# January 2013 - Present";
+}
+
+// TODO: This is for debugging purposes only.
+- (NSString *)summary {
+    return nil;
+}
+
 @end

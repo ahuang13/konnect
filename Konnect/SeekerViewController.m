@@ -81,10 +81,17 @@ static const NSInteger EDUCATIONS = 3;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSInteger sectionIndex = indexPath.section;
+    NSInteger rowIndex = indexPath.row;
+
+    CGFloat cellWidth = tableView.frame.size.width;
     
     switch (sectionIndex) {
         case HEADER: {
             return [SeekerProfileHeaderCell heightForProfile:self.currentUserProfile];
+        }
+        case POSITIONS: {
+            CurrentPosition *position = self.currentUserProfile.currentPositions[rowIndex];
+            return [SeekerProfileExperienceCell heightForPosition:position withWidth:cellWidth];
         }
         default: {
             return 200;
