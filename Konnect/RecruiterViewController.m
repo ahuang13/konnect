@@ -29,6 +29,7 @@
 
 @property(nonatomic, retain) UINavigationController *navController;
 
+@property (strong, nonatomic) Profile *currentUser;
 @property (strong, nonatomic) Company *company;
 
 
@@ -66,12 +67,11 @@
     navigItem.rightBarButtonItem = doneItem;
     naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
     
-    [self loadJobProfile];
+    [self getCurrentUserCompany];
+    
     self.titleTextField.delegate = self;
     self.salaryTextField.delegate = self;
     self.locationTextField.delegate = self;
-    
-    [self getCurrentUserCompany];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,8 +105,29 @@
 }
 
 
-- (void) loadJobProfile {
-    //TODO load from parse
+- (BOOL)loadedJobProfileFromDatabase {
+    
+    if (!self.currentUser){
+        return NO;
+    }
+    
+    // Get parse object with the user's linkedin ir
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+    [profileQuery whereKey:@"userLinkedInId" equalTo:self.currentUser.linkedInId];
+    
+    __block BOOL foundProfile = NO;
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            PFObject *jobProfile = [objects objectAtIndex:0];
+            self.titleTextField.text = [jobProfile objectForKey:@"title"];
+            self.salaryTextField.text = [jobProfile objectForKey:@"salary"];
+            self.locationTextField.text = [jobProfile objectForKey:@"location"];
+
+            foundProfile = YES;
+        }
+    }];
+    
+    return foundProfile;
 }
 
 //------------------------------------------------------------------------------
@@ -133,9 +154,9 @@
     
     void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
-        Profile *currentUser = [[Profile alloc] initWithDictionary:response];
+        self.currentUser = [[Profile alloc] initWithDictionary:response];
         NSLog(@"current user %@", response);
-        CurrentPosition *currentPosition = [currentUser.currentPositions objectAtIndex:0];
+        CurrentPosition *currentPosition = [self.currentUser.currentPositions objectAtIndex:0];
         self.company = currentPosition.company;
         self.companyNameLabel.text = self.company.name;
         self.companySizeLabel.text = self.company.size;
@@ -168,6 +189,8 @@
         
         //NSString *imageUrl = company.logoUrl;
         //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
+        
+        [self loadedJobProfileFromDatabase];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -180,10 +203,9 @@
 
 - (void)createOrUpdateJob {
     
-    // Get parse object with the company's name and job title
+    // Get parse object with user's linkedin id
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-    [profileQuery whereKey:@"companyName" equalTo:self.companyNameLabel.text];
-    [profileQuery whereKey:@"title" equalTo:self.titleTextField.text];
+    [profileQuery whereKey:@"userLinkedInId" equalTo:self.currentUser.linkedInId];
     
     [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -191,7 +213,6 @@
                 
                 // If parse object doesnt exist, create it
                 PFObject *jobProfile = [PFObject objectWithClassName:@"JobProfile"];
-    
                 [jobProfile setObject:self.titleTextField.text forKey:@"title"];
                 [jobProfile setObject:self.locationTextField.text forKey:@"location"];
                 [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
@@ -199,6 +220,7 @@
                 [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
                 [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
                 [jobProfile setObject:self.company.logoUrl forKey:@"logoUrl"];
+                [jobProfile setObject:self.currentUser.linkedInId forKey:@"userLinkedInId"];
                 
                 // Save the new education profile
                 [jobProfile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
