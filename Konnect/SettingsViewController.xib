@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeekerOrRecruiterViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
                 <outlet property="seekerOrRecruiterSegmentedControl" destination="zXq-Sc-0kx" id="5iM-bn-hYS"/>
                 <outlet property="view" destination="1" id="3"/>

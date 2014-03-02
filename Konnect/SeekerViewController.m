@@ -47,6 +47,7 @@ static const NSInteger EDUCATIONS = 3;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self initTabBarItem];
     }
     return self;
 }
@@ -168,6 +169,15 @@ static const NSInteger EDUCATIONS = 3;
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
 
+- (void)initTabBarItem {
+    
+    NSString *title = @"My Profile";
+    UIImage *icon = [UIImage imageNamed:@"user_male4-50"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
+}
+
 - (void)tempGetCurrentUser {
     
     // Download the current user profile and set the app's current user.
@@ -201,8 +211,7 @@ static const NSInteger EDUCATIONS = 3;
 - (void)createOrUpdateCandidateProfile:(Profile *)profile {
     // Get parse object with the user's first and last name
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
-    [profileQuery whereKey:@"firstName" equalTo:profile.firstName];
-    [profileQuery whereKey:@"lastName" equalTo:profile.lastName];
+    [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];
 
     
     [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -215,6 +224,7 @@ static const NSInteger EDUCATIONS = 3;
                 [seekerProfile setObject:profile.firstName forKey:@"firstName"];
                 [seekerProfile setObject:profile.lastName forKey:@"lastName"];
                 [seekerProfile setObject:profile.location forKey:@"location"];
+                [seekerProfile setObject:profile.linkedInId forKey:@"linkedInId"];
                 
                 CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
                 [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];

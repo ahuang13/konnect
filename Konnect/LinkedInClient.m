@@ -116,7 +116,7 @@ static NSString *const ACCESS_TOKEN_KEY = @"accessTokenKey";
 - (void)currentUserWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id response))success
                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
     
-    static NSString *const END_POINT = @"people/~:(first-name,last-name,location:(name),picture-url,three-current-positions,skills,educations)";
+    static NSString *const END_POINT = @"people/~:(id,first-name,last-name,location:(name),picture-url,three-current-positions,skills,educations)";
     
     [self GET:END_POINT parameters:nil success:success failure:failure];
 }

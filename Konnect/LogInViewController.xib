@@ -14,13 +14,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HY-Sj-6OP">
-                    <rect key="frame" x="82" y="230" width="157" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="san_francisco_cityscape5719" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-oA-jZf">
+                    <rect key="frame" x="0.0" y="-6" width="320" height="574"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.13640234909999999" green="0.31076570939999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Login w/ LinkedIn">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrn-ie-9L1">
+                    <rect key="frame" x="0.0" y="77" width="320" height="70"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Konnect" translatesAutoresizingMaskIntoConstraints="NO" id="aLa-3F-GaG">
+                            <rect key="frame" x="65" y="12" width="191" height="46"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.24742904969999999" green="0.24742904969999999" blue="0.24742904969999999" alpha="0.19" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HY-Sj-6OP">
+                    <rect key="frame" x="67" y="196" width="186" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.23915553404911893" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <state key="normal" title=" Login w/ LinkedIn" image="InBug-30px-R"/>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.24742904969999999" green="0.24742904969999999" blue="0.24742904969999999" alpha="0.5" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="onLoginButtonClicked:" destination="-1" eventType="touchUpInside" id="MWx-12-rcB"/>
@@ -32,4 +48,9 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="InBug-30px-R" width="19" height="15"/>
+        <image name="Konnect" width="1071" height="259"/>
+        <image name="san_francisco_cityscape5719" width="703" height="1050"/>
+    </resources>
 </document>
