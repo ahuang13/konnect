@@ -29,7 +29,7 @@
 
 @property(nonatomic, retain) UINavigationController *navController;
 
-@property (weak, nonatomic) Company *company;
+@property (strong, nonatomic) Company *company;
 
 
 @end
@@ -114,6 +114,7 @@
 //------------------------------------------------------------------------------
 
 - (void) doneButtonPressed {
+    [self createOrUpdateJob];
     
 }
 
@@ -143,7 +144,7 @@
         NSLog(@"company id: %ld", (long)self.company.id);
         
         // Download company details to set description
-        [self getCompanyDetailsWithCompany:self.company];
+        [self getCompanyDetails];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -153,17 +154,17 @@
     [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
 }
 
-- (void)getCompanyDetailsWithCompany:(Company *) company{
+- (void)getCompanyDetails{
     
     // Download the current user's company profile and set the app's user company.
     void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
         NSLog(@"company detail: %@", response);
-        company.companyDetails = response;
-        self.descriptionLabel.text = company.description;
+        self.company.companyDetails = response;
+        self.descriptionLabel.text = self.company.description;
         
-        NSLog(@"company description: %@", company.description );
-        NSLog(@"company logo url: %@", company.logoUrl);
+        NSLog(@"company description: %@", self.company.description );
+        NSLog(@"company logo url: %@", self.company.logoUrl);
         
         //NSString *imageUrl = company.logoUrl;
         //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
@@ -173,15 +174,15 @@
         NSLog(@"Failed to download current company: %@", error);//error.localizedDescription);
     };
     
-    [[LinkedInClient instance] currentCompanyWithId: company.id success:success failure:failure];
+    [[LinkedInClient instance] currentCompanyWithId: self.company.id success:success failure:failure];
     
 }
 
-- (void)createOrUpdateJob:(Company *)company {
+- (void)createOrUpdateJob {
     
     // Get parse object with the company's name and job title
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-    [profileQuery whereKey:@"companyName" equalTo:company.name];
+    [profileQuery whereKey:@"companyName" equalTo:self.companyNameLabel.text];
     [profileQuery whereKey:@"title" equalTo:self.titleTextField.text];
     
     [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -194,10 +195,16 @@
                 [jobProfile setObject:self.titleTextField.text forKey:@"title"];
                 [jobProfile setObject:self.locationTextField.text forKey:@"location"];
                 [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
-                [jobProfile setObject:company.name forKey:@"companyName"];
-                [jobProfile setObject:company.size forKey:@"companySize"];
-                [jobProfile setObject:company.description forKey:@"description"];
-                [jobProfile setObject:company.logoUrl forKey:@"logoUrl"];
+                [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
+                [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
+                [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
+                [jobProfile setObject:self.company.logoUrl forKey:@"logoUrl"];
+                
+                // Save the new education profile
+                [jobProfile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                    }
+                }];
             }
         }
     }];
