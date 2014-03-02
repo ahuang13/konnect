@@ -16,9 +16,11 @@
 #import "CurrentPosition.h"
 #import "Parse/Parse.h"
 #import "UIImageView+AFNetworking.h"
+#import "AppDelegate.h"
 
 
 @interface RecruiterViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *companySizeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
@@ -80,6 +82,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+//------------------------------------------------------------------------------
+#pragma mark - Getters/Setters
+//------------------------------------------------------------------------------
+
 #pragma mark - UITextFieldDelegate Methods
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if (textField == self.titleTextField){
@@ -102,32 +108,6 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
-}
-
-
-- (BOOL)loadedJobProfileFromDatabase {
-    
-    if (!self.currentUser){
-        return NO;
-    }
-    
-    // Get parse object with the user's linkedin ir
-    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-    [profileQuery whereKey:@"userLinkedInId" equalTo:self.currentUser.linkedInId];
-    
-    __block BOOL foundProfile = NO;
-    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            PFObject *jobProfile = [objects objectAtIndex:0];
-            self.titleTextField.text = [jobProfile objectForKey:@"title"];
-            self.salaryTextField.text = [jobProfile objectForKey:@"salary"];
-            self.locationTextField.text = [jobProfile objectForKey:@"location"];
-
-            foundProfile = YES;
-        }
-    }];
-    
-    return foundProfile;
 }
 
 //------------------------------------------------------------------------------
@@ -155,6 +135,8 @@
     void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
         self.currentUser = [[Profile alloc] initWithDictionary:response];
+        [Profile setCurrentUser:self.currentUser];
+
         NSLog(@"current user %@", response);
         CurrentPosition *currentPosition = [self.currentUser.currentPositions objectAtIndex:0];
         self.company = currentPosition.company;
@@ -230,5 +212,26 @@
             }
         }
     }];
+}
+
+- (BOOL)loadedJobProfileFromDatabase {
+    
+    // Get parse object with the user's linkedin ir
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+    [profileQuery whereKey:@"userLinkedInId" equalTo:self.currentUser.linkedInId];
+    
+    __block BOOL foundProfile = NO;
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            PFObject *jobProfile = [objects objectAtIndex:0];
+            self.titleTextField.text = [jobProfile objectForKey:@"title"];
+            self.salaryTextField.text = [jobProfile objectForKey:@"salary"];
+            self.locationTextField.text = [jobProfile objectForKey:@"location"];
+            
+            foundProfile = YES;
+        }
+    }];
+    
+    return foundProfile;
 }
 @end

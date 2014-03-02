@@ -14,13 +14,14 @@
 #import "Company.h"
 #import "CurrentPosition.h"
 
+
 @implementation Profile
 
 //------------------------------------------------------------------------------
 #pragma mark - Constants
 //------------------------------------------------------------------------------
 
-NSString * const CURRENT_JOB_SEEKER_KEY = @"CurrentJobSeekerKey";
+NSString * const CURRENT_USER_KEY = @"CurrentUserKey";
 
 //------------------------------------------------------------------------------
 #pragma mark - Static Variables
@@ -37,7 +38,7 @@ static Profile *_currentUser;
     self = [super init];
     
     if (self) {
-        
+        self.data = dictionary;
         self.firstName = dictionary[@"firstName"];
         self.lastName = dictionary[@"lastName"];
         self.pictureUrl = dictionary[@"pictureUrl"];
@@ -49,6 +50,37 @@ static Profile *_currentUser;
     }
     
     return self;
+}
+
++ (Profile *)currentUser {
+    if (!_currentUser) {
+        NSData *userData = [[NSUserDefaults standardUserDefaults] dataForKey:CURRENT_USER_KEY];
+        if (userData) {
+            NSDictionary *userDictionary = [NSJSONSerialization JSONObjectWithData:userData options:NSJSONReadingMutableContainers error:nil];
+            _currentUser = [[Profile alloc] initWithDictionary:userDictionary];
+        }
+    }
+    
+    return _currentUser;
+}
+
++ (void)setCurrentUser:(Profile *)currentUser {
+    if (currentUser) {
+        NSData *userData = [NSJSONSerialization dataWithJSONObject:currentUser.data options:NSJSONWritingPrettyPrinted error:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:CURRENT_USER_KEY];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:CURRENT_USER_KEY];
+        [LinkedInClient instance].accessToken = nil;
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    if (!_currentUser && currentUser) {
+        _currentUser = currentUser; // Needs to be set before firing the notification
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGIN_NOTIFICATION object:nil];
+    } else if (_currentUser && !currentUser) {
+        _currentUser = currentUser; // Needs to be set before firing the notification
+        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGOUT_NOTIFICATION object:nil];
+    }
 }
 
 //------------------------------------------------------------------------------

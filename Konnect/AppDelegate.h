@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

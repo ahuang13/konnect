@@ -197,6 +197,7 @@ static const NSInteger EDUCATIONS = 3;
 
         
         self.currentUserProfile = currentUser;
+        [Profile setCurrentUser:currentUser];
         
         [self createOrUpdateCandidateProfile:currentUser];
     };
