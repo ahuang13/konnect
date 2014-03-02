@@ -24,8 +24,6 @@
 
 - (IBAction)onSignOutButtonClick:(UIButton *)sender;
 
-//@property (nonatomic, strong) NSMutableArray *sections;
-
 @end
 
 @implementation SeekerViewController
@@ -68,9 +66,6 @@ static const NSInteger EDUCATIONS = 3;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)onSignOutButtonClick {
-    [[LinkedInClient instance] setAccessToken:nil];
-}
 //------------------------------------------------------------------------------
 #pragma mark - IBAction Methods
 //------------------------------------------------------------------------------
@@ -264,8 +259,6 @@ static const NSInteger EDUCATIONS = 3;
             }
         }
     }];
-    
-    
 }
 
 @end
