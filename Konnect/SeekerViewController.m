@@ -133,7 +133,7 @@ static const NSInteger EDUCATIONS = 3;
 }
 
 //- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-//    
+//
 //}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -150,7 +150,7 @@ static const NSInteger EDUCATIONS = 3;
             
         case EDUCATIONS:
             return self.currentUserProfile.educations.count;
-        
+            
         default:
             return 0;
     }
@@ -194,7 +194,7 @@ static const NSInteger EDUCATIONS = 3;
         NSLog(@"education endYear: %@", education.endYear);
         CurrentPosition *position = [currentUser.currentPositions objectAtIndex:0];
         NSLog(@"companyName: %@", position.company.name);
-
+        
         
         self.currentUserProfile = currentUser;
         
@@ -212,32 +212,48 @@ static const NSInteger EDUCATIONS = 3;
     // Get parse object with the user's first and last name
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
     [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];
-
+    
     
     [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
         if (!error) {
+        
             if ([objects count] == 0) {
                 
                 // If parse object doesnt exist, create it
                 PFObject *seekerProfile = [PFObject objectWithClassName:@"SeekerProfile"];
                 
-                [seekerProfile setObject:profile.firstName forKey:@"firstName"];
-                [seekerProfile setObject:profile.lastName forKey:@"lastName"];
-                [seekerProfile setObject:profile.location forKey:@"location"];
-                [seekerProfile setObject:profile.linkedInId forKey:@"linkedInId"];
+                if (profile.firstName)
+                    [seekerProfile setObject:profile.firstName forKey:@"firstName"];
+                if (profile.lastName)
+                    [seekerProfile setObject:profile.lastName forKey:@"lastName"];
+                if (profile.headline)
+                    [seekerProfile setObject:profile.headline forKey:@"headline"];
+                if (profile.headline)
+                    [seekerProfile setObject:profile.location forKey:@"location"];
+                if (profile.summary)
+                    [seekerProfile setObject:profile.summary forKey:@"summary"];
+                if (profile.linkedInId)
+                    [seekerProfile setObject:profile.linkedInId forKey:@"linkedInId"];
                 
                 CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
-                [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];
-                [seekerProfile setObject:currentPosition.summary forKey:@"jobDescription"];
+                if (currentPosition.company.name)
+                    [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];
+                if (currentPosition.summary)
+                    [seekerProfile setObject:currentPosition.summary forKey:@"jobDescription"];
                 
                 // Create parse objects for educations
                 for (Education *education in profile.educations) {
                     
                     PFObject *pfeducation = [PFObject objectWithClassName:@"Education"];
-                    [pfeducation setObject:education.school forKey:@"schoolName"];
-                    [pfeducation setObject:education.degree forKey:@"degree"];
-                    [pfeducation setObject:education.major forKey:@"major"];
-                    [pfeducation setObject:seekerProfile forKey:@"seekerProfile"];
+                    if (education.school)
+                        [pfeducation setObject:education.school forKey:@"schoolName"];
+                    if (education.degree)
+                        [pfeducation setObject:education.degree forKey:@"degree"];
+                    if (education.major)
+                        [pfeducation setObject:education.major forKey:@"major"];
+                    if (seekerProfile)
+                        [pfeducation setObject:seekerProfile forKey:@"seekerProfile"];
                     
                     // Save the new education profile
                     [pfeducation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -248,7 +264,7 @@ static const NSInteger EDUCATIONS = 3;
             }
         }
     }];
-
+    
     
 }
 

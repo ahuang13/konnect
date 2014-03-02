@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong, readonly) NSString *fullName;
 @property (nonatomic, strong) NSString *pictureUrl;
+@property (nonatomic, strong) NSString *headline;
+@property (nonatomic, strong) NSString *summary;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *linkedInId;
 
