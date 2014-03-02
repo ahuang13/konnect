@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headlineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 - (void)initWithProfile:(Profile *)profile;

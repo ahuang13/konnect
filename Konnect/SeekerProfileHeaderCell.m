@@ -30,6 +30,7 @@
 - (void)initWithProfile:(Profile *)profile {
     
     self.nameLabel.text = profile.fullName;
+    self.headlineLabel.text = profile.headline;
     self.locationLabel.text = profile.location;
     
     // TODO: Set profile image URL

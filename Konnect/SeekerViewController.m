@@ -107,7 +107,7 @@ static const NSInteger EDUCATIONS = 3;
         }
         case SUMMARY: {
             UITableViewCell *cell = [tableView dequeueReusableSummaryCell];
-            cell.textLabel.text = @"<Summary>"; // TODO self.currentUserProfile.summary;
+            cell.textLabel.text = self.currentUserProfile.summary;
             return cell;
         }
         case POSITIONS: {
@@ -143,7 +143,7 @@ static const NSInteger EDUCATIONS = 3;
             return 1;
             
         case SUMMARY:
-            return 0;
+            return (self.currentUserProfile.summary == nil) ? 0 : 1;
             
         case POSITIONS:
             return self.currentUserProfile.currentPositions.count;
