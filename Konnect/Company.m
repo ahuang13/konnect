@@ -27,7 +27,6 @@
             self.industry = company[@"industry"];
         }
     }
-    
     return self;
 }
 

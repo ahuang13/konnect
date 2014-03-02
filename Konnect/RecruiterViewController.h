@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecruiterViewController : UIViewController
+@interface RecruiterViewController : UIViewController <UITextFieldDelegate>
 
 @end

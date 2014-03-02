@@ -14,6 +14,9 @@
 #import "AFHTTPRequestOperation.h"
 #import "LinkedInClient.h"
 #import "CurrentPosition.h"
+#import "Parse/Parse.h"
+#import "UIImageView+AFNetworking.h"
+
 
 @interface RecruiterViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *companyNameLabel;
@@ -23,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *salaryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+@property(nonatomic, retain) UINavigationController *navController;
 
 @property (weak, nonatomic) Company *company;
 
@@ -52,6 +57,20 @@
 {
     [super viewDidLoad];
     
+    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonPressed)];
+
+    [self.view addSubview:naviBarObj];
+    
+    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Job Listing"];
+    navigItem.rightBarButtonItem = doneItem;
+    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
+    
+    [self loadJobProfile];
+    self.titleTextField.delegate = self;
+    self.salaryTextField.delegate = self;
+    self.locationTextField.delegate = self;
+    
     [self getCurrentUserCompany];
 }
 
@@ -61,18 +80,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITextFieldDelegate Methods
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.titleTextField){
+        NSLog(@"title field is %@", textField.text);
+    }
+    else if (textField == self.salaryTextField){
+        NSLog(@"salary field is %@", textField.text);
+
+    }
+    else if (textField == self.locationTextField){
+        NSLog(@"location field is %@", textField.text);
+        
+    }
+    [self.view endEditing: YES];
+}
 //------------------------------------------------------------------------------
 #pragma mark - IBActions
 //------------------------------------------------------------------------------
 
-- (void)onSignOutButton {
-    [[LinkedInClient instance] setAccessToken:nil];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
+
+- (void) loadJobProfile {
+    //TODO load from parse
+}
 
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
+
+- (void) doneButtonPressed {
+    
+}
 
 - (void)initTabBarItem {
     
@@ -121,6 +164,9 @@
         
         NSLog(@"company description: %@", company.description );
         NSLog(@"company logo url: %@", company.logoUrl);
+        
+        //NSString *imageUrl = company.logoUrl;
+        //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -131,4 +177,29 @@
     
 }
 
+- (void)createOrUpdateJob:(Company *)company {
+    
+    // Get parse object with the company's name and job title
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+    [profileQuery whereKey:@"companyName" equalTo:company.name];
+    [profileQuery whereKey:@"title" equalTo:self.titleTextField.text];
+    
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count] == 0) {
+                
+                // If parse object doesnt exist, create it
+                PFObject *jobProfile = [PFObject objectWithClassName:@"JobProfile"];
+    
+                [jobProfile setObject:self.titleTextField.text forKey:@"title"];
+                [jobProfile setObject:self.locationTextField.text forKey:@"location"];
+                [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
+                [jobProfile setObject:company.name forKey:@"companyName"];
+                [jobProfile setObject:company.size forKey:@"companySize"];
+                [jobProfile setObject:company.description forKey:@"description"];
+                [jobProfile setObject:company.logoUrl forKey:@"logoUrl"];
+            }
+        }
+    }];
+}
 @end
