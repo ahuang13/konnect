@@ -172,7 +172,7 @@
         //NSString *imageUrl = company.logoUrl;
         //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
         
-        [self loadedJobProfileFromDatabase];
+        [self loadedJobProfileFromServer];
     };
     
     void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
@@ -214,7 +214,7 @@
     }];
 }
 
-- (BOOL)loadedJobProfileFromDatabase {
+- (BOOL)loadedJobProfileFromServer {
     
     // Get parse object with the user's linkedin ir
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
