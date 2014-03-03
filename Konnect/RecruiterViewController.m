@@ -207,10 +207,10 @@
                 if (self.companyNameLabel.text) {
                     [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
                 }
-                if (self.companySizeLabel) {
+                if (self.companySizeLabel.text) {
                     [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
                 }
-                if (self.description) {
+                if (self.descriptionLabel.text) {
                     [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
                 }
                 if (self.company.logoUrl) {
