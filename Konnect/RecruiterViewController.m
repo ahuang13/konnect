@@ -128,83 +128,89 @@
 - (void)getCompanyDetailsWithProfile:(Profile*)profile {
     
     // Load current company basics from profile
-    CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
-    Company *company = currentPosition.company;
+    if ([profile.currentPositions count] > 0) {
+        CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
+        Company *company = currentPosition.company;
     
-    // Download the current user's company profile and set the app's user company.
-    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
+        // Download the current user's company profile and set the app's user company.
+        void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
         
-        NSLog(@"company detail: %@", response);
-        company.companyDetails = response;
-        self.descriptionLabel.text = company.description;
+            NSLog(@"company detail: %@", response);
+            company.companyDetails = response;
+            self.descriptionLabel.text = company.description;
         
-        NSLog(@"company description: %@", company.description );
-        NSLog(@"company logo url: %@", company.logoUrl);
+            NSLog(@"company description: %@", company.description );
+            NSLog(@"company logo url: %@", company.logoUrl);
         
-        //NSString *imageUrl = company.logoUrl;
-        //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
+            //NSString *imageUrl = company.logoUrl;
+            //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
         
-        [self loadedJobProfileFromServerWithProfile:profile];
-    };
+            [self loadedJobProfileFromServerWithProfile:profile];
+        };
     
-    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failed to download current company: %@", error);//error.localizedDescription);
-    };
+        void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to download current company: %@", error);//error.localizedDescription);
+        };
     
 
-    [[LinkedInClient instance] currentCompanyWithId:currentPosition.company.id success:success failure:failure];
+        [[LinkedInClient instance] currentCompanyWithId:currentPosition.company.id success:success failure:failure];
+    }
     
 }
 
 - (void)createOrUpdateJob {
     
     Profile *profile = [Profile currentUser];
-    CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
-    Company *company = currentPosition.company;
+    // Load current company basics from profile
+    if ([profile.currentPositions count] > 0) {
+        
+        CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
+        Company *company = currentPosition.company;
     
-    // Get parse object with user's linkedin id
-    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-    [profileQuery whereKey:@"userLinkedInId" equalTo:profile.linkedInId];
+        // Get parse object with user's linkedin id
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+        [profileQuery whereKey:@"userLinkedInId" equalTo:profile.linkedInId];
     
-    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] == 0) {
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                if ([objects count] == 0) {
                 
-                // If parse object doesnt exist, create it
-                PFObject *jobProfile = [PFObject objectWithClassName:@"JobProfile"];
-                if (self.titleTextField.text) {
-                    [jobProfile setObject:self.titleTextField.text forKey:@"title"];
-                }
-                if (self.locationTextField.text) {
-                    [jobProfile setObject:self.locationTextField.text forKey:@"location"];
-                }
-                if (self.salaryTextField.text) {
-                    [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
-                }
-                if (self.companyNameLabel.text) {
-                    [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
-                }
-                if (self.companySizeLabel.text) {
-                    [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
-                }
-                if (self.descriptionLabel.text) {
-                    [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
-                }
-                if (company.logoUrl) {
-                    [jobProfile setObject:company.logoUrl forKey:@"logoUrl"];
-                }
-                if (profile.linkedInId) {
-                    [jobProfile setObject:profile.linkedInId forKey:@"userLinkedInId"];
-                }
-                
-                // Save the new education profile
-                [jobProfile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
+                    // If parse object doesnt exist, create it
+                    PFObject *jobProfile = [PFObject objectWithClassName:@"JobProfile"];
+                    if (self.titleTextField.text) {
+                        [jobProfile setObject:self.titleTextField.text forKey:@"title"];
                     }
-                }];
+                    if (self.locationTextField.text) {
+                        [jobProfile setObject:self.locationTextField.text forKey:@"location"];
+                    }
+                    if (self.salaryTextField.text) {
+                        [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
+                    }
+                    if (self.companyNameLabel.text) {
+                        [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
+                    }
+                    if (self.companySizeLabel.text) {
+                        [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
+                    }
+                    if (self.descriptionLabel.text) {
+                        [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
+                    }
+                    if (company.logoUrl) {
+                        [jobProfile setObject:company.logoUrl forKey:@"logoUrl"];
+                    }
+                    if (profile.linkedInId) {
+                        [jobProfile setObject:profile.linkedInId forKey:@"userLinkedInId"];
+                    }
+                
+                    // Save the new education profile
+                    [jobProfile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                        }
+                    }];
+                }
             }
-        }
-    }];
+        }];
+    }
 }
 
 - (BOOL)loadedJobProfileFromServerWithProfile:(Profile*)profile {
