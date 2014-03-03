@@ -13,6 +13,9 @@
 
 - (id)initWithDictionary: (NSDictionary *)dictionary;
 
++ (Profile *)currentUser;
++ (void)setCurrentUser:(Profile *)currentUser;
+
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong, readonly) NSString *fullName;

@@ -7,8 +7,15 @@
 //
 
 #import "CandidatesViewController.h"
+#import "Parse/Parse.h"
+
 
 @interface CandidatesViewController ()
+
+@property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) NSMutableArray *candidates;
+
+
 
 @end
 
@@ -46,6 +53,30 @@
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
+
+- (void)loadCandidates {
+    
+    // See current user profile to figure out what type of job to load
+
+    self.jobTitle = @"Software Engineer";
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+    [profileQuery whereKey:@"title" equalTo:self.jobTitle];
+        
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *object in objects)
+            {
+                NSString *firstName = [object objectForKey:@"firstName"];
+                NSString *lastName = [object objectForKey:@"lastName"];
+                NSString *company = [object objectForKey:@"companyName"];
+                    
+                NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
+                    
+                [self.candidates addObject:object];
+            }
+        }
+    }];
+}
 
 - (void)initTabBarItem {
     

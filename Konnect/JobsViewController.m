@@ -7,8 +7,15 @@
 //
 
 #import "JobsViewController.h"
+#import "Parse/Parse.h"
+#import "Profile.h"
+#import "CurrentPosition.h"
 
 @interface JobsViewController ()
+
+
+@property (strong, nonatomic) NSMutableArray *jobs;
+
 
 @end
 
@@ -34,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadJobs];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -46,6 +54,32 @@
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
+
+- (void)loadJobs {
+    
+    // See current user profile to figure out what type of job to load
+    Profile *userProfile = [Profile currentUser];
+    if (userProfile)
+    {
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+        CurrentPosition *currentPosition = [userProfile.currentPositions objectAtIndex:0];
+        [profileQuery whereKey:@"title" equalTo:currentPosition.title];
+    
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects)
+                {
+                    NSString *company = [object objectForKey:@"companyName"];
+                    NSString *title = [object objectForKey:@"title"];
+                
+                    NSLog(@"Come work as a %@ at %@!", title, company);
+                
+                    [self.jobs addObject:object];
+                }
+            }
+        }];
+    }
+}
 
 - (void)initTabBarItem {
     
