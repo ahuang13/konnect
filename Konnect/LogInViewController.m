@@ -15,6 +15,8 @@
 #import "Profile.h"
 #import "LinkedInClient.h"
 #import "Notifications.h"
+#import "CurrentPosition.h"
+#import "Education.h"
 
 @interface LogInViewController ()
 
@@ -34,100 +36,92 @@
 }
 
 //------------------------------------------------------------------------------
-#pragma mark - PFLogInViewControllerDelegate
-//------------------------------------------------------------------------------
-
-// Sent to the delegate to determine whether the log in request should be submitted to the server.
-- (BOOL)logInViewController:(PFLogInViewController *)logInController
-shouldBeginLogInWithUsername:(NSString *)username
-                   password:(NSString *)password {
-    
-    // Check if both fields are completed
-    if (username && password && username.length && password.length) {
-        return YES; // Begin login process
-    }
-    
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil)
-                                message:NSLocalizedString(@"Make sure you fill out all of the information!", nil)
-                               delegate:nil
-                      cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                      otherButtonTitles:nil] show];
-    
-    return NO; // Interrupt login process
-}
-
-// Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    NSLog(@"%@", user);
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
-}
-
-// Sent to the delegate when the log in attempt fails.
-- (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
-    NSLog(@"Failed to log in as recruiter: %@", error.localizedDescription);
-}
-
-// Sent to the delegate when the log in screen is dismissed.
-- (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
-    NSLog(@"User dismissed the recruiter login.");
-}
-
-//------------------------------------------------------------------------------
-#pragma mark - PFSignUpViewControllerDelegate Methods
-//------------------------------------------------------------------------------
-
-// Sent to the delegate to determine whether the sign up request should be submitted to the server.
-- (BOOL)signUpViewController:(PFSignUpViewController *)signUpController
-           shouldBeginSignUp:(NSDictionary *)info {
-    
-    BOOL informationComplete = YES;
-    
-    // loop through all of the submitted data
-    for (id key in info) {
-        NSString *field = [info objectForKey:key];
-        if (!field || !field.length) { // check completion
-            informationComplete = NO;
-            break;
-        }
-    }
-    
-    // Display an alert if a field wasn't completed
-    if (!informationComplete) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out all of the information!", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
-    }
-    
-    return informationComplete;
-}
-
-// Sent to the delegate when a PFUser is signed up.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController
-               didSignUpUser:(PFUser *)user {
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
-    NSLog(@"%@", user);
-    [[NSNotificationCenter defaultCenter] postNotificationName:RECRUITER_DID_LOGIN_NOTIFICATION object:nil];
-}
-
-// Sent to the delegate when the sign up attempt fails.
-- (void)signUpViewController:(PFSignUpViewController *)signUpController
-    didFailToSignUpWithError:(NSError *)error {
-    NSLog(@"Failed to sign up: %@", error.localizedDescription);
-}
-
-// Sent to the delegate when the sign up screen is dismissed.
-- (void)signUpViewControllerDidCancelSignUp:(PFSignUpViewController *)signUpController {
-    NSLog(@"User dismissed the recruiter sign-up.");
-}
-
-//------------------------------------------------------------------------------
 #pragma mark - IBAction Methods
 //------------------------------------------------------------------------------
 
 - (IBAction)onLoginButtonClicked:(UIButton *)sender {
     [[LIALinkedInHttpClient instance] login];
+    [self getCurrentUser];
 }
 
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)getCurrentUser {
+    
+    // Download the current user profile and set the app's current user.
+    
+    void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
+        
+        Profile *currentUser = [[Profile alloc] initWithDictionary:response];
+        [Profile setCurrentUser:currentUser];
+        
+        [self createOrUpdateCandidateProfile:currentUser];
+    };
+    
+    void (^failure)(AFHTTPRequestOperation *, NSError *) = ^void(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failed to download current user: %@", error.localizedDescription);
+    };
+    
+    [[LinkedInClient instance] currentUserWithSuccess:success failure:failure];
+}
+
+- (void)createOrUpdateCandidateProfile:(Profile *)profile {
+    // Get parse object with the user's first and last name
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+    [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];
+    
+    
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            
+            if ([objects count] == 0) {
+                
+                // If parse object doesnt exist, create it
+                PFObject *seekerProfile = [PFObject objectWithClassName:@"SeekerProfile"];
+                
+                if (profile.firstName)
+                    [seekerProfile setObject:profile.firstName forKey:@"firstName"];
+                if (profile.lastName)
+                    [seekerProfile setObject:profile.lastName forKey:@"lastName"];
+                if (profile.headline)
+                    [seekerProfile setObject:profile.headline forKey:@"headline"];
+                if (profile.headline)
+                    [seekerProfile setObject:profile.location forKey:@"location"];
+                if (profile.summary)
+                    [seekerProfile setObject:profile.summary forKey:@"summary"];
+                if (profile.linkedInId)
+                    [seekerProfile setObject:profile.linkedInId forKey:@"linkedInId"];
+                
+                CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
+                if (currentPosition.company.name)
+                    [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];
+                if (currentPosition.summary)
+                    [seekerProfile setObject:currentPosition.summary forKey:@"jobDescription"];
+                
+                // Create parse objects for educations
+                for (Education *education in profile.educations) {
+                    
+                    PFObject *pfeducation = [PFObject objectWithClassName:@"Education"];
+                    if (education.school)
+                        [pfeducation setObject:education.school forKey:@"schoolName"];
+                    if (education.degree)
+                        [pfeducation setObject:education.degree forKey:@"degree"];
+                    if (education.major)
+                        [pfeducation setObject:education.major forKey:@"major"];
+                    if (seekerProfile)
+                        [pfeducation setObject:seekerProfile forKey:@"seekerProfile"];
+                    
+                    // Save the new education profile
+                    [pfeducation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                        }
+                    }];
+                }
+            }
+        }
+    }];
+}
 @end
