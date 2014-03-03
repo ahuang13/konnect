@@ -195,14 +195,30 @@
                 
                 // If parse object doesnt exist, create it
                 PFObject *jobProfile = [PFObject objectWithClassName:@"JobProfile"];
-                [jobProfile setObject:self.titleTextField.text forKey:@"title"];
-                [jobProfile setObject:self.locationTextField.text forKey:@"location"];
-                [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
-                [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
-                [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
-                [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
-                [jobProfile setObject:self.company.logoUrl forKey:@"logoUrl"];
-                [jobProfile setObject:self.currentUser.linkedInId forKey:@"userLinkedInId"];
+                if (self.titleTextField.text) {
+                    [jobProfile setObject:self.titleTextField.text forKey:@"title"];
+                }
+                if (self.locationTextField.text) {
+                    [jobProfile setObject:self.locationTextField.text forKey:@"location"];
+                }
+                if (self.salaryTextField.text) {
+                    [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
+                }
+                if (self.companyNameLabel.text) {
+                    [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
+                }
+                if (self.companySizeLabel) {
+                    [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
+                }
+                if (self.description) {
+                    [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
+                }
+                if (self.company.logoUrl) {
+                    [jobProfile setObject:self.company.logoUrl forKey:@"logoUrl"];
+                }
+                if (self.currentUser.linkedInId) {
+                    [jobProfile setObject:self.currentUser.linkedInId forKey:@"userLinkedInId"];
+                }
                 
                 // Save the new education profile
                 [jobProfile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
