@@ -73,14 +73,6 @@ static Profile *_currentUser;
         [LinkedInClient instance].accessToken = nil;
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    if (!_currentUser && currentUser) {
-        _currentUser = currentUser; // Needs to be set before firing the notification
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGIN_NOTIFICATION object:nil];
-    } else if (_currentUser && !currentUser) {
-        _currentUser = currentUser; // Needs to be set before firing the notification
-        [[NSNotificationCenter defaultCenter] postNotificationName:SEEKER_DID_LOGOUT_NOTIFICATION object:nil];
-    }
 }
 
 //------------------------------------------------------------------------------
