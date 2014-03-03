@@ -30,9 +30,15 @@
 - (void)initWithProfile:(Profile *)profile {
     
     self.nameLabel.text = profile.fullName;
+    self.headlineLabel.text = profile.headline;
     self.locationLabel.text = profile.location;
     
     // TODO: Set profile image URL
+}
+
++ (CGFloat)heightForProfile:(Profile *)profile {
+    CGFloat height = 25 + 80 + 10;
+    return height;
 }
 
 @end

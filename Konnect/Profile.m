@@ -41,6 +41,8 @@ static Profile *_currentUser;
         self.firstName = dictionary[@"firstName"];
         self.lastName = dictionary[@"lastName"];
         self.pictureUrl = dictionary[@"pictureUrl"];
+        self.headline = dictionary[@"headline"];
+        self.summary = dictionary[@"summary"];
         self.location = dictionary[@"location"][@"name"];
         self.linkedInId = dictionary[@"id"];
         
