@@ -66,6 +66,7 @@ static Profile *_currentUser;
 
 + (void)setCurrentUser:(Profile *)currentUser {
     if (currentUser) {
+        _currentUser = currentUser;
         NSData *userData = [NSJSONSerialization dataWithJSONObject:currentUser.data options:NSJSONWritingPrettyPrinted error:nil];
         [[NSUserDefaults standardUserDefaults] setObject:userData forKey:CURRENT_USER_KEY];
     } else {
