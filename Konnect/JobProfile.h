@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSString *logoUrl;
 @property (nonatomic, strong) NSString *salary;
 
+@property (nonatomic, strong) PFObject *pfObject;
+
+
 
 
 - (id)initWithPFObject: (PFObject *)pfObject;

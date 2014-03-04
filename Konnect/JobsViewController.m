@@ -76,7 +76,7 @@
                 
                     NSLog(@"Come work as a %@ at %@!", title, company);
                 
-                    [self.jobs addObject:object];
+                    [self.jobs addObject:jobProfile];
                 }
             }
         }];

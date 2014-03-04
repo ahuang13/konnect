@@ -8,6 +8,8 @@
 
 #import "CandidatesViewController.h"
 #import "Parse/Parse.h"
+#import "Profile.h"
+#import "CurrentPosition.h"
 
 
 @interface CandidatesViewController ()
@@ -41,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadCandidates];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -64,15 +67,27 @@
         
     [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            for (PFObject *object in objects)
+            for (PFObject *seekerProfile in objects)
             {
-                NSString *firstName = [object objectForKey:@"firstName"];
-                NSString *lastName = [object objectForKey:@"lastName"];
-                NSString *company = [object objectForKey:@"companyName"];
+                //Load the candidates educations
+                PFQuery *educationQuery = [PFQuery queryWithClassName:@"Education"];
+                [educationQuery whereKey:@"seekerProfile" equalTo:seekerProfile];
+                
+                [educationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    if (!error) {
+                        
+                        //Create profile out of pfobject
+                        Profile *candidateProfile = [[Profile alloc] initWithPFObject:seekerProfile educations:objects];
+                        NSString *firstName = candidateProfile.firstName;
+                        NSString *lastName = candidateProfile.lastName;
+                        CurrentPosition *currentPosition = [candidateProfile.currentPositions objectAtIndex:0];
+                        NSString *company = currentPosition.company.name;
                     
-                NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
+                        NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
                     
-                [self.candidates addObject:object];
+                        [self.candidates addObject:candidateProfile];
+                    }
+                }];
             }
         }
     }];

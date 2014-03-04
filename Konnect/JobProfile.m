@@ -14,6 +14,7 @@
 - (id)initWithPFObject: (PFObject *)pfObject {
     self = [super init];
     if (self) {
+        _pfObject = pfObject;
         _companyName = [pfObject objectForKey:@"companyName"];
         _companySize = [pfObject objectForKey:@"companySize"];
         _description = [pfObject objectForKey:@"description"];

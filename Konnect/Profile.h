@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "RestObject.h"
+#import "Parse/Parse.h"
 
 @interface Profile : RestObject
 
 - (id)initWithDictionary: (NSDictionary *)dictionary;
+- (id)initWithPFObject: (PFObject *)pfObject educations:(NSArray *)educations;
+
 
 + (Profile *)currentUser;
 + (void)setCurrentUser:(Profile *)currentUser;
@@ -25,8 +28,13 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *linkedInId;
 
-@property (nonatomic, strong) NSArray *currentPositions;
-@property (nonatomic, strong) NSArray *educations;
+@property (nonatomic, strong) NSMutableArray *currentPositions;
+@property (nonatomic, strong) NSMutableArray *educations;
+
+@property (nonatomic, strong) PFObject *pfObject;
+
+
+
 
 @end
 
