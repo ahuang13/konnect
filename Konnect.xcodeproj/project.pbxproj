@@ -59,6 +59,7 @@
 		A6446A3C18B70F6900C81CC0 /* Education.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A3B18B70F6900C81CC0 /* Education.m */; };
 		A6446A3F18B70F8B00C81CC0 /* CurrentPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */; };
 		A6446A4218B70FAE00C81CC0 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A4118B70FAE00C81CC0 /* Company.m */; };
+		A651BEA918C57CBA00F552A8 /* JobProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEA818C57CBA00F552A8 /* JobProfile.m */; };
 		A655470918C2C6BD00F3D8EC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A655470818C2C6BD00F3D8EC /* Parse.framework */; };
 		A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */; };
 		A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */; };
@@ -156,6 +157,8 @@
 		A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPosition.m; sourceTree = "<group>"; };
 		A6446A4018B70FAE00C81CC0 /* Company.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
 		A6446A4118B70FAE00C81CC0 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		A651BEA718C57CBA00F552A8 /* JobProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobProfile.h; sourceTree = "<group>"; };
+		A651BEA818C57CBA00F552A8 /* JobProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobProfile.m; sourceTree = "<group>"; };
 		A655470818C2C6BD00F3D8EC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
 		A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInApplication.m; sourceTree = "<group>"; };
@@ -411,6 +414,8 @@
 				A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */,
 				A6446A4018B70FAE00C81CC0 /* Company.h */,
 				A6446A4118B70FAE00C81CC0 /* Company.m */,
+				A651BEA718C57CBA00F552A8 /* JobProfile.h */,
+				A651BEA818C57CBA00F552A8 /* JobProfile.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -567,6 +572,7 @@
 				92219EB918C1FE78000D48C7 /* RecruiterMessagesViewController.m in Sources */,
 				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
+				A651BEA918C57CBA00F552A8 /* JobProfile.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
 				92219EAF18C1FDEC000D48C7 /* CandidatesViewController.m in Sources */,
 				A614E13E18BC5FDF0087D781 /* SettingsViewController.m in Sources */,

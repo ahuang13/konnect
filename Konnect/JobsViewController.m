@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "Profile.h"
 #import "CurrentPosition.h"
+#import "JobProfile.h"
 
 @interface JobsViewController ()
 
@@ -69,8 +70,9 @@
             if (!error) {
                 for (PFObject *object in objects)
                 {
-                    NSString *company = [object objectForKey:@"companyName"];
-                    NSString *title = [object objectForKey:@"title"];
+                    JobProfile *jobProfile = [[JobProfile alloc] initWithPFObject:object];
+                    NSString *company = jobProfile.companyName;
+                    NSString *title = jobProfile.title;
                 
                     NSLog(@"Come work as a %@ at %@!", title, company);
                 
