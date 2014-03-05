@@ -57,15 +57,6 @@
 {
     [super viewDidLoad];
     
-    UINavigationBar *naviBarObj = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonPressed)];
-
-    [self.view addSubview:naviBarObj];
-    
-    UINavigationItem *navigItem = [[UINavigationItem alloc] initWithTitle:@"Job Listing"];
-    navigItem.rightBarButtonItem = doneItem;
-    naviBarObj.items = [NSArray arrayWithObjects: navigItem,nil];
-    
     [self getCompanyDetailsWithProfile:[Profile currentUser]];
     
     self.titleTextField.delegate = self;
@@ -186,12 +177,12 @@
                     if (self.salaryTextField.text) {
                         [jobProfile setObject:self.salaryTextField.text forKey:@"salary"];
                     }
-                    if (self.companyNameLabel.text) {
+                    /*if (self.companyNameLabel.text) {
                         [jobProfile setObject:self.companyNameLabel.text forKey:@"companyName"];
                     }
                     if (self.companySizeLabel.text) {
                         [jobProfile setObject:self.companySizeLabel.text forKey:@"companySize"];
-                    }
+                    }*/
                     if (self.descriptionLabel.text) {
                         [jobProfile setObject:self.descriptionLabel.text forKey:@"description"];
                     }

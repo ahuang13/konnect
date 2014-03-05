@@ -46,6 +46,10 @@
 		92EFA80E18B1B0DC005640B0 /* RecruiterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */; };
 		92EFA80F18B1B0DC005640B0 /* RecruiterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */; };
 		9CE8E8BA8BF24643A9BB185B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B42B954BAD2B447DA8987B0F /* libPods.a */; };
+		A613327C18C7A1FF00C1DFD6 /* SingleCandidateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A613327A18C7A1FF00C1DFD6 /* SingleCandidateViewController.m */; };
+		A613327D18C7A1FF00C1DFD6 /* SingleCandidateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A613327B18C7A1FF00C1DFD6 /* SingleCandidateViewController.xib */; };
+		A613328118C7A20B00C1DFD6 /* SingleJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A613327F18C7A20B00C1DFD6 /* SingleJobViewController.m */; };
+		A613328218C7A20B00C1DFD6 /* SingleJobViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A613328018C7A20B00C1DFD6 /* SingleJobViewController.xib */; };
 		A614E13E18BC5FDF0087D781 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A614E13C18BC5FDF0087D781 /* SettingsViewController.m */; };
 		A614E13F18BC5FDF0087D781 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A614E13D18BC5FDF0087D781 /* SettingsViewController.xib */; };
 		A640205A18A7272700A90BE3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A640205918A7272700A90BE3 /* AudioToolbox.framework */; };
@@ -152,6 +156,12 @@
 		92EFA80B18B1B0DC005640B0 /* RecruiterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruiterViewController.h; sourceTree = "<group>"; };
 		92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruiterViewController.m; sourceTree = "<group>"; };
 		92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecruiterViewController.xib; sourceTree = "<group>"; };
+		A613327918C7A1FF00C1DFD6 /* SingleCandidateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCandidateViewController.h; sourceTree = "<group>"; };
+		A613327A18C7A1FF00C1DFD6 /* SingleCandidateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCandidateViewController.m; sourceTree = "<group>"; };
+		A613327B18C7A1FF00C1DFD6 /* SingleCandidateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleCandidateViewController.xib; sourceTree = "<group>"; };
+		A613327E18C7A20B00C1DFD6 /* SingleJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleJobViewController.h; sourceTree = "<group>"; };
+		A613327F18C7A20B00C1DFD6 /* SingleJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleJobViewController.m; sourceTree = "<group>"; };
+		A613328018C7A20B00C1DFD6 /* SingleJobViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleJobViewController.xib; sourceTree = "<group>"; };
 		A614E13B18BC5FDF0087D781 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		A614E13C18BC5FDF0087D781 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		A614E13D18BC5FDF0087D781 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -406,6 +416,9 @@
 		92A8374118C78AE5002B2BEC /* RecruiterBrowse */ = {
 			isa = PBXGroup;
 			children = (
+				A613327918C7A1FF00C1DFD6 /* SingleCandidateViewController.h */,
+				A613327A18C7A1FF00C1DFD6 /* SingleCandidateViewController.m */,
+				A613327B18C7A1FF00C1DFD6 /* SingleCandidateViewController.xib */,
 				92219EAC18C1FDEC000D48C7 /* CandidatesViewController.h */,
 				92219EAD18C1FDEC000D48C7 /* CandidatesViewController.m */,
 				92A8373418C77C27002B2BEC /* CandidatesContainerViewController.h */,
@@ -417,6 +430,9 @@
 		92A8374218C78B01002B2BEC /* SeekerBrowse */ = {
 			isa = PBXGroup;
 			children = (
+				A613327E18C7A20B00C1DFD6 /* SingleJobViewController.h */,
+				A613327F18C7A20B00C1DFD6 /* SingleJobViewController.m */,
+				A613328018C7A20B00C1DFD6 /* SingleJobViewController.xib */,
 				92219EB118C1FE36000D48C7 /* JobsViewController.h */,
 				92219EB218C1FE36000D48C7 /* JobsViewController.m */,
 				92219EB318C1FE36000D48C7 /* JobsViewController.xib */,
@@ -613,9 +629,11 @@
 				9252EB7A189E1A8A00DB6798 /* InfoPlist.strings in Resources */,
 				921BBBCD18BBBBD600C727F1 /* SeekerProfileEducationCell.xib in Resources */,
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
+				A613327D18C7A1FF00C1DFD6 /* SingleCandidateViewController.xib in Resources */,
 				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
 				92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */,
 				A614E13F18BC5FDF0087D781 /* SettingsViewController.xib in Resources */,
+				A613328218C7A20B00C1DFD6 /* SingleJobViewController.xib in Resources */,
 				92219EBF18C1FECD000D48C7 /* SeekerMessagesViewController.xib in Resources */,
 				92219EBA18C1FE78000D48C7 /* RecruiterMessagesViewController.xib in Resources */,
 				9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */,
@@ -700,11 +718,13 @@
 				921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */,
 				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
+				A613327C18C7A1FF00C1DFD6 /* SingleCandidateViewController.m in Sources */,
 				921BBBC918BBBBA800C727F1 /* SeekerProfileEducationCell.m in Sources */,
 				92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */,
 				921BBBC118BAE7E100C727F1 /* SeekerProfileExperienceCell.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
 				A6446A4218B70FAE00C81CC0 /* Company.m in Sources */,
+				A613328118C7A20B00C1DFD6 /* SingleJobViewController.m in Sources */,
 				A67A27F518AE83C6004551DF /* LIALinkedInHttpClient.m in Sources */,
 				92EFA80318B17DD5005640B0 /* SeekerViewController.m in Sources */,
 				A67A27F618AE83C6004551DF /* NSString+LIAEncode.m in Sources */,
