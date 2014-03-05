@@ -114,6 +114,7 @@
                     
                         NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
                         [self.candidates addObject:candidateProfile];
+                        [self selectCandidate:candidateProfile];
                     }
                 }];
             }
@@ -122,29 +123,20 @@
 }
 
 - (void)selectCandidate:(Profile *) profile {
-    // Get parse object with the profile's linkedInId
-    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
-    [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];
-    
-    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            if ([objects count] > 0) {
-                PFObject *recruiterSelection = [PFObject objectWithClassName:@"RecruiterSelection"];
-                PFObject *seekerProfile = [objects objectAtIndex:0];
-                
-                [recruiterSelection setObject:seekerProfile forKey:@"SeekerProfile"];
-                [recruiterSelection setObject:self.pfJobProfile forKey:@"JobProfile"];
-                
-                // Save the new recruiterSelection
-                [recruiterSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                    if (!error) {
-                    }
-                }];
-                
+    Profile *currentUser = [Profile currentUser];
+    if(currentUser) {
+        
+        PFObject *recruiterSelection = [PFObject objectWithClassName:@"RecruiterSelection"];
+        
+        [recruiterSelection setObject:currentUser.linkedInId forKey:@"recruiterLinkedInId"];
+        [recruiterSelection setObject:profile.linkedInId forKey:@"seekerLinkedInId"];
+        
+        // Save the new seekerSelection
+        [recruiterSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
             }
-            
-        }
-    }];
+        }];
+    }
 }
 
 
