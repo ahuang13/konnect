@@ -171,6 +171,8 @@
                          [self.delegate didLikeViewController:self.topViewController];
                          [self removeTopViewController];
                          [self addViewController:[self.dataSource nextViewController]];
+                         
+                         [self animateLikeBubble];
                      }];
     
 }
@@ -192,6 +194,8 @@
                          [self.delegate didDislikeViewController:self.topViewController];
                          [self removeTopViewController];
                          [self addViewController:[self.dataSource nextViewController]];
+                         
+                         [self animatePassBubble];
                      }];
     
 }
@@ -211,6 +215,71 @@
                          self.topViewController.view.frame = self.view.frame;
                      }
                      completion:nil];
+}
+
+- (void)animateLikeBubble {
+    
+    CGPoint center = CGPointMake(self.view.frame.size.width - 90 / 2,
+                                 self.view.frame.size.height / 2);
+    
+    UIImage *likeBubbleImage = [UIImage imageNamed:@"likeBubble"];
+    UIImageView *likeView = [[UIImageView alloc] initWithImage:likeBubbleImage];
+    
+    [self animateBubbleForView:likeView atStartPoint:center];
+}
+
+- (void)animatePassBubble {
+    
+    CGPoint center = CGPointMake(90 / 2,
+                                 self.view.frame.size.height / 2);
+    
+    UIImage *passBubbleImage = [UIImage imageNamed:@"passBubble"];
+    UIImageView *passView = [[UIImageView alloc] initWithImage:passBubbleImage];
+    
+    [self animateBubbleForView:passView atStartPoint:center];
+}
+
+- (void)animateBubbleForView:(UIView *)view
+              atStartPoint:(CGPoint)startPoint {
+    
+    CGFloat endWidth = 75;
+    CGFloat endHeight = 25;
+
+    CGRect startFrame = CGRectMake(startPoint.x, startPoint.y, 0, 0);
+    CGRect endFrame = CGRectMake(startPoint.x - endWidth/2, startPoint.y - endHeight/2, endWidth, endHeight);
+    
+    view.frame = startFrame;
+    
+    [self.view addSubview:view];
+    
+    [UIView animateWithDuration:0.25
+                          delay:0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:0.5
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         view.frame = endFrame;
+                     }
+                     completion:^(BOOL finished) {
+                         [self animateFloatUp:view];
+                     }];
+}
+
+- (void)animateFloatUp:(UIView *)view {
+    
+    CGRect endFrame = CGRectMake(view.frame.origin.x,
+                                 view.frame.origin.y - 30,
+                                 view.frame.size.width,
+                                 view.frame.size.height);
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         view.frame = endFrame;
+                         view.alpha = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [view removeFromSuperview];
+                     }];
 }
 
 @end
