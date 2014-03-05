@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *userLinkedInId;
+
 
 @property (nonatomic, strong) NSString *logoUrl;
 @property (nonatomic, strong) NSString *salary;

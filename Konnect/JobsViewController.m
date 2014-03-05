@@ -63,23 +63,28 @@
     if (userProfile)
     {
         PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-        CurrentPosition *currentPosition = [userProfile.currentPositions objectAtIndex:0];
-        [profileQuery whereKey:@"title" equalTo:currentPosition.title];
+        if ([userProfile.currentPositions count] > 0) {
+            CurrentPosition *currentPosition = [userProfile.currentPositions objectAtIndex:0];
+            [profileQuery whereKey:@"title" equalTo:currentPosition.title];
     
-        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                for (PFObject *object in objects)
-                {
-                    JobProfile *jobProfile = [[JobProfile alloc] initWithPFObject:object];
-                    NSString *company = jobProfile.companyName;
-                    NSString *title = jobProfile.title;
+            [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    for (PFObject *object in objects)
+                    {
+                        JobProfile *jobProfile = [[JobProfile alloc] initWithPFObject:object];
+                        NSString *company = jobProfile.companyName;
+                        NSString *title = jobProfile.title;
                 
-                    NSLog(@"Come work as a %@ at %@!", title, company);
+                        NSLog(@"Come work as a %@ at %@!", title, company);
                 
-                    [self.jobs addObject:jobProfile];
+                        [self.jobs addObject:jobProfile];
+                    }
                 }
-            }
-        }];
+            }];
+        }
+        else {
+            NSLog(@"The position the user is seeking is unknown");
+        }
     }
 }
 

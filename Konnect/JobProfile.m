@@ -34,6 +34,7 @@ static JobProfile *_currentJobProfile;
     
     if (self) {
         _data = dictionary;
+        _userLinkedInId = dictionary[@"userLinkedInId"];
         _companyName = dictionary[@"companyName"];
         _companySize = dictionary[@"companySize"];
         _description = dictionary[@"description"];
@@ -51,6 +52,7 @@ static JobProfile *_currentJobProfile;
     self = [super init];
     if (self) {
         _data = [self dictionaryWithPFObject:pfObject];
+        _userLinkedInId = [pfObject objectForKey:@"userLinkedInId"];
         _companyName = [pfObject objectForKey:@"companyName"];
         _companySize = [pfObject objectForKey:@"companySize"];
         _description = [pfObject objectForKey:@"description"];
