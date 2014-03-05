@@ -16,6 +16,7 @@
 
 
 @property (strong, nonatomic) NSMutableArray *jobs;
+@property (strong, nonatomic) PFObject *pfSeekerProfile;
 
 
 @end
@@ -42,8 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadSeeker];
     [self loadJobs];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,41 +53,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//------------------------------------------------------------------------------
-#pragma mark - Private Methods
-//------------------------------------------------------------------------------
-
-- (void)loadJobs {
-    
-    // See current user profile to figure out what type of job to load
-    Profile *userProfile = [Profile currentUser];
-    if (userProfile)
-    {
-        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
-        if ([userProfile.currentPositions count] > 0) {
-            CurrentPosition *currentPosition = [userProfile.currentPositions objectAtIndex:0];
-            [profileQuery whereKey:@"title" equalTo:currentPosition.title];
-    
-            [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if (!error) {
-                    for (PFObject *object in objects)
-                    {
-                        JobProfile *jobProfile = [[JobProfile alloc] initWithPFObject:object];
-                        NSString *company = jobProfile.companyName;
-                        NSString *title = jobProfile.title;
-                
-                        NSLog(@"Come work as a %@ at %@!", title, company);
-                
-                        [self.jobs addObject:jobProfile];
-                    }
-                }
-            }];
-        }
-        else {
-            NSLog(@"The position the user is seeking is unknown");
-        }
-    }
-}
 
 - (void)initTabBarItem {
     
@@ -96,5 +62,86 @@
     
     self.tabBarItem = tabBarItem;
 }
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)loadSeeker {
+    Profile *currentUser = [Profile currentUser];
+    if (currentUser) {
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+        [profileQuery whereKey:@"linkedInId" equalTo:currentUser.linkedInId];
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects)
+                {
+                    NSString *firstName = [object objectForKey:@"firstName"];
+                    
+                    NSLog(@"%@ would like a job!", firstName);
+                    
+                    self.pfSeekerProfile = object;
+                    
+                }
+            }
+        }];
+    }
+}
+
+- (void) loadJobs {
+    // See current user profile to figure out what type of job to load
+    Profile *userProfile = [Profile currentUser];
+    if (userProfile && [userProfile.currentPositions count] > 0) {
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+        CurrentPosition *currentPosition = [userProfile.currentPositions objectAtIndex:0];
+        [profileQuery whereKey:@"title" equalTo:currentPosition.title];
+    
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects) {
+                    JobProfile *jobProfile = [[JobProfile alloc] initWithPFObject:object];
+                    NSString *company = jobProfile.companyName;
+                    NSString *title = jobProfile.title;
+                
+                    NSLog(@"Come work as a %@ at %@!", title, company);
+                
+                    [self.jobs addObject:jobProfile];
+                }
+            }
+        }];
+    }
+    else {
+        NSLog(@"The position the user is seeking is unknown");
+    }
+}
+
+
+- (void)selectJob:(JobProfile *) jobProfile {
+    // Get parse object with the jobProfile's linkedInId
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+    [profileQuery whereKey:@"userLinkedInId" equalTo:jobProfile.userLinkedInId];
+    
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count] > 0) {
+                PFObject *seekerSelection = [PFObject objectWithClassName:@"SeekerSelection"];
+                PFObject *jobProfile = [objects objectAtIndex:0];
+                
+                [seekerSelection setObject:jobProfile forKey:@"JobProfile"];
+                [seekerSelection setObject:self.pfSeekerProfile forKey:@"SeekerProfile"];
+                
+                // Save the new seekerSelection profile
+                [seekerSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                    }
+                }];
+                
+            }
+            
+        }
+    }];
+    
+}
+
 
 @end
