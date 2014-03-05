@@ -60,6 +60,13 @@
 		A6446A3F18B70F8B00C81CC0 /* CurrentPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A3E18B70F8B00C81CC0 /* CurrentPosition.m */; };
 		A6446A4218B70FAE00C81CC0 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = A6446A4118B70FAE00C81CC0 /* Company.m */; };
 		A651BEA918C57CBA00F552A8 /* JobProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEA818C57CBA00F552A8 /* JobProfile.m */; };
+		A651BEBA18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEAC18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m */; };
+		A651BEBB18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEAE18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.m */; };
+		A651BEBC18C6DD1400F552A8 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEB018C6DD1400F552A8 /* UIAlertView+AFNetworking.m */; };
+		A651BEBD18C6DD1400F552A8 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEB218C6DD1400F552A8 /* UIButton+AFNetworking.m */; };
+		A651BEBE18C6DD1400F552A8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEB418C6DD1400F552A8 /* UIImageView+AFNetworking.m */; };
+		A651BEBF18C6DD1400F552A8 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEB718C6DD1400F552A8 /* UIProgressView+AFNetworking.m */; };
+		A651BEC018C6DD1400F552A8 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A651BEB918C6DD1400F552A8 /* UIWebView+AFNetworking.m */; };
 		A655470918C2C6BD00F3D8EC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A655470818C2C6BD00F3D8EC /* Parse.framework */; };
 		A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */; };
 		A67A27F418AE83C6004551DF /* LIALinkedInAuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A27EB18AE83C6004551DF /* LIALinkedInAuthorizationViewController.m */; };
@@ -159,6 +166,21 @@
 		A6446A4118B70FAE00C81CC0 /* Company.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		A651BEA718C57CBA00F552A8 /* JobProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobProfile.h; sourceTree = "<group>"; };
 		A651BEA818C57CBA00F552A8 /* JobProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobProfile.m; sourceTree = "<group>"; };
+		A651BEAB18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		A651BEAC18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		A651BEAD18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEAE18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		A651BEAF18C6DD1400F552A8 /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB018C6DD1400F552A8 /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
+		A651BEB118C6DD1400F552A8 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB218C6DD1400F552A8 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		A651BEB318C6DD1400F552A8 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB418C6DD1400F552A8 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		A651BEB518C6DD1400F552A8 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB618C6DD1400F552A8 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB718C6DD1400F552A8 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		A651BEB818C6DD1400F552A8 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		A651BEB918C6DD1400F552A8 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		A655470818C2C6BD00F3D8EC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A67A27E818AE83C6004551DF /* LIALinkedInApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIALinkedInApplication.h; sourceTree = "<group>"; };
 		A67A27E918AE83C6004551DF /* LIALinkedInApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIALinkedInApplication.m; sourceTree = "<group>"; };
@@ -218,6 +240,7 @@
 		9252EB63189E1A8A00DB6798 = {
 			isa = PBXGroup;
 			children = (
+				A651BEAA18C6DD1400F552A8 /* UIKit+AFNetworking */,
 				A655470818C2C6BD00F3D8EC /* Parse.framework */,
 				A67A27E718AE83C6004551DF /* IOSLinkedInAPI */,
 				9252EB75189E1A8A00DB6798 /* Konnect */,
@@ -374,6 +397,28 @@
 				921BBBC518BB2B5800C727F1 /* UITableView+Seeker.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		A651BEAA18C6DD1400F552A8 /* UIKit+AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				A651BEAB18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.h */,
+				A651BEAC18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m */,
+				A651BEAD18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.h */,
+				A651BEAE18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.m */,
+				A651BEAF18C6DD1400F552A8 /* UIAlertView+AFNetworking.h */,
+				A651BEB018C6DD1400F552A8 /* UIAlertView+AFNetworking.m */,
+				A651BEB118C6DD1400F552A8 /* UIButton+AFNetworking.h */,
+				A651BEB218C6DD1400F552A8 /* UIButton+AFNetworking.m */,
+				A651BEB318C6DD1400F552A8 /* UIImageView+AFNetworking.h */,
+				A651BEB418C6DD1400F552A8 /* UIImageView+AFNetworking.m */,
+				A651BEB518C6DD1400F552A8 /* UIKit+AFNetworking.h */,
+				A651BEB618C6DD1400F552A8 /* UIProgressView+AFNetworking.h */,
+				A651BEB718C6DD1400F552A8 /* UIProgressView+AFNetworking.m */,
+				A651BEB818C6DD1400F552A8 /* UIWebView+AFNetworking.h */,
+				A651BEB918C6DD1400F552A8 /* UIWebView+AFNetworking.m */,
+			);
+			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
 		A67A27E718AE83C6004551DF /* IOSLinkedInAPI */ = {
@@ -563,9 +608,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A651BEBC18C6DD1400F552A8 /* UIAlertView+AFNetworking.m in Sources */,
+				A651BEBE18C6DD1400F552A8 /* UIImageView+AFNetworking.m in Sources */,
 				92EFA80E18B1B0DC005640B0 /* RecruiterViewController.m in Sources */,
 				A67A27F318AE83C6004551DF /* LIALinkedInApplication.m in Sources */,
+				A651BEBB18C6DD1400F552A8 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */,
+				A651BEBD18C6DD1400F552A8 /* UIButton+AFNetworking.m in Sources */,
 				9252EB80189E1A8A00DB6798 /* AppDelegate.m in Sources */,
 				92219EB418C1FE36000D48C7 /* JobsViewController.m in Sources */,
 				A6446A3C18B70F6900C81CC0 /* Education.m in Sources */,
@@ -573,10 +622,13 @@
 				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
 				A651BEA918C57CBA00F552A8 /* JobProfile.m in Sources */,
+				A651BEBF18C6DD1400F552A8 /* UIProgressView+AFNetworking.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
 				92219EAF18C1FDEC000D48C7 /* CandidatesViewController.m in Sources */,
 				A614E13E18BC5FDF0087D781 /* SettingsViewController.m in Sources */,
 				9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */,
+				A651BEBA18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A651BEC018C6DD1400F552A8 /* UIWebView+AFNetworking.m in Sources */,
 				921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */,
 				A67A27FE18AF0BED004551DF /* RestObject.m in Sources */,
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,

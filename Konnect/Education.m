@@ -7,6 +7,8 @@
 //
 
 #import "Education.h"
+#import "Parse/Parse.h"
+
 
 @implementation Education
 
@@ -21,6 +23,18 @@
         if (endDate){
             self.endYear = [endDate[@"year"] stringValue];
         }
+    }
+    
+    return self;
+}
+
+- (id)initWithPFObject: (PFObject *)pfObject {
+    self = [super init];
+    if (self) {
+        _pfObject = pfObject;
+        _degree = [pfObject objectForKey:@"degree"];
+        _school = [pfObject objectForKey:@"school"];
+        _major = [pfObject objectForKey:@"major"];
     }
     
     return self;

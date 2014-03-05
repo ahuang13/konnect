@@ -143,12 +143,16 @@
                     [seekerProfile setObject:profile.summary forKey:@"summary"];
                 if (profile.linkedInId)
                     [seekerProfile setObject:profile.linkedInId forKey:@"linkedInId"];
+                if (profile.pictureUrl)
+                    [seekerProfile setObject:profile.pictureUrl forKey:@"pictureUrl"];
                 
                 CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
                 if (currentPosition.company.name)
                     [seekerProfile setObject:currentPosition.company.name forKey:@"companyName"];
                 if (currentPosition.summary)
                     [seekerProfile setObject:currentPosition.summary forKey:@"jobDescription"];
+                if (currentPosition.title)
+                    [seekerProfile setObject:currentPosition.title forKey:@"title"];
                 
                 // Create parse objects for educations
                 for (Education *education in profile.educations) {

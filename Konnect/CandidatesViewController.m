@@ -8,11 +8,14 @@
 
 #import "CandidatesViewController.h"
 #import "Parse/Parse.h"
+#import "Profile.h"
+#import "CurrentPosition.h"
 
 
 @interface CandidatesViewController ()
 
 @property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) PFObject *pfJobProfile;
 @property (strong, nonatomic) NSMutableArray *candidates;
 
 
@@ -41,6 +44,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadJob];
+    [self loadCandidates];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,34 +53,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-//------------------------------------------------------------------------------
-#pragma mark - Private Methods
-//------------------------------------------------------------------------------
-
-- (void)loadCandidates {
-    
-    // See current user profile to figure out what type of job to load
-
-    self.jobTitle = @"Software Engineer";
-    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
-    [profileQuery whereKey:@"title" equalTo:self.jobTitle];
-        
-    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            for (PFObject *object in objects)
-            {
-                NSString *firstName = [object objectForKey:@"firstName"];
-                NSString *lastName = [object objectForKey:@"lastName"];
-                NSString *company = [object objectForKey:@"companyName"];
-                    
-                NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
-                    
-                [self.candidates addObject:object];
-            }
-        }
-    }];
 }
 
 - (void)initTabBarItem {
@@ -86,5 +63,82 @@
     
     self.tabBarItem = tabBarItem;
 }
+
+//------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//------------------------------------------------------------------------------
+
+- (void)loadJob {
+    Profile *currentUser = [Profile currentUser];
+    if (currentUser) {
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+        [profileQuery whereKey:@"userLinkedInId" equalTo:currentUser.linkedInId];
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects)
+                {
+                    NSString *companyName = [object objectForKey:@"companyName"];
+                    NSLog(@"%@ is hiring!", companyName);
+                    
+                    self.pfJobProfile = object;
+                    
+                }
+            }
+        }];
+    }
+}
+
+- (void)loadCandidates {
+    // See current user profile to figure out what type of job to load
+    self.jobTitle = @"Software Engineer";
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+    [profileQuery whereKey:@"title" equalTo:self.jobTitle];
+        
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFObject *seekerProfile in objects)
+            {
+                //Load the candidates educations
+                PFQuery *educationQuery = [PFQuery queryWithClassName:@"Education"];
+                [educationQuery whereKey:@"seekerProfile" equalTo:seekerProfile];
+                
+                [educationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    if (!error) {
+                        
+                        //Create profile out of pfobject
+                        Profile *candidateProfile = [[Profile alloc] initWithPFObject:seekerProfile educations:objects];
+                        NSString *firstName = candidateProfile.firstName;
+                        NSString *lastName = candidateProfile.lastName;
+                        CurrentPosition *currentPosition = [candidateProfile.currentPositions objectAtIndex:0];
+                        NSString *company = currentPosition.company.name;
+                    
+                        NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
+                        [self.candidates addObject:candidateProfile];
+                        [self selectCandidate:candidateProfile];
+                    }
+                }];
+            }
+        }
+    }];
+}
+
+- (void)selectCandidate:(Profile *) profile {
+    Profile *currentUser = [Profile currentUser];
+    if(currentUser) {
+        
+        PFObject *recruiterSelection = [PFObject objectWithClassName:@"RecruiterSelection"];
+        
+        [recruiterSelection setObject:currentUser.linkedInId forKey:@"recruiterLinkedInId"];
+        [recruiterSelection setObject:profile.linkedInId forKey:@"seekerLinkedInId"];
+        
+        // Save the new seekerSelection
+        [recruiterSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+            }
+        }];
+    }
+}
+
+
 
 @end
