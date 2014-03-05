@@ -13,6 +13,7 @@
 #import "Education.h"
 #import "Company.h"
 #import "CurrentPosition.h"
+#import "Education.h"
 #import "SeekerProfileHeaderCell.h"
 #import "SeekerProfileExperienceCell.h"
 #import "SeekerProfileEducationCell.h"
@@ -89,10 +90,18 @@ static const NSInteger EDUCATIONS = 3;
             CurrentPosition *position = self.currentUserProfile.currentPositions[rowIndex];
             return [SeekerProfileExperienceCell heightForPosition:position withWidth:cellWidth];
         }
+        case EDUCATIONS: {
+            Education *education = self.currentUserProfile.educations[rowIndex];
+            return [SeekerProfileEducationCell heightForEducation:education withWidth:cellWidth];
+        }
         default: {
             return 200;
         }
     }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
 }
 
 //------------------------------------------------------------------------------

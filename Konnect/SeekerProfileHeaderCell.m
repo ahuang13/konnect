@@ -7,6 +7,7 @@
 //
 
 #import "SeekerProfileHeaderCell.h"
+#import "UIImageView+AFNetworking.h"
 #import "Profile.h"
 
 @implementation SeekerProfileHeaderCell
@@ -33,11 +34,12 @@
     self.headlineLabel.text = profile.headline;
     self.locationLabel.text = profile.location;
     
-    // TODO: Set profile image URL
+    NSURL *profileImageUrl = [NSURL URLWithString:profile.pictureUrl];
+    [self.profilePicImageView setImageWithURL:profileImageUrl];
 }
 
 + (CGFloat)heightForProfile:(Profile *)profile {
-    CGFloat height = 25 + 80 + 10;
+    CGFloat height = 25 + 80 + 20;
     return height;
 }
 

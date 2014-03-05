@@ -17,4 +17,6 @@
 
 - (void)initWithEducation:(Education *)education;
 
++ (CGFloat)heightForEducation:(Education *)education withWidth:(CGFloat)width;
+
 @end

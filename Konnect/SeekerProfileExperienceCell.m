@@ -32,8 +32,6 @@
     self.positionLabel.text = position.title;
     self.companyLabel.text = position.company.name;
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //self.datesLabel.text = [dateFormatter stringFromDate:position.startDate];
     self.datesLabel.text = position.dates;
     
     self.summaryLabel.text = position.summary;
@@ -60,7 +58,7 @@
                                                       attributes:@{NSFontAttributeName:systemFont11}
                                                          context:nil];
     height += boundingRect.size.height;
-    height +=10;
+    height +=20;
     
     return height;
 }
