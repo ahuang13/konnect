@@ -130,7 +130,7 @@
                 [seekerSelection setObject:jobProfile forKey:@"JobProfile"];
                 [seekerSelection setObject:self.pfSeekerProfile forKey:@"SeekerProfile"];
                 
-                // Save the new seekerSelection profile
+                // Save the new seekerSelection
                 [seekerSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
                     }
@@ -140,7 +140,6 @@
             
         }
     }];
-    
 }
 
 

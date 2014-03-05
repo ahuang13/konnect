@@ -15,6 +15,7 @@
 @interface CandidatesViewController ()
 
 @property (strong, nonatomic) NSString *jobTitle;
+@property (strong, nonatomic) PFObject *pfJobProfile;
 @property (strong, nonatomic) NSMutableArray *candidates;
 
 
@@ -43,6 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadJob];
     [self loadCandidates];
     // Do any additional setup after loading the view from its nib.
 }
@@ -53,9 +55,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)initTabBarItem {
+    
+    NSString *title = @"Candidates";
+    UIImage *icon = [UIImage imageNamed:@"group-50"];
+    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    
+    self.tabBarItem = tabBarItem;
+}
+
 //------------------------------------------------------------------------------
 #pragma mark - Private Methods
 //------------------------------------------------------------------------------
+
+- (void)loadJob {
+    Profile *currentUser = [Profile currentUser];
+    if (currentUser) {
+        PFQuery *profileQuery = [PFQuery queryWithClassName:@"JobProfile"];
+        [profileQuery whereKey:@"userLinkedInId" equalTo:currentUser.linkedInId];
+        [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                for (PFObject *object in objects)
+                {
+                    NSString *companyName = [object objectForKey:@"companyName"];
+                    NSLog(@"%@ is hiring!", companyName);
+                    
+                    self.pfJobProfile = object;
+                    
+                }
+            }
+        }];
+    }
+}
 
 - (void)loadCandidates {
     
@@ -84,7 +115,6 @@
                         NSString *company = currentPosition.company.name;
                     
                         NSLog(@"Hire %@ %@ from %@!", firstName, lastName, company);
-                    
                         [self.candidates addObject:candidateProfile];
                     }
                 }];
@@ -93,13 +123,33 @@
     }];
 }
 
-- (void)initTabBarItem {
+- (void)selectCandidate:(Profile *) profile {
     
-    NSString *title = @"Candidates";
-    UIImage *icon = [UIImage imageNamed:@"group-50"];
-    UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:icon tag:0];
+    // Get parse object with the profile's linkedInId
+    PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
+    [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];
     
-    self.tabBarItem = tabBarItem;
+    [profileQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if ([objects count] > 0) {
+                PFObject *recruiterSelection = [PFObject objectWithClassName:@"RecruiterSelection"];
+                PFObject *seekerProfile = [objects objectAtIndex:0];
+                
+                [recruiterSelection setObject:seekerProfile forKey:@"SeekerProfile"];
+                [recruiterSelection setObject:self.pfJobProfile forKey:@"JobProfile"];
+                
+                // Save the new recruiterSelection
+                [recruiterSelection saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                    }
+                }];
+                
+            }
+            
+        }
+    }];
 }
+
+
 
 @end

@@ -44,6 +44,7 @@ static Profile *_currentUser;
         self.pictureUrl = dictionary[@"pictureUrl"];
         self.headline = dictionary[@"headline"];
         self.summary = dictionary[@"summary"];
+        self.linkedInId = dictionary[@"linkedInId"];
         self.location = dictionary[@"location"][@"name"];
         self.linkedInId = dictionary[@"id"];
         
