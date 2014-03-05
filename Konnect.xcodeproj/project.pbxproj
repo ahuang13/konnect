@@ -20,6 +20,7 @@
 		92219EBA18C1FE78000D48C7 /* RecruiterMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92219EB818C1FE78000D48C7 /* RecruiterMessagesViewController.xib */; };
 		92219EBE18C1FECD000D48C7 /* SeekerMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92219EBC18C1FECD000D48C7 /* SeekerMessagesViewController.m */; };
 		92219EBF18C1FECD000D48C7 /* SeekerMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92219EBD18C1FECD000D48C7 /* SeekerMessagesViewController.xib */; };
+		92220C2118C6E2D6003B5F8D /* TinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92220C2018C6E2D6003B5F8D /* TinderViewController.m */; };
 		9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */; };
 		9223F2AC18BA827A006FD45E /* SeekerProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */; };
 		9252EB70189E1A8A00DB6798 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9252EB6F189E1A8A00DB6798 /* Foundation.framework */; };
@@ -103,6 +104,10 @@
 		92219EBB18C1FECD000D48C7 /* SeekerMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerMessagesViewController.h; sourceTree = "<group>"; };
 		92219EBC18C1FECD000D48C7 /* SeekerMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerMessagesViewController.m; sourceTree = "<group>"; };
 		92219EBD18C1FECD000D48C7 /* SeekerMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerMessagesViewController.xib; sourceTree = "<group>"; };
+		92220C1F18C6E2CC003B5F8D /* TinderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderViewController.h; sourceTree = "<group>"; };
+		92220C2018C6E2D6003B5F8D /* TinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinderViewController.m; sourceTree = "<group>"; };
+		92220C2218C6E2DC003B5F8D /* TinderViewControllerDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderViewControllerDataSource.h; sourceTree = "<group>"; };
+		92220C2318C6E2E1003B5F8D /* TinderViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderViewControllerDelegate.h; sourceTree = "<group>"; };
 		9223F2A818BA8261006FD45E /* SeekerProfileHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeekerProfileHeaderCell.h; sourceTree = "<group>"; };
 		9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeekerProfileHeaderCell.m; sourceTree = "<group>"; };
 		9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerProfileHeaderCell.xib; sourceTree = "<group>"; };
@@ -357,6 +362,10 @@
 				92EFA7F618B017DB005640B0 /* Categories */,
 				92EFA7FD18B06DFE005640B0 /* Notifications.h */,
 				92EFA7FE18B06DFE005640B0 /* Notifications.m */,
+				92220C1F18C6E2CC003B5F8D /* TinderViewController.h */,
+				92220C2018C6E2D6003B5F8D /* TinderViewController.m */,
+				92220C2218C6E2DC003B5F8D /* TinderViewControllerDataSource.h */,
+				92220C2318C6E2E1003B5F8D /* TinderViewControllerDelegate.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -571,6 +580,7 @@
 				A6446A3C18B70F6900C81CC0 /* Education.m in Sources */,
 				92219EB918C1FE78000D48C7 /* RecruiterMessagesViewController.m in Sources */,
 				A67A280318AF0CCD004551DF /* NSDictionary+CPAdditions.m in Sources */,
+				92220C2118C6E2D6003B5F8D /* TinderViewController.m in Sources */,
 				A67A27FB18AF0B26004551DF /* Profile.m in Sources */,
 				A651BEA918C57CBA00F552A8 /* JobProfile.m in Sources */,
 				92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */,
