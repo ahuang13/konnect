@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecruiterViewController">
             <connections>
-                <outlet property="companyNameLabel" destination="8x9-uS-XSA" id="b7g-Nz-Xrv"/>
-                <outlet property="companySizeLabel" destination="f7e-B9-rrP" id="blS-eo-cl7"/>
+                <outlet property="companyNameLabel" destination="o2M-Gg-wCC" id="I3C-6Z-Ip7"/>
+                <outlet property="companySizeLabel" destination="xar-pB-Bq5" id="kUM-bB-u2o"/>
                 <outlet property="descriptionLabel" destination="9ka-JI-REV" id="Ap9-LZ-51A"/>
                 <outlet property="locationTextField" destination="lkV-5h-Eb1" id="oD9-ut-Fne"/>
                 <outlet property="logoImage" destination="7zg-wH-qBc" id="HtJ-SU-xzQ"/>
@@ -22,32 +22,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Job Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WnX-gQ-TbP">
-                    <rect key="frame" x="97" y="189" width="139" height="30"/>
+                    <rect key="frame" x="101" y="347" width="139" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.65389351222826086" green="0.65389351222826086" blue="0.65389351222826086" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Salary Range" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0d1-AA-ObX">
-                    <rect key="frame" x="165" y="227" width="139" height="30"/>
+                    <rect key="frame" x="161" y="178" width="139" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.58383576766304346" green="0.58383576766304346" blue="0.58383576766304346" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Location" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-5h-Eb1">
-                    <rect key="frame" x="17" y="227" width="139" height="30"/>
+                    <rect key="frame" x="17" y="178" width="139" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.61682659646739135" green="0.61682659646739135" blue="0.61682659646739135" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsU-v5-fKP">
-                    <rect key="frame" x="0.0" y="5" width="320" height="169"/>
+                    <rect key="frame" x="0.0" y="5" width="320" height="132"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zg-wH-qBc">
-                            <rect key="frame" x="121" y="61" width="78" height="79"/>
+                            <rect key="frame" x="129" y="47" width="63" height="58"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100-150" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-B9-rrP">
@@ -63,13 +63,27 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SOASTA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2M-Gg-wCC">
+                            <rect key="frame" x="20" y="105" width="44" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                            <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100-150" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xar-pB-Bq5">
+                            <rect key="frame" x="258" y="105" width="43" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.64796974797166884" blue="0.3110744860620116" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Soasta rocks!" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="287" translatesAutoresizingMaskIntoConstraints="NO" id="9ka-JI-REV">
-                    <rect key="frame" x="17" y="265" width="287" height="176"/>
+                    <rect key="frame" x="17" y="229" width="287" height="225"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
