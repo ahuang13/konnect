@@ -19,6 +19,7 @@
 #import "JobsViewController.h"
 #import "RecruiterMessagesViewController.h"
 #import "SeekerMessagesViewController.h"
+#import "CandidatesContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -31,7 +32,8 @@
 @property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) SeekerViewController *seekerViewController;
 @property (nonatomic, strong) RecruiterViewController *recruiterViewController;
-@property (nonatomic, strong) CandidatesViewController *candidatesViewController;
+@property (nonatomic, strong) CandidatesContainerViewController *candidatesViewController;
+// @property (nonatomic, strong) CandidatesViewController *candidatesViewController;
 @property (nonatomic, strong) JobsViewController *jobsViewController;
 @property (nonatomic, strong) RecruiterMessagesViewController *recruiterMessagesViewController;
 @property (nonatomic, strong) SeekerMessagesViewController *seekerMessagesViewController;
@@ -191,7 +193,7 @@
 - (SeekerViewController *)seekerViewController {
     
     if (!_seekerViewController) {
-        _seekerViewController = [[SeekerViewController alloc] init];
+        _seekerViewController = [[SeekerViewController alloc] initWithProfile:[Profile currentUser]];
     }
     
     return _seekerViewController;
@@ -206,14 +208,23 @@
     return _recruiterViewController;
 }
 
-- (CandidatesViewController *)candidatesViewController {
+- (CandidatesContainerViewController *)candidatesViewController {
     
     if (!_candidatesViewController) {
-        _candidatesViewController = [[CandidatesViewController alloc] init];
+        _candidatesViewController = [[CandidatesContainerViewController alloc] init];
     }
     
     return _candidatesViewController;
 }
+
+//- (CandidatesViewController *)candidatesViewController {
+//    
+//    if (!_candidatesViewController) {
+//        _candidatesViewController = [[CandidatesViewController alloc] init];
+//    }
+//    
+//    return _candidatesViewController;
+//}
 
 - (JobsViewController *)jobsViewController {
     

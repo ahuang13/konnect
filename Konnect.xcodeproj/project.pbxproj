@@ -13,7 +13,6 @@
 		921BBBC918BBBBA800C727F1 /* SeekerProfileEducationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */; };
 		921BBBCD18BBBBD600C727F1 /* SeekerProfileEducationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */; };
 		92219EAF18C1FDEC000D48C7 /* CandidatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92219EAD18C1FDEC000D48C7 /* CandidatesViewController.m */; };
-		92219EB018C1FDEC000D48C7 /* CandidatesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92219EAE18C1FDEC000D48C7 /* CandidatesViewController.xib */; };
 		92219EB418C1FE36000D48C7 /* JobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92219EB218C1FE36000D48C7 /* JobsViewController.m */; };
 		92219EB518C1FE36000D48C7 /* JobsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92219EB318C1FE36000D48C7 /* JobsViewController.xib */; };
 		92219EB918C1FE78000D48C7 /* RecruiterMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92219EB718C1FE78000D48C7 /* RecruiterMessagesViewController.m */; };
@@ -38,6 +37,7 @@
 		9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252EBA0189EC37900DB6798 /* LinkedInClient.m */; };
 		9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252EBA4189EC5E700DB6798 /* LogInViewController.m */; };
 		9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9252EBA5189EC5E700DB6798 /* LogInViewController.xib */; };
+		92A8373618C77C27002B2BEC /* CandidatesContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8373518C77C27002B2BEC /* CandidatesContainerViewController.m */; };
 		92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */; };
 		92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FB18B05D2E005640B0 /* NSString+URLString.m */; };
 		92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FE18B06DFE005640B0 /* Notifications.m */; };
@@ -101,7 +101,6 @@
 		921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeekerProfileEducationCell.xib; sourceTree = "<group>"; };
 		92219EAC18C1FDEC000D48C7 /* CandidatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandidatesViewController.h; sourceTree = "<group>"; };
 		92219EAD18C1FDEC000D48C7 /* CandidatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandidatesViewController.m; sourceTree = "<group>"; };
-		92219EAE18C1FDEC000D48C7 /* CandidatesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandidatesViewController.xib; sourceTree = "<group>"; };
 		92219EB118C1FE36000D48C7 /* JobsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsViewController.h; sourceTree = "<group>"; };
 		92219EB218C1FE36000D48C7 /* JobsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsViewController.m; sourceTree = "<group>"; };
 		92219EB318C1FE36000D48C7 /* JobsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobsViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +138,8 @@
 		9252EBA3189EC5E700DB6798 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		9252EBA4189EC5E700DB6798 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		9252EBA5189EC5E700DB6798 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		92A8373418C77C27002B2BEC /* CandidatesContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandidatesContainerViewController.h; sourceTree = "<group>"; };
+		92A8373518C77C27002B2BEC /* CandidatesContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandidatesContainerViewController.m; sourceTree = "<group>"; };
 		92EFA7F718B01B01005640B0 /* LIALinkedInHttpClient+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LIALinkedInHttpClient+Helpers.h"; sourceTree = "<group>"; };
 		92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LIALinkedInHttpClient+Helpers.m"; sourceTree = "<group>"; };
 		92EFA7FA18B05D2E005640B0 /* NSString+URLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLString.h"; sourceTree = "<group>"; };
@@ -342,15 +343,43 @@
 		9252EBA2189EC5B500DB6798 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				92A8373C18C78A7F002B2BEC /* Login */,
+				92A8373D18C78A89002B2BEC /* Settings */,
+				92A8373E18C78AA7002B2BEC /* SeekerProfile */,
+				92A8373F18C78AC8002B2BEC /* RecruiterProfile */,
+				92A8374218C78B01002B2BEC /* SeekerBrowse */,
+				92A8374118C78AE5002B2BEC /* RecruiterBrowse */,
+				92A8374418C78B2C002B2BEC /* Messages */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		92A8373C18C78A7F002B2BEC /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				9252EBA3189EC5E700DB6798 /* LogInViewController.h */,
 				9252EBA4189EC5E700DB6798 /* LogInViewController.m */,
 				9252EBA5189EC5E700DB6798 /* LogInViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		92A8373D18C78A89002B2BEC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A614E13B18BC5FDF0087D781 /* SettingsViewController.h */,
+				A614E13C18BC5FDF0087D781 /* SettingsViewController.m */,
+				A614E13D18BC5FDF0087D781 /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		92A8373E18C78AA7002B2BEC /* SeekerProfile */ = {
+			isa = PBXGroup;
+			children = (
 				92EFA80018B17DD5005640B0 /* SeekerViewController.h */,
 				92EFA80118B17DD5005640B0 /* SeekerViewController.m */,
 				92EFA80218B17DD5005640B0 /* SeekerViewController.xib */,
-				92EFA80B18B1B0DC005640B0 /* RecruiterViewController.h */,
-				92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */,
-				92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */,
 				9223F2A818BA8261006FD45E /* SeekerProfileHeaderCell.h */,
 				9223F2A918BA8261006FD45E /* SeekerProfileHeaderCell.m */,
 				9223F2AB18BA827A006FD45E /* SeekerProfileHeaderCell.xib */,
@@ -360,15 +389,44 @@
 				921BBBC718BBBBA800C727F1 /* SeekerProfileEducationCell.h */,
 				921BBBC818BBBBA800C727F1 /* SeekerProfileEducationCell.m */,
 				921BBBCC18BBBBD600C727F1 /* SeekerProfileEducationCell.xib */,
-				A614E13B18BC5FDF0087D781 /* SettingsViewController.h */,
-				A614E13C18BC5FDF0087D781 /* SettingsViewController.m */,
-				A614E13D18BC5FDF0087D781 /* SettingsViewController.xib */,
+			);
+			name = SeekerProfile;
+			sourceTree = "<group>";
+		};
+		92A8373F18C78AC8002B2BEC /* RecruiterProfile */ = {
+			isa = PBXGroup;
+			children = (
+				92EFA80B18B1B0DC005640B0 /* RecruiterViewController.h */,
+				92EFA80C18B1B0DC005640B0 /* RecruiterViewController.m */,
+				92EFA80D18B1B0DC005640B0 /* RecruiterViewController.xib */,
+			);
+			name = RecruiterProfile;
+			sourceTree = "<group>";
+		};
+		92A8374118C78AE5002B2BEC /* RecruiterBrowse */ = {
+			isa = PBXGroup;
+			children = (
 				92219EAC18C1FDEC000D48C7 /* CandidatesViewController.h */,
 				92219EAD18C1FDEC000D48C7 /* CandidatesViewController.m */,
-				92219EAE18C1FDEC000D48C7 /* CandidatesViewController.xib */,
+				92A8373418C77C27002B2BEC /* CandidatesContainerViewController.h */,
+				92A8373518C77C27002B2BEC /* CandidatesContainerViewController.m */,
+			);
+			name = RecruiterBrowse;
+			sourceTree = "<group>";
+		};
+		92A8374218C78B01002B2BEC /* SeekerBrowse */ = {
+			isa = PBXGroup;
+			children = (
 				92219EB118C1FE36000D48C7 /* JobsViewController.h */,
 				92219EB218C1FE36000D48C7 /* JobsViewController.m */,
 				92219EB318C1FE36000D48C7 /* JobsViewController.xib */,
+			);
+			name = SeekerBrowse;
+			sourceTree = "<group>";
+		};
+		92A8374418C78B2C002B2BEC /* Messages */ = {
+			isa = PBXGroup;
+			children = (
 				92219EB618C1FE78000D48C7 /* RecruiterMessagesViewController.h */,
 				92219EB718C1FE78000D48C7 /* RecruiterMessagesViewController.m */,
 				92219EB818C1FE78000D48C7 /* RecruiterMessagesViewController.xib */,
@@ -376,7 +434,7 @@
 				92219EBC18C1FECD000D48C7 /* SeekerMessagesViewController.m */,
 				92219EBD18C1FECD000D48C7 /* SeekerMessagesViewController.xib */,
 			);
-			name = "View Controllers";
+			name = Messages;
 			sourceTree = "<group>";
 		};
 		92EFA7F518B017C6005640B0 /* Utilities */ = {
@@ -556,7 +614,6 @@
 				921BBBCD18BBBBD600C727F1 /* SeekerProfileEducationCell.xib in Resources */,
 				9252EB82189E1A8A00DB6798 /* Images.xcassets in Resources */,
 				A67A27F718AE83C6004551DF /* 01-refresh.png in Resources */,
-				92219EB018C1FDEC000D48C7 /* CandidatesViewController.xib in Resources */,
 				92EFA80418B17DD5005640B0 /* SeekerViewController.xib in Resources */,
 				A614E13F18BC5FDF0087D781 /* SettingsViewController.xib in Resources */,
 				92219EBF18C1FECD000D48C7 /* SeekerMessagesViewController.xib in Resources */,
@@ -637,6 +694,7 @@
 				92219EAF18C1FDEC000D48C7 /* CandidatesViewController.m in Sources */,
 				A614E13E18BC5FDF0087D781 /* SettingsViewController.m in Sources */,
 				9223F2AA18BA8261006FD45E /* SeekerProfileHeaderCell.m in Sources */,
+				92A8373618C77C27002B2BEC /* CandidatesContainerViewController.m in Sources */,
 				A651BEBA18C6DD1400F552A8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				A651BEC018C6DD1400F552A8 /* UIWebView+AFNetworking.m in Sources */,
 				921BBBC618BB2B5800C727F1 /* UITableView+Seeker.m in Sources */,
