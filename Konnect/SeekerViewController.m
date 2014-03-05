@@ -41,10 +41,10 @@ static const NSInteger EDUCATIONS = 3;
 #pragma mark - View Lifecycle
 //------------------------------------------------------------------------------
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithProfile:(Profile *)profile {
+    self = [super initWithNibName:@"SeekerViewController" bundle:nil];
     if (self) {
+        _currentUserProfile = profile;
         [self initTabBarItem];
     }
     return self;
@@ -54,10 +54,6 @@ static const NSInteger EDUCATIONS = 3;
 {
     [super viewDidLoad];
     [self.tableView registerSeekerCells];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self setCurrentUserProfile:[Profile currentUser]];
 }
 
 - (void)didReceiveMemoryWarning

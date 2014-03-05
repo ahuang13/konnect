@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) Profile *currentUserProfile;
 
+- (id)initWithProfile:(Profile *)profile;
+
 @end
