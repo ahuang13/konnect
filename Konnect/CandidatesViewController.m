@@ -89,9 +89,7 @@
 }
 
 - (void)loadCandidates {
-    
     // See current user profile to figure out what type of job to load
-
     self.jobTitle = @"Software Engineer";
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
     [profileQuery whereKey:@"title" equalTo:self.jobTitle];
@@ -124,7 +122,6 @@
 }
 
 - (void)selectCandidate:(Profile *) profile {
-    
     // Get parse object with the profile's linkedInId
     PFQuery *profileQuery = [PFQuery queryWithClassName:@"SeekerProfile"];
     [profileQuery whereKey:@"linkedInId" equalTo:profile.linkedInId];

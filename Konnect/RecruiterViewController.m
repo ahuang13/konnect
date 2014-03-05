@@ -142,8 +142,8 @@
             NSLog(@"company description: %@", company.description );
             NSLog(@"company logo url: %@", company.logoUrl);
         
-            //NSString *imageUrl = company.logoUrl;
-            //[self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
+            NSString *imageUrl = company.logoUrl;
+            [self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
         
             [self loadedJobProfileFromServerWithProfile:profile];
         };
