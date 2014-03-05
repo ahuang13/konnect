@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSString *logoUrl;
 @property (nonatomic, strong) NSString *salary;
 
-@property (nonatomic, strong) PFObject *pfObject;
+@property (nonatomic, strong) NSDictionary *data;
 
 
 
