@@ -110,9 +110,7 @@ static const NSInteger EDUCATIONS = 3;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"cellForRowAtIndexPath: %zd %zd", indexPath.section, indexPath.row);
-    
+        
     NSInteger sectionIndex = indexPath.section;
     NSInteger rowIndex = indexPath.row;
     

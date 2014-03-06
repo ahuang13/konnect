@@ -30,14 +30,4 @@
     return self;
 }
 
-- (NSString *)description {
-    
-    return self.companyDetails[@"description"];
-}
-
-- (NSString *)logoUrl {
-    
-    return self.companyDetails[@"logoUrl"];
-}
-
 @end

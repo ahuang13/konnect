@@ -68,6 +68,6 @@
     </objects>
     <resources>
         <image name="Konnect" width="1071" height="259"/>
-        <image name="san_francisco_cityscape5719" width="703" height="1050"/>
+        <image name="san_francisco_cityscape5719" width="400" height="597"/>
     </resources>
 </document>

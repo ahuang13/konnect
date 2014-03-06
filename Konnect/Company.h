@@ -10,17 +10,15 @@
 
 @interface Company : NSObject
 
+@property (nonatomic, strong) NSDictionary *companyDetails;
+
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *industry;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *logoUrl;
-@property (nonatomic, strong) NSDictionary *companyDetails;
-
-
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-
 
 @end
