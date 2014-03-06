@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecruiterViewController">
             <connections>
+                <outlet property="companyNameLabel" destination="8x9-uS-XSA" id="YQS-9D-yEg"/>
+                <outlet property="companySizeLabel" destination="f7e-B9-rrP" id="86x-0p-UnJ"/>
                 <outlet property="descriptionLabel" destination="9ka-JI-REV" id="Ap9-LZ-51A"/>
                 <outlet property="locationTextField" destination="lkV-5h-Eb1" id="oD9-ut-Fne"/>
                 <outlet property="logoImage" destination="7zg-wH-qBc" id="HtJ-SU-xzQ"/>
@@ -63,10 +65,10 @@
                         <constraint firstAttribute="height" constant="70" id="dOe-9m-Q4Y"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100-150" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-B9-rrP">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100-150" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7e-B9-rrP">
                     <rect key="frame" x="195" y="63" width="115" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>

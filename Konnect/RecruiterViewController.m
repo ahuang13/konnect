@@ -120,21 +120,24 @@
     
     // Load current company basics from profile
     if ([profile.currentPositions count] > 0) {
+        
         CurrentPosition *currentPosition = [profile.currentPositions objectAtIndex:0];
         Company *company = currentPosition.company;
     
         // Download the current user's company profile and set the app's user company.
         void (^success)(AFHTTPRequestOperation *, id) = ^void(AFHTTPRequestOperation *operation, id response) {
-        
-            NSLog(@"company detail: %@", response);
-            company.companyDetails = response;
+            
+            NSLog(@"response = %@", response);
+            
+            company.description = response[@"description"];
+            company.logoUrl = response[@"logoUrl"];
+            
+            self.companyNameLabel.text = company.name;
+            self.companySizeLabel.text = company.size;
             self.descriptionLabel.text = company.description;
         
-            NSLog(@"company description: %@", company.description );
-            NSLog(@"company logo url: %@", company.logoUrl);
-        
-            NSString *imageUrl = company.logoUrl;
-            [self.logoImage setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"placeholder-avatar"]];
+            NSURL *imageUrl = [NSURL URLWithString:company.logoUrl];
+            [self.logoImage setImageWithURL:imageUrl];
         
             [self loadedJobProfileFromServerWithProfile:profile];
         };

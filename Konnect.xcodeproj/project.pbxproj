@@ -38,6 +38,7 @@
 		9252EBA6189EC5E700DB6798 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9252EBA4189EC5E700DB6798 /* LogInViewController.m */; };
 		9252EBA7189EC5E700DB6798 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9252EBA5189EC5E700DB6798 /* LogInViewController.xib */; };
 		92A8373618C77C27002B2BEC /* CandidatesContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A8373518C77C27002B2BEC /* CandidatesContainerViewController.m */; };
+		92E47FE818C7FAB20084174E /* JobsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E47FE718C7FAB20084174E /* JobsContainerViewController.m */; };
 		92EFA7F918B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */; };
 		92EFA7FC18B05D2E005640B0 /* NSString+URLString.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FB18B05D2E005640B0 /* NSString+URLString.m */; };
 		92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EFA7FE18B06DFE005640B0 /* Notifications.m */; };
@@ -144,6 +145,8 @@
 		9252EBA5189EC5E700DB6798 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
 		92A8373418C77C27002B2BEC /* CandidatesContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandidatesContainerViewController.h; sourceTree = "<group>"; };
 		92A8373518C77C27002B2BEC /* CandidatesContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandidatesContainerViewController.m; sourceTree = "<group>"; };
+		92E47FE618C7FAB20084174E /* JobsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsContainerViewController.h; sourceTree = "<group>"; };
+		92E47FE718C7FAB20084174E /* JobsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsContainerViewController.m; sourceTree = "<group>"; };
 		92EFA7F718B01B01005640B0 /* LIALinkedInHttpClient+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LIALinkedInHttpClient+Helpers.h"; sourceTree = "<group>"; };
 		92EFA7F818B01B01005640B0 /* LIALinkedInHttpClient+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LIALinkedInHttpClient+Helpers.m"; sourceTree = "<group>"; };
 		92EFA7FA18B05D2E005640B0 /* NSString+URLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLString.h"; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 				92219EB118C1FE36000D48C7 /* JobsViewController.h */,
 				92219EB218C1FE36000D48C7 /* JobsViewController.m */,
 				92219EB318C1FE36000D48C7 /* JobsViewController.xib */,
+				92E47FE618C7FAB20084174E /* JobsContainerViewController.h */,
+				92E47FE718C7FAB20084174E /* JobsContainerViewController.m */,
 			);
 			name = SeekerBrowse;
 			sourceTree = "<group>";
@@ -720,6 +725,7 @@
 				9252EB7C189E1A8A00DB6798 /* main.m in Sources */,
 				A613327C18C7A1FF00C1DFD6 /* SingleCandidateViewController.m in Sources */,
 				921BBBC918BBBBA800C727F1 /* SeekerProfileEducationCell.m in Sources */,
+				92E47FE818C7FAB20084174E /* JobsContainerViewController.m in Sources */,
 				92EFA7FF18B06DFE005640B0 /* Notifications.m in Sources */,
 				921BBBC118BAE7E100C727F1 /* SeekerProfileExperienceCell.m in Sources */,
 				9252EBA1189EC37900DB6798 /* LinkedInClient.m in Sources */,
